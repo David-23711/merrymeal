@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delivery Routes — MerryMeal</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head><body>
+<nav class="topnav"><a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a><div class="nav-right"><span class="nav-label">Staff portal</span><div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">3</span></div><div class="nav-avatar">ST</div><span class="nav-label">Staff User</span><div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div><button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button></div></nav><script>
+function doLogout(){
+  if(confirm('Are you sure you want to log out?')){
+    showToast('Logging out...','info');
+    setTimeout(()=>{ window.location.href='../auth/login.html'; },1000);
+  }
+}
+</script><div class="app-layout"><aside class="sidebar"><span class="sb-label" style="display:block;margin-top:0">Main</span><a class="sb-item " href="member-list.html"><i class="ti ti-users"></i>Members</a><a class="sb-item " href="caregiver-list.html"><i class="ti ti-heart"></i>Caregivers</a><a class="sb-item " href="partner-list.html"><i class="ti ti-building-store"></i>Partners</a><a class="sb-item " href="volunteer-list.html"><i class="ti ti-run"></i>Volunteers</a><span class="sb-label" style="display:block;margin-top:.8rem">Operations</span><a class="sb-item active" href="delivery-routes.html"><i class="ti ti-truck-delivery"></i>Delivery</a><a class="sb-item " href="menu-planning.html"><i class="ti ti-clipboard-list"></i>Menu plan</a><a class="sb-item " href="food-safety.html"><i class="ti ti-leaf"></i>Food safety</a><a class="sb-item " href="reassessment.html"><i class="ti ti-refresh"></i>Reassessment</a><span class="sb-label" style="display:block;margin-top:.8rem">Admin</span><a class="sb-item " href="mis-reports.html"><i class="ti ti-chart-bar"></i>MIS reports</a><a class="sb-item " href="donations.html"><i class="ti ti-coin"></i>Donations</a><a class="sb-item " href="access-control.html"><i class="ti ti-lock"></i>Access control</a></aside>
+<main class="main-content">
+<div class="breadcrumb"><span>Operations</span><i class="ti ti-chevron-right"></i><span class="cur">Delivery routes</span></div>
+<div class="page-head"><div><div class="page-title">Delivery route assignment</div><div class="page-sub">Assign riders to delivery routes — US21</div></div>
+<div style="display:flex;gap:8px;"><button class="btn btn-secondary" onclick="showToast('Route exported','info')"><i class="ti ti-download"></i>Export routes</button><button class="btn btn-primary" onclick="openModal('assign-modal')"><i class="ti ti-plus"></i>New assignment</button></div></div>
+<div class="kpi-grid">
+<div class="kpi dark"><div class="kpi-label">Active routes today</div><div class="kpi-val">8</div><div class="kpi-sub"><i class="ti ti-check"></i>All zones covered</div></div>
+<div class="kpi dark"><div class="kpi-label">Meals to deliver</div><div class="kpi-val">376</div><div class="kpi-sub"><i class="ti ti-clock"></i>By 1:00 PM</div></div>
+<div class="kpi light"><div class="kpi-label">On-time so far</div><div class="kpi-val">94%</div><div class="kpi-sub"><i class="ti ti-trending-up"></i>Above target</div></div>
+<div class="kpi light"><div class="kpi-label">Pending deliveries</div><div class="kpi-val">142</div><div class="kpi-sub warn"><i class="ti ti-clock"></i>In progress</div></div>
+</div>
+<div class="table-card">
+<div class="table-card-head"><div class="table-card-title">Today's route assignments</div><span style="font-size:12px;color:var(--text-muted);">19 May 2026</span></div>
+<table class="data-table"><thead><tr><th>Route</th><th>Zone</th><th>Rider</th><th>Partner kitchen</th><th>Members</th><th>Departed</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody>
+<tr><td class="td-name">Route A-1</td><td>Zone A</td><td>Kyaw Zin Tun</td><td>Green Bowl Kitchen</td><td>42</td><td>11:30 AM</td><td><span class="badge badge-green"><i class="ti ti-check" style="font-size:10px;"></i>Delivered</span></td><td><button class="btn btn-sm btn-secondary" onclick="showToast('Viewing route details','info')">Details</button></td></tr>
+<tr><td class="td-name">Route A-2</td><td>Zone A</td><td>Ma Thida</td><td>Green Bowl Kitchen</td><td>38</td><td>11:45 AM</td><td><span class="badge badge-amber"><i class="ti ti-clock" style="font-size:10px;"></i>In progress</span></td><td><button class="btn btn-sm btn-secondary">Details</button></td></tr>
+<tr><td class="td-name">Route B-1</td><td>Zone B</td><td>Min Thu</td><td>Golden Rice Catering</td><td>55</td><td>12:00 PM</td><td><span class="badge badge-amber"><i class="ti ti-clock" style="font-size:10px;"></i>In progress</span></td><td><button class="btn btn-sm btn-secondary">Details</button></td></tr>
+<tr><td class="td-name">Route C-1</td><td>Zone C</td><td>Aung Ko</td><td>Northern Food Services</td><td>22</td><td>—</td><td><span class="badge badge-slate">Scheduled</span></td><td><button class="btn btn-sm btn-danger" onclick="showToast('Route reassigned','warning')">Reassign</button></td></tr>
+</tbody></table></div>
+<div class="modal-overlay" id="assign-modal">
+<div class="modal"><div class="modal-head"><div class="modal-title">New route assignment</div><span class="modal-close" onclick="closeModal('assign-modal')"><i class="ti ti-x"></i></span></div>
+<div class="field"><label class="lbl">Zone <span class="req">*</span></label><select class="sel"><option>Zone A — Riverside</option><option>Zone B — Central Hub</option><option>Zone C — Northern</option></select></div>
+<div class="field"><label class="lbl">Assign rider <span class="req">*</span></label><select class="sel"><option>Kyaw Zin Tun (Zone A)</option><option>Min Thu (Zone B)</option><option>Aung Ko (Zone C)</option></select></div>
+<div class="field"><label class="lbl">Partner kitchen <span class="req">*</span></label><select class="sel"><option>Green Bowl Kitchen</option><option>Golden Rice Catering</option><option>Northern Food Services</option></select></div>
+<div class="field"><label class="lbl">Delivery date</label><input class="inp" type="date"></div>
+<div style="display:flex;gap:10px;justify-content:flex-end;margin-top:1rem;">
+<button class="btn btn-ghost" onclick="closeModal('assign-modal')">Cancel</button>
+<button class="btn btn-primary" onclick="closeModal('assign-modal');showToast('Route assigned successfully!','success')"><i class="ti ti-check"></i>Assign route</button>
+</div></div></div>
+</main></div><footer class="footer-bar"><div class="footer-l">MerryMeal · The Study Syndicate</div><div class="footer-r">Higher Diploma in Software Engineering · 2026</div></footer>
+<div id="toast-container" class="toast-container"></div>
+<script src="../../js/app.js"></script>
+</body></html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register Partner — MerryMeal</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head><body>
+<nav class="topnav"><a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a><div class="nav-right"><span class="nav-label">Staff portal</span><div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">3</span></div><div class="nav-avatar">ST</div><span class="nav-label">Staff User</span><div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div><button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button></div></nav><script>
+function doLogout(){
+  if(confirm('Are you sure you want to log out?')){
+    showToast('Logging out...','info');
+    setTimeout(()=>{ window.location.href='../auth/login.html'; },1000);
+  }
+}
+</script><div class="app-layout"><aside class="sidebar"><span class="sb-label" style="display:block;margin-top:0">Main</span><a class="sb-item " href="member-list.html"><i class="ti ti-users"></i>Members</a><a class="sb-item " href="caregiver-list.html"><i class="ti ti-heart"></i>Caregivers</a><a class="sb-item active" href="partner-list.html"><i class="ti ti-building-store"></i>Partners</a><a class="sb-item " href="volunteer-list.html"><i class="ti ti-run"></i>Volunteers</a><span class="sb-label" style="display:block;margin-top:.8rem">Operations</span><a class="sb-item " href="delivery-routes.html"><i class="ti ti-truck-delivery"></i>Delivery</a><a class="sb-item " href="menu-planning.html"><i class="ti ti-clipboard-list"></i>Menu plan</a><a class="sb-item " href="food-safety.html"><i class="ti ti-leaf"></i>Food safety</a><a class="sb-item " href="reassessment.html"><i class="ti ti-refresh"></i>Reassessment</a><span class="sb-label" style="display:block;margin-top:.8rem">Admin</span><a class="sb-item " href="mis-reports.html"><i class="ti ti-chart-bar"></i>MIS reports</a><a class="sb-item " href="donations.html"><i class="ti ti-coin"></i>Donations</a><a class="sb-item " href="access-control.html"><i class="ti ti-lock"></i>Access control</a></aside><main class="main-content">
+<div class="breadcrumb"><span>Partners</span><i class="ti ti-chevron-right"></i><span class="cur">Register new partner</span></div>
+<div class="page-head"><div><div class="page-title">Register new partner</div><div class="page-sub">US12, US13, US32</div></div></div>
+<div class="two-col"><div>
+<div class="card"><div class="card-head"><div class="card-icon green"><i class="ti ti-building-store"></i></div><div><div class="card-title">Organisation details</div><div class="card-sub">US12 — Partner organisation identity</div></div></div>
+<div class="field"><label class="lbl">Organisation name <span class="req">*</span></label><input class="inp" placeholder="e.g. Green Bowl Kitchen Co." required></div>
+<div class="field-row"><div><label class="lbl">Organisation type <span class="req">*</span></label><select class="sel"><option>Food service provider</option><option>Logistics & delivery</option><option>Both</option></select></div><div><label class="lbl">Registration number</label><input class="inp" placeholder="e.g. 12345-ABC"></div></div>
+<div class="field"><label class="lbl">Operating address <span class="req">*</span></label><input class="inp" placeholder="Street address" style="margin-bottom:6px;"><div class="field-row" style="margin-bottom:0;"><input class="inp" placeholder="Township"><input class="inp" placeholder="City"></div></div>
+<div class="field-row"><div><label class="lbl">Distance from nearest zone</label><input class="inp" placeholder="e.g. 4.5 km"><div class="inp-hint">Determines hot vs frozen eligibility.</div></div><div><label class="lbl">Operating hours</label><input class="inp" placeholder="e.g. 7:00 AM – 3:00 PM"></div></div></div>
+<div class="card"><div class="card-head"><div class="card-icon slate"><i class="ti ti-user-circle"></i></div><div><div class="card-title">Primary contact person</div></div></div>
+<div class="field-row"><div><label class="lbl">Contact name <span class="req">*</span></label><input class="inp" placeholder="Contact name"></div><div><label class="lbl">Job title</label><input class="inp" placeholder="e.g. Kitchen Manager"></div></div>
+<div class="field-row"><div><label class="lbl">Phone number <span class="req">*</span></label><input class="inp" placeholder="+95 9 XXX XXX XXX"></div><div><label class="lbl">Email address <span class="req">*</span></label><input class="inp" placeholder="contact@organisation.com"></div></div></div>
+<div class="card"><div class="card-head"><div class="card-icon amber"><i class="ti ti-clipboard-list"></i></div><div><div class="card-title">Service capabilities</div><div class="card-sub">US13 — What services this partner provides</div></div></div>
+<div class="field"><label class="lbl">Service types offered <span class="req">*</span></label>
+<div class="check-group"><label class="check-item"><span class="chk on"><i class="ti ti-check"></i></span>Meal preparation</label><label class="check-item"><span class="chk on"><i class="ti ti-check"></i></span>Hot meal delivery</label><label class="check-item"><span class="chk"><i class="ti ti-check" style="display:none"></i></span>Frozen meal supply</label><label class="check-item"><span class="chk"><i class="ti ti-check" style="display:none"></i></span>Ingredient supply</label></div></div>
+<div class="field"><label class="lbl">Daily meal capacity <span class="req">*</span></label><input class="inp" placeholder="e.g. 120 meals per day"></div>
+<div class="field"><label class="lbl">Zones covered <span class="req">*</span></label><div class="tag-wrap" style="margin-top:6px;"><span class="tag">Zone A — Riverside <span class="tag-remove" onclick="this.parentElement.remove()"><i class="ti ti-x"></i></span></span><span class="tag-add">+ Add zone</span></div></div></div>
+<div class="card"><div class="card-head"><div class="card-icon red"><i class="ti ti-shield-check"></i></div><div><div class="card-title">Approval status</div><div class="card-sub">US32 — Admin must approve before work assignment</div></div></div>
+<div class="lbl" style="margin-bottom:8px;">Current status</div>
+<div class="status-row"><span class="status-opt active">Pending approval</span><span class="status-opt inactive">Approved</span><span class="status-opt inactive">Rejected</span></div>
+<div class="alert alert-amber" style="margin-top:1rem;"><i class="ti ti-alert-triangle"></i>Partner registration will be submitted to admin for review.</div></div>
+<div class="card"><div class="card-head"><div class="card-icon green"><i class="ti ti-file-text"></i></div><div><div class="card-title">Supporting documents</div></div></div>
+<div class="upload-box" onclick="showToast('File upload ready','info')"><i class="ti ti-upload" style="font-size:24px;color:#B0ADA8;display:block;margin-bottom:8px;"></i><div class="upload-text">Drag & drop or <span>browse</span></div><div class="upload-hint">Food safety certificates, business licence, insurance documents</div></div></div>
+<div style="display:flex;gap:10px;justify-content:flex-end;margin-top:1.4rem;">
+<button class="btn btn-ghost" onclick="history.back()">Cancel</button>
+<button class="btn btn-ghost"><i class="ti ti-device-floppy"></i>Save draft</button>
+<button class="btn btn-amber" onclick="showToast('Submitted for admin approval!','success');setTimeout(()=>location.href='partner-list.html',1500)"><i class="ti ti-send"></i>Submit for approval</button>
+</div></div><div>
+<div class="sc"><div class="sc-title"><i class="ti ti-list-check"></i>Form progress</div>
+<div class="prog-lbl"><span>Step 2 of 3</span><span>60%</span></div><div class="prog-bg"><div class="prog-fill" style="width:60%"></div></div>
+<div class="req-list"><div class="req-item r-done"><span class="dot done"></span>Organisation name</div><div class="req-item r-done"><span class="dot done"></span>Operating address</div><div class="req-item r-done"><span class="dot done"></span>Primary contact</div><div class="req-item r-todo"><span class="dot todo"></span>Service types</div><div class="req-item r-todo"><span class="dot todo"></span>Documents uploaded</div><div class="req-item r-todo"><span class="dot todo"></span>Admin approval</div></div></div>
+<div class="sc"><div class="sc-title"><i class="ti ti-info-circle"></i>Approval process</div>
+<div class="info-item"><i class="ti ti-send"></i>Staff submits registration for admin review</div>
+<div class="info-item"><i class="ti ti-eye"></i>Admin reviews organisation & documents</div>
+<div class="info-item"><i class="ti ti-check"></i>Once approved, partner assigned to routes</div>
+<div class="info-item" style="color:var(--red);"><i class="ti ti-x" style="color:var(--red);"></i>Rejected partners cannot be assigned work</div></div>
+<div class="sc"><div class="sc-title"><i class="ti ti-notes"></i>Staff notes</div><textarea class="textarea" placeholder="Internal notes..."></textarea></div>
+<div class="sc green"><div class="sc-title" style="color:#0D3D22;"><i class="ti ti-bulb" style="color:var(--green-mid);"></i>Tip</div><div style="font-size:12px;color:var(--green-mid);line-height:1.6;">Partners beyond 10km from a member zone should be assigned frozen meal supply only.</div></div></div></div></main></div><footer class="footer-bar"><div class="footer-l">MerryMeal · The Study Syndicate</div><div class="footer-r">Higher Diploma in Software Engineering · 2026</div></footer>
+<div id="toast-container" class="toast-container"></div>
+<script src="../../js/app.js"></script>
+</body></html>

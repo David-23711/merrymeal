@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Planning — MerryMeal</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head><body>
+<style>
+.cal-wrap{background:#fff;border-radius:12px;border:.5px solid var(--border);overflow:hidden;margin-bottom:1.2rem;}
+.cal-header{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:.5px solid var(--border-light);}
+.cal-day-head{padding:10px;text-align:center;border-right:.5px solid #F4F1EC;}
+.cal-day-head:last-child{border-right:none;}
+.day-name{font-size:10px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;}
+.day-date{font-family:"Cormorant Garamond",serif;font-size:18px;font-weight:300;color:var(--green-dark);margin-top:2px;}
+.cal-day-head.today .day-name,.cal-day-head.today .day-date{color:var(--green-mid);}
+.cal-body{display:grid;grid-template-columns:repeat(5,1fr);}
+.cal-cell{padding:9px;border-right:.5px solid #F4F1EC;border-top:.5px solid #F4F1EC;min-height:170px;display:flex;flex-direction:column;gap:7px;}
+.cal-cell:last-child{border-right:none;}
+.cal-cell.today{background:#F9FCF9;}
+.slot-lbl{font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-pale);margin-bottom:3px;}
+.meal-chip{background:var(--green-mint);border-radius:7px;padding:7px 9px;}
+.meal-chip.frozen{background:var(--slate-light);}
+.meal-chip-name{font-size:11px;font-weight:500;color:var(--green-dark);margin-bottom:2px;}
+.meal-chip.frozen .meal-chip-name{color:var(--slate);}
+.meal-chip-detail{font-size:10px;color:var(--green-sage);}
+.meal-chip.frozen .meal-chip-detail{color:var(--slate);}
+.qty-badge{display:inline-flex;align-items:center;gap:3px;background:var(--green-dark);color:#F4F1EC;font-size:9px;font-weight:500;padding:2px 7px;border-radius:10px;margin-top:4px;}
+.qty-badge.fz{background:var(--slate);}
+.meal-actions{display:flex;gap:6px;margin-top:5px;}
+.meal-act{font-size:10px;color:var(--green-mid);cursor:pointer;display:inline-flex;align-items:center;gap:2px;}
+.meal-act.rm{color:var(--red);}
+.add-chip{border:.5px dashed #C8C4BE;border-radius:7px;padding:8px;text-align:center;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;font-size:11px;color:var(--text-pale);transition:all .2s;}
+.add-chip:hover{border-color:var(--green-mid);color:var(--green-mid);}
+</style><nav class="topnav"><a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a><div class="nav-right"><span class="nav-label">Staff portal</span><div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">3</span></div><div class="nav-avatar">ST</div><span class="nav-label">Staff User</span><div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div><button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button></div></nav><script>
+function doLogout(){
+  if(confirm('Are you sure you want to log out?')){
+    showToast('Logging out...','info');
+    setTimeout(()=>{ window.location.href='../auth/login.html'; },1000);
+  }
+}
+</script><div class="app-layout"><aside class="sidebar"><span class="sb-label" style="display:block;margin-top:0">Main</span><a class="sb-item " href="member-list.html"><i class="ti ti-users"></i>Members</a><a class="sb-item " href="caregiver-list.html"><i class="ti ti-heart"></i>Caregivers</a><a class="sb-item " href="partner-list.html"><i class="ti ti-building-store"></i>Partners</a><a class="sb-item " href="volunteer-list.html"><i class="ti ti-run"></i>Volunteers</a><span class="sb-label" style="display:block;margin-top:.8rem">Operations</span><a class="sb-item " href="delivery-routes.html"><i class="ti ti-truck-delivery"></i>Delivery</a><a class="sb-item active" href="menu-planning.html"><i class="ti ti-clipboard-list"></i>Menu plan</a><a class="sb-item " href="food-safety.html"><i class="ti ti-leaf"></i>Food safety</a><a class="sb-item " href="reassessment.html"><i class="ti ti-refresh"></i>Reassessment</a><span class="sb-label" style="display:block;margin-top:.8rem">Admin</span><a class="sb-item " href="mis-reports.html"><i class="ti ti-chart-bar"></i>MIS reports</a><a class="sb-item " href="donations.html"><i class="ti ti-coin"></i>Donations</a><a class="sb-item " href="access-control.html"><i class="ti ti-lock"></i>Access control</a></aside>
+<main class="main-content">
+<div class="breadcrumb"><span>Operations</span><i class="ti ti-chevron-right"></i><span class="cur">Menu plan</span></div>
+<div class="page-head">
+  <div><div class="page-title">Weekly menu planning</div><div class="page-sub">Design weekly meal plans for members — US20, US23, US34</div></div>
+  <div style="display:flex;gap:8px;">
+    <button class="btn btn-ghost btn-sm" onclick="showToast('Last week copied to current week','success')"><i class="ti ti-copy"></i>Copy last week</button>
+    <button class="btn btn-amber btn-sm" onclick="submitMenu()"><i class="ti ti-send"></i>Submit for approval</button>
+  </div>
+</div>
+
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:1.2rem;">
+  <button class="btn btn-ghost btn-sm" onclick="showToast('Previous week loaded','info')"><i class="ti ti-chevron-left"></i></button>
+  <div><div style="font-size:13px;font-weight:500;color:var(--green-dark);">Week 20 — 19 May to 23 May 2026</div><div style="font-size:11px;color:var(--text-pale);">342 active members · Hot meals Mon–Fri · Frozen meals for Zone C</div></div>
+  <button class="btn btn-ghost btn-sm" onclick="showToast('Next week loaded','info')"><i class="ti ti-chevron-right"></i></button>
+</div>
+
+<div class="alert alert-amber" style="margin-bottom:1.2rem;">
+  <i class="ti ti-clock"></i>
+  <span>This week's menu is <strong>pending admin approval</strong>. Meals will not be prepared until approved — US34</span>
+  <button class="btn btn-sm" style="background:var(--amber-dark);color:#fff;margin-left:auto;" onclick="showToast('Reminder sent to admin','info')"><i class="ti ti-bell"></i>Remind admin</button>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 260px;gap:1.4rem;">
+<div>
+<div class="cal-wrap">
+  <div class="cal-header">
+    <div class="cal-day-head today"><div class="day-name">Mon</div><div class="day-date">19</div></div>
+    <div class="cal-day-head"><div class="day-name">Tue</div><div class="day-date">20</div></div>
+    <div class="cal-day-head"><div class="day-name">Wed</div><div class="day-date">21</div></div>
+    <div class="cal-day-head"><div class="day-name">Thu</div><div class="day-date">22</div></div>
+    <div class="cal-day-head"><div class="day-name">Fri</div><div class="day-date">23</div></div>
+  </div>
+  <div class="cal-body">
+    <div class="cal-cell today">
+      <div><div class="slot-lbl">Hot meal</div>
+        <div class="meal-chip"><div class="meal-chip-name">Steamed fish & rice</div><div class="meal-chip-detail">Low sodium · Soft</div>
+        <div class="qty-badge"><i class="ti ti-users" style="font-size:9px;"></i>376 portions</div>
+        <div class="meal-actions"><span class="meal-act" onclick="showToast('Edit dish','info')"><i class="ti ti-edit" style="font-size:10px;"></i>Edit</span><span class="meal-act rm" onclick="removeMeal(this)"><i class="ti ti-trash" style="font-size:10px;"></i>Remove</span></div></div>
+      </div>
+      <div><div class="slot-lbl">Frozen (Zone C)</div>
+        <div class="meal-chip frozen"><div class="meal-chip-name">Chicken congee</div><div class="meal-chip-detail">Diabetic-friendly</div>
+        <div class="qty-badge fz"><i class="ti ti-users" style="font-size:9px;"></i>48 portions</div></div>
+      </div>
+    </div>
+    <div class="cal-cell">
+      <div><div class="slot-lbl">Hot meal</div>
+        <div class="meal-chip"><div class="meal-chip-name">Tofu & veg stir fry</div><div class="meal-chip-detail">Vegan · Low sugar</div>
+        <div class="qty-badge"><i class="ti ti-users" style="font-size:9px;"></i>376 portions</div>
+        <div class="meal-actions"><span class="meal-act" onclick="showToast('Edit dish','info')"><i class="ti ti-edit" style="font-size:10px;"></i>Edit</span><span class="meal-act rm" onclick="removeMeal(this)"><i class="ti ti-trash" style="font-size:10px;"></i>Remove</span></div></div>
+      </div>
+      <div class="add-chip" onclick="openModal('add-dish-modal')"><i class="ti ti-plus"></i>Add frozen meal</div>
+    </div>
+    <div class="cal-cell">
+      <div><div class="slot-lbl">Hot meal</div>
+        <div class="meal-chip"><div class="meal-chip-name">Pork & pumpkin soup</div><div class="meal-chip-detail">High protein · Soft</div>
+        <div class="qty-badge"><i class="ti ti-users" style="font-size:9px;"></i>376 portions</div>
+        <div class="meal-actions"><span class="meal-act" onclick="showToast('Edit dish','info')"><i class="ti ti-edit" style="font-size:10px;"></i>Edit</span><span class="meal-act rm" onclick="removeMeal(this)"><i class="ti ti-trash" style="font-size:10px;"></i>Remove</span></div></div>
+      </div>
+      <div class="add-chip" onclick="openModal('add-dish-modal')"><i class="ti ti-plus"></i>Add frozen meal</div>
+    </div>
+    <div class="cal-cell">
+      <div><div class="slot-lbl">Hot meal</div>
+        <div class="meal-chip"><div class="meal-chip-name">Egg & spinach rice</div><div class="meal-chip-detail">Low sodium · GF</div>
+        <div class="qty-badge"><i class="ti ti-users" style="font-size:9px;"></i>376 portions</div>
+        <div class="meal-actions"><span class="meal-act" onclick="showToast('Edit dish','info')"><i class="ti ti-edit" style="font-size:10px;"></i>Edit</span><span class="meal-act rm" onclick="removeMeal(this)"><i class="ti ti-trash" style="font-size:10px;"></i>Remove</span></div></div>
+      </div>
+      <div class="add-chip" onclick="openModal('add-dish-modal')"><i class="ti ti-plus"></i>Add frozen meal</div>
+    </div>
+    <div class="cal-cell">
+      <div class="add-chip" onclick="openModal('add-dish-modal')"><i class="ti ti-plus"></i>Add hot meal</div>
+      <div class="add-chip" onclick="openModal('add-dish-modal')"><i class="ti ti-plus"></i>Add frozen meal</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-head"><div class="card-icon green"><i class="ti ti-calculator"></i></div><div><div class="card-title">Prep quantities</div><div class="card-sub">US23 — Auto-calculated</div></div></div>
+  <div class="field-row">
+    <div><label class="lbl">Active members</label><input class="inp" value="342" readonly style="border-color:var(--border);"></div>
+    <div><label class="lbl">Buffer</label><input class="inp" value="10%" readonly></div>
+  </div>
+  <div class="field-row" style="margin-bottom:0;">
+    <div><label class="lbl">Hot portions / day</label><input class="inp" value="376" readonly style="border-color:var(--green-mid);font-weight:500;"></div>
+    <div><label class="lbl">Frozen / week</label><input class="inp" value="240" readonly></div>
+  </div>
+</div>
+</div>
+
+<div>
+<div class="sc"><div class="sc-title"><i class="ti ti-chart-bar"></i>Week summary</div>
+<div class="summary-item"><span class="summary-label">Hot meals planned</span><span class="summary-val">4 of 5 days</span></div>
+<div class="summary-item"><span class="summary-label">Frozen meals planned</span><span style="font-size:12px;font-weight:500;color:var(--amber-dark);">1 of 5 days</span></div>
+<div class="summary-item"><span class="summary-label">Total portions</span><span class="summary-val">1,752</span></div>
+<div class="summary-item"><span class="summary-label">Dietary variants</span><span class="summary-val">6 types</span></div>
+<div class="summary-item"><span class="summary-label">Approval status</span><span class="badge badge-amber">Pending</span></div>
+</div>
+
+<div class="sc"><div class="sc-title"><i class="ti ti-leaf"></i>Ingredient availability</div>
+<div class="ingredient-item"><div class="ing-left"><i class="ti ti-fish ing-icon"></i><div><div class="ing-name">River fish</div><div class="ing-qty">120 kg · Exp 21 May</div></div></div><span class="badge badge-green">In stock</span></div>
+<div class="ingredient-item"><div class="ing-left"><i class="ti ti-salad ing-icon"></i><div><div class="ing-name">Spinach</div><div class="ing-qty">40 kg · Exp 20 May</div></div></div><span class="badge badge-amber">Low stock</span></div>
+<div class="ingredient-item"><div class="ing-left"><i class="ti ti-egg ing-icon"></i><div><div class="ing-name">Eggs</div><div class="ing-qty">800 units · Exp 25 May</div></div></div><span class="badge badge-green">In stock</span></div>
+<div class="ingredient-item" style="margin-bottom:0;"><div class="ing-left"><i class="ti ti-droplet ing-icon" style="color:var(--red);"></i><div><div class="ing-name">Chicken stock</div><div class="ing-qty">30 L · Expired 13 May</div></div></div><span class="badge badge-red">Expired</span></div>
+</div>
+
+<div class="sc"><div class="sc-title"><i class="ti ti-plus"></i>Add dish</div>
+<div class="field"><label class="lbl">Dish name</label><input class="inp" id="dish-name" placeholder="e.g. Steamed fish & rice"></div>
+<div class="field"><label class="lbl">Dietary tags</label><select class="sel" id="dish-tags"><option>Low sodium</option><option>Low sugar</option><option>Soft food</option><option>Gluten free</option><option>Vegan</option><option>High protein</option><option>Diabetic-friendly</option></select></div>
+<div class="field"><label class="lbl">Meal type</label><select class="sel" id="dish-type"><option>Hot meal</option><option>Frozen meal (Zone C)</option></select></div>
+<div class="field" style="margin-bottom:0;"><label class="lbl">Assign to day</label><select class="sel" id="dish-day"><option>Monday 19 May</option><option>Tuesday 20 May</option><option>Wednesday 21 May</option><option>Thursday 22 May</option><option>Friday 23 May</option></select></div>
+<button class="btn btn-primary btn-full" style="margin-top:1rem;" onclick="addDish()"><i class="ti ti-plus"></i>Add to menu</button>
+</div>
+
+<div class="sc green"><div class="sc-title" style="color:#0D3D22;"><i class="ti ti-info-circle" style="color:var(--green-mid);"></i>Approval reminder</div>
+<div class="info-item" style="color:var(--green-mid);"><i class="ti ti-check"></i>Complete all 5 days before submitting</div>
+<div class="info-item" style="color:var(--green-mid);"><i class="ti ti-check"></i>Admin must approve before kitchen prepares</div>
+<div class="info-item" style="color:var(--green-mid);margin-bottom:0;"><i class="ti ti-check"></i>Check ingredient availability first</div>
+</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="add-dish-modal">
+<div class="modal"><div class="modal-head"><div class="modal-title">Add dish to calendar</div><span class="modal-close" onclick="closeModal('add-dish-modal')"><i class="ti ti-x"></i></span></div>
+<div class="field"><label class="lbl">Dish name <span class="req">*</span></label><input class="inp" placeholder="e.g. Steamed fish & rice"></div>
+<div class="field"><label class="lbl">Dietary tag</label><select class="sel"><option>Low sodium</option><option>Low sugar</option><option>Soft food</option><option>Vegan</option><option>Gluten free</option><option>High protein</option></select></div>
+<div class="field"><label class="lbl">Meal type</label><select class="sel"><option>Hot meal</option><option>Frozen meal (Zone C)</option></select></div>
+<div style="display:flex;gap:10px;justify-content:flex-end;margin-top:1rem;">
+<button class="btn btn-ghost" onclick="closeModal('add-dish-modal')">Cancel</button>
+<button class="btn btn-primary" onclick="closeModal('add-dish-modal');showToast('Dish added to menu!','success')"><i class="ti ti-check"></i>Add dish</button>
+</div></div></div>
+</main></div><footer class="footer-bar"><div class="footer-l">MerryMeal · The Study Syndicate</div><div class="footer-r">Higher Diploma in Software Engineering · 2026</div></footer>
+<script>
+function removeMeal(btn){if(confirm('Remove this dish?')){btn.closest('.meal-chip').parentElement.innerHTML='<div class="slot-lbl">Hot meal</div><div class="add-chip" onclick="openModal(\'add-dish-modal\')"><i class=\"ti ti-plus\"></i>Add hot meal</div>';showToast('Dish removed','warning');}}
+function addDish(){const n=document.getElementById('dish-name').value;if(!n){showToast('Enter a dish name','error');return;}showToast('Dish added to menu: '+n,'success');document.getElementById('dish-name').value='';}
+function submitMenu(){showToast('Menu submitted for admin approval!','success');}
+</script>
+<div id="toast-container" class="toast-container"></div>
+<script src="../../js/app.js"></script>
+</body></html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register Member — MerryMeal</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head><body>
+<nav class="topnav"><a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a><div class="nav-right"><span class="nav-label">Staff portal</span><div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">3</span></div><div class="nav-avatar">ST</div><span class="nav-label">Staff User</span><div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div><button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button></div></nav><script>
+function doLogout(){
+  if(confirm('Are you sure you want to log out?')){
+    showToast('Logging out...','info');
+    setTimeout(()=>{ window.location.href='../auth/login.html'; },1000);
+  }
+}
+</script><div class="app-layout"><aside class="sidebar"><span class="sb-label" style="display:block;margin-top:0">Main</span><a class="sb-item active" href="member-list.html"><i class="ti ti-users"></i>Members</a><a class="sb-item " href="caregiver-list.html"><i class="ti ti-heart"></i>Caregivers</a><a class="sb-item " href="partner-list.html"><i class="ti ti-building-store"></i>Partners</a><a class="sb-item " href="volunteer-list.html"><i class="ti ti-run"></i>Volunteers</a><span class="sb-label" style="display:block;margin-top:.8rem">Operations</span><a class="sb-item " href="delivery-routes.html"><i class="ti ti-truck-delivery"></i>Delivery</a><a class="sb-item " href="menu-planning.html"><i class="ti ti-clipboard-list"></i>Menu plan</a><a class="sb-item " href="food-safety.html"><i class="ti ti-leaf"></i>Food safety</a><a class="sb-item " href="reassessment.html"><i class="ti ti-refresh"></i>Reassessment</a><span class="sb-label" style="display:block;margin-top:.8rem">Admin</span><a class="sb-item " href="mis-reports.html"><i class="ti ti-chart-bar"></i>MIS reports</a><a class="sb-item " href="donations.html"><i class="ti ti-coin"></i>Donations</a><a class="sb-item " href="access-control.html"><i class="ti ti-lock"></i>Access control</a></aside><main class="main-content">
+<div class="breadcrumb"><span>Members</span><i class="ti ti-chevron-right"></i><span class="cur">Register new member</span></div>
+<div class="page-head"><div><div class="page-title">Register new member</div><div class="page-sub">Create a member account — US19</div></div></div>
+<div class="two-col"><div>
+<div class="card"><div class="card-head"><div class="card-icon green"><i class="ti ti-user"></i></div><div><div class="card-title">Personal information</div><div class="card-sub">Basic member identity details</div></div></div>
+<div class="field-row"><div><label class="lbl">First name <span class="req">*</span></label><input class="inp" placeholder="First name" required></div><div><label class="lbl">Last name <span class="req">*</span></label><input class="inp" placeholder="Last name" required></div></div>
+<div class="field-row"><div><label class="lbl">Date of birth <span class="req">*</span></label><input class="inp" type="date" required></div><div><label class="lbl">Gender</label><select class="sel"><option>Female</option><option>Male</option><option>Prefer not to say</option></select></div></div>
+<div class="field-row"><div><label class="lbl">Phone number <span class="req">*</span></label><input class="inp" placeholder="+95 9 XXX XXX XXX"></div><div><label class="lbl">Email address</label><input class="inp" placeholder="Optional"></div></div>
+<div class="field"><label class="lbl">Home address <span class="req">*</span></label><input class="inp" placeholder="Street address" style="margin-bottom:6px;"><div class="field-row" style="margin-bottom:0;"><input class="inp" placeholder="Township"><input class="inp" placeholder="City"></div></div></div>
+<div class="card"><div class="card-head"><div class="card-icon amber"><i class="ti ti-heart-rate-monitor"></i></div><div><div class="card-title">Health & dietary information</div><div class="card-sub">Required for safe meal preparation — US02</div></div></div>
+<div class="field"><label class="lbl">Primary health condition <span class="req">*</span></label><select class="sel"><option>Diabetes (Type 2)</option><option>Cardiovascular</option><option>Mobility impairment</option><option>Dementia / Cognitive impairment</option><option>Other</option></select></div>
+<div class="field"><label class="lbl">Nutritional constraints</label><textarea class="textarea" placeholder="e.g. high protein, low carb, pureed texture..."></textarea></div>
+<div class="field"><label class="lbl">Dietary restrictions</label><div class="tag-wrap" style="margin-top:6px;"><span class="tag">Low sugar <span class="tag-remove" onclick="this.parentElement.remove()"><i class="ti ti-x"></i></span></span><span class="tag">Low sodium <span class="tag-remove" onclick="this.parentElement.remove()"><i class="ti ti-x"></i></span></span><span class="tag-add" onclick="addTag(this)">+ Add</span></div></div>
+<div class="field"><label class="lbl">Known allergies</label><div class="check-group"><label class="check-item"><span class="chk on"><i class="ti ti-check"></i></span>Nut allergy</label><label class="check-item"><span class="chk"><i class="ti ti-check" style="display:none"></i></span>Shellfish allergy</label><label class="check-item"><span class="chk on"><i class="ti ti-check"></i></span>Lactose intolerant</label><label class="check-item"><span class="chk"><i class="ti ti-check" style="display:none"></i></span>Gluten intolerance</label></div></div></div>
+<div class="card"><div class="card-head"><div class="card-icon slate"><i class="ti ti-truck-delivery"></i></div><div><div class="card-title">Delivery preferences</div></div></div>
+<div class="field-row"><div><label class="lbl">Delivery zone <span class="req">*</span></label><select class="sel"><option>Riverside Kitchen (Zone A)</option><option>Central Hub (Zone B)</option><option>Northern Partner (Zone C)</option></select></div><div><label class="lbl">Meal type <span class="req">*</span></label><select class="sel"><option>Hot noon meal (Mon–Fri)</option><option>Frozen meals (all week)</option></select></div></div>
+<div class="field"><label class="lbl">Delivery notes</label><input class="inp" placeholder="e.g. Ring bell twice, leave at door if no answer"></div></div>
+<div class="card"><div class="card-head"><div class="card-icon green"><i class="ti ti-user-check"></i></div><div><div class="card-title">Account status</div></div></div>
+<div class="lbl" style="margin-bottom:8px;">Member status <span class="req">*</span></div>
+<div class="status-row"><span class="status-opt active">Active</span><span class="status-opt inactive">Pending review</span><span class="status-opt inactive">Inactive</span></div></div>
+<div class="card"><div class="card-head"><div class="card-icon green"><i class="ti ti-link"></i></div><div><div class="card-title">Caregiver linkage</div><div class="card-sub">Optional — US08</div></div></div>
+<div class="field"><label class="lbl">Search caregiver</label><input class="inp" placeholder="Search by name or caregiver ID"><div class="inp-hint">Caregivers can also link themselves after registration.</div></div></div>
+<div style="display:flex;gap:10px;justify-content:flex-end;margin-top:1.4rem;">
+<button class="btn btn-ghost" onclick="history.back()">Cancel</button>
+<button class="btn btn-ghost"><i class="ti ti-device-floppy"></i>Save draft</button>
+<button class="btn btn-primary" onclick="showToast('Member registered successfully!','success');setTimeout(()=>location.href='member-list.html',1500)"><i class="ti ti-arrow-right"></i>Continue to review</button>
+</div></div><div>
+<div class="sc"><div class="sc-title"><i class="ti ti-list-check"></i>Form progress</div>
+<div class="prog-lbl"><span>Step 2 of 4</span><span>60%</span></div><div class="prog-bg"><div class="prog-fill" style="width:60%"></div></div>
+<div class="req-list"><div class="req-item r-done"><span class="dot done"></span>Personal details</div><div class="req-item r-done"><span class="dot done"></span>Contact information</div><div class="req-item r-done"><span class="dot done"></span>Home address</div><div class="req-item r-done"><span class="dot done"></span>Health condition</div><div class="req-item r-todo"><span class="dot todo"></span>Delivery zone</div><div class="req-item r-todo"><span class="dot todo"></span>Staff sign-off</div></div></div>
+<div class="sc"><div class="sc-title"><i class="ti ti-shield-check"></i>Eligibility checklist</div>
+<div class="info-item"><i class="ti ti-check"></i>Age 60+ or medically assessed</div>
+<div class="info-item"><i class="ti ti-check"></i>Unable to self-prepare meals</div>
+<div class="info-item"><i class="ti ti-check"></i>Within service delivery zone</div>
+<div class="info-item"><i class="ti ti-check"></i>Referred by healthcare provider</div></div>
+<div class="sc"><div class="sc-title"><i class="ti ti-notes"></i>Staff notes</div>
+<textarea class="textarea" placeholder="Internal notes — not visible to member..."></textarea></div>
+<div class="sc amber"><div class="sc-title" style="color:#7A4E00;"><i class="ti ti-alert-triangle" style="color:#E07B00;"></i>Requires admin approval</div>
+<div style="font-size:12px;color:#7A4E00;line-height:1.6;">Menu assignments and reassessment results require admin sign-off before taking effect.</div></div></div></div></main></div><footer class="footer-bar"><div class="footer-l">MerryMeal · The Study Syndicate</div><div class="footer-r">Higher Diploma in Software Engineering · 2026</div></footer>
+<div id="toast-container" class="toast-container"></div>
+<script src="../../js/app.js"></script>
+</body></html>

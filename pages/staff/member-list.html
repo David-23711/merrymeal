@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Members — MerryMeal</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<nav class="topnav">
+  <a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a>
+  <div class="nav-right">
+    <span class="nav-label">Staff portal</span>
+    <div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">3</span></div>
+    <div class="nav-avatar">ST</div>
+    <span class="nav-label">Staff User</span>
+    <div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div>
+    <button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button>
+  </div>
+</nav>
+<script>
+function doLogout(){
+  if(confirm('Are you sure you want to log out?')){
+    showToast('Logging out...','info');
+    setTimeout(()=>{ window.location.href='../auth/login.html'; },1000);
+  }
+}
+</script>
+<div class="app-layout">
+<aside class="sidebar"><span class="sb-label" style="display:block;margin-top:0">Main</span><a class="sb-item active" href="member-list.html"><i class="ti ti-users"></i>Members</a><a class="sb-item " href="caregiver-list.html"><i class="ti ti-heart"></i>Caregivers</a><a class="sb-item " href="partner-list.html"><i class="ti ti-building-store"></i>Partners</a><a class="sb-item " href="volunteer-list.html"><i class="ti ti-run"></i>Volunteers</a><span class="sb-label" style="display:block;margin-top:.8rem">Operations</span><a class="sb-item " href="delivery-routes.html"><i class="ti ti-truck-delivery"></i>Delivery</a><a class="sb-item " href="menu-planning.html"><i class="ti ti-clipboard-list"></i>Menu plan</a><a class="sb-item " href="food-safety.html"><i class="ti ti-leaf"></i>Food safety</a><a class="sb-item " href="reassessment.html"><i class="ti ti-refresh"></i>Reassessment</a><span class="sb-label" style="display:block;margin-top:.8rem">Admin</span><a class="sb-item " href="mis-reports.html"><i class="ti ti-chart-bar"></i>MIS reports</a><a class="sb-item " href="donations.html"><i class="ti ti-coin"></i>Donations</a><a class="sb-item " href="access-control.html"><i class="ti ti-lock"></i>Access control</a></aside>
+<main class="main-content">
+  <div class="breadcrumb"><span>Members</span><i class="ti ti-chevron-right"></i><span class="cur">All Members</span></div>
+  <div class="page-head">
+    <div><div class="page-title">Members</div><div class="page-sub">Manage all members in the system</div></div>
+    <div style="display:flex;gap:8px;">
+      <a href="member-register.html" class="btn btn-primary"><i class="ti ti-user-plus"></i>Register new</a>
+    </div>
+  </div>
+  <div class="search-bar">
+    <input class="search-inp" id="search" type="text" placeholder="Search members..." oninput="filterTable(this.value,'main-table')">
+    
+  </div>
+  <div class="table-card">
+    <div class="table-card-head">
+      <div class="table-card-title">Members list</div>
+      <span style="font-size:12px;color:var(--text-muted);">Showing all records</span>
+    </div>
+    <table class="data-table" id="main-table">
+      <thead><tr><th>Name</th><th>Member ID</th><th>Zone</th><th>Condition</th><th>Meal type</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody>
+<tr><td class="td-name">Margaret Thompson</td><td>MM-2026-0042</td><td>Zone A</td><td>Diabetes (Type 2)</td><td>Hot meal</td><td><span class="badge badge-green"><i class="ti ti-check" style="font-size:10px;"></i>Active</span></td><td><a href="member-register.html" class="btn btn-sm btn-secondary">Edit</a> <button class="btn btn-sm btn-danger" onclick="deleteRecord(42)">Delete</button></td></tr>
+<tr><td class="td-name">U Hla Myint</td><td>MM-2026-0038</td><td>Zone B</td><td>Cardiovascular</td><td>Hot meal</td><td><span class="badge badge-green"><i class="ti ti-check" style="font-size:10px;"></i>Active</span></td><td><a href="member-register.html" class="btn btn-sm btn-secondary">Edit</a> <button class="btn btn-sm btn-danger" onclick="deleteRecord(38)">Delete</button></td></tr>
+<tr><td class="td-name">Daw Khin May</td><td>MM-2026-0035</td><td>Zone A</td><td>Mobility impairment</td><td>Hot meal</td><td><span class="badge badge-amber"><i class="ti ti-clock" style="font-size:10px;"></i>Pending</span></td><td><a href="member-register.html" class="btn btn-sm btn-secondary">Edit</a> <button class="btn btn-sm btn-danger" onclick="deleteRecord(35)">Delete</button></td></tr>
+<tr><td class="td-name">Ko Thant Zin</td><td>MM-2026-0029</td><td>Zone C</td><td>Diabetes (Type 2)</td><td>Frozen meal</td><td><span class="badge badge-green"><i class="ti ti-check" style="font-size:10px;"></i>Active</span></td><td><a href="member-register.html" class="btn btn-sm btn-secondary">Edit</a> <button class="btn btn-sm btn-danger" onclick="deleteRecord(29)">Delete</button></td></tr>
+<tr><td class="td-name">Ma Ei Phyu</td><td>MM-2026-0021</td><td>Zone B</td><td>Cardiovascular</td><td>Hot meal</td><td><span class="badge badge-slate">Inactive</span></td><td><a href="member-register.html" class="btn btn-sm btn-secondary">Edit</a> <button class="btn btn-sm btn-danger" onclick="deleteRecord(21)">Delete</button></td></tr>
+</tbody>
+    </table>
+  </div>
+</main>
+</div>
+<footer class="footer-bar">
+  <div class="footer-l">MerryMeal · The Study Syndicate</div>
+  <div class="footer-r">Higher Diploma in Software Engineering · 2026</div>
+</footer>
+<script>
+function filterTable(q,id){const t=document.getElementById(id);t.querySelectorAll('tbody tr').forEach(r=>{r.style.display=r.textContent.toLowerCase().includes(q.toLowerCase())?'':'none'})}
+function viewRecord(id){showToast('Viewing record #'+id,'info')}
+function editRecord(id){showToast('Edit mode for record #'+id,'info')}
+function deleteRecord(id){if(confirm('Are you sure you want to delete this record?')){showToast('Record deleted','success')}}
+</script>
+<div id="toast-container" class="toast-container"></div>
+<script src="../../js/app.js"></script>
+</body>
+</html>

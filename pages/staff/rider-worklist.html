@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rider Worklist — MerryMeal</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head><body>
+<nav class="topnav"><a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a><div class="nav-right"><span class="nav-label">Staff portal</span><div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">3</span></div><div class="nav-avatar">ST</div><span class="nav-label">Staff User</span><div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div><button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button></div></nav><script>
+function doLogout(){
+  if(confirm('Are you sure you want to log out?')){
+    showToast('Logging out...','info');
+    setTimeout(()=>{ window.location.href='../auth/login.html'; },1000);
+  }
+}
+</script><div class="app-layout"><aside class="sidebar"><span class="sb-label" style="display:block;margin-top:0">Main</span><a class="sb-item " href="member-list.html"><i class="ti ti-users"></i>Members</a><a class="sb-item " href="caregiver-list.html"><i class="ti ti-heart"></i>Caregivers</a><a class="sb-item " href="partner-list.html"><i class="ti ti-building-store"></i>Partners</a><a class="sb-item " href="volunteer-list.html"><i class="ti ti-run"></i>Volunteers</a><span class="sb-label" style="display:block;margin-top:.8rem">Operations</span><a class="sb-item active" href="delivery-routes.html"><i class="ti ti-truck-delivery"></i>Delivery</a><a class="sb-item " href="menu-planning.html"><i class="ti ti-clipboard-list"></i>Menu plan</a><a class="sb-item " href="food-safety.html"><i class="ti ti-leaf"></i>Food safety</a><a class="sb-item " href="reassessment.html"><i class="ti ti-refresh"></i>Reassessment</a><span class="sb-label" style="display:block;margin-top:.8rem">Admin</span><a class="sb-item " href="mis-reports.html"><i class="ti ti-chart-bar"></i>MIS reports</a><a class="sb-item " href="donations.html"><i class="ti ti-coin"></i>Donations</a><a class="sb-item " href="access-control.html"><i class="ti ti-lock"></i>Access control</a></aside>
+<main class="main-content">
+<div class="breadcrumb"><span>Delivery</span><i class="ti ti-chevron-right"></i><span class="cur">Rider worklist</span></div>
+<div class="page-head"><div><div class="page-title">Rider daily worklist</div><div class="page-sub">View and update delivery status — US17, US18</div></div>
+<div style="background:var(--green-mint);border-radius:8px;padding:8px 16px;font-size:13px;font-weight:500;color:var(--green-dark);display:flex;align-items:center;gap:7px;"><i class="ti ti-user"></i>Kyaw Zin Tun — Zone A</div></div>
+<div class="kpi-grid">
+<div class="kpi dark"><div class="kpi-label">Total deliveries today</div><div class="kpi-val">42</div></div>
+<div class="kpi dark"><div class="kpi-label">Completed</div><div class="kpi-val">28</div><div class="kpi-sub"><i class="ti ti-check"></i>67%</div></div>
+<div class="kpi light"><div class="kpi-label">In progress</div><div class="kpi-val">8</div><div class="kpi-sub warn"><i class="ti ti-clock"></i>On route</div></div>
+<div class="kpi light"><div class="kpi-label">Remaining</div><div class="kpi-val">6</div></div>
+</div>
+<div class="table-card">
+<div class="table-card-head"><div class="table-card-title">Today's delivery list — Route A-1</div>
+<input type="text" class="search-inp" style="width:200px;font-size:12px;padding:6px 10px 6px 30px;" placeholder="Search member..." oninput="filterTable(this.value,'worklist-table')"></div>
+<table class="data-table" id="worklist-table"><thead><tr><th>#</th><th>Member</th><th>Address</th><th>Dietary note</th><th>Meal type</th><th>Status</th><th>Update</th></tr></thead>
+<tbody>
+<tr><td>1</td><td class="td-name">Margaret Thompson</td><td>14 Maple Lane</td><td>Low sodium, soft</td><td>Hot meal</td><td><span class="badge badge-green" id="s1"><i class="ti ti-check" style="font-size:10px;"></i>Delivered</span></td><td><button class="btn btn-sm btn-secondary" onclick="updateStatus('s1','delivered')">Update</button></td></tr>
+<tr><td>2</td><td class="td-name">Daw Khin May</td><td>22 River Road</td><td>Low sugar</td><td>Hot meal</td><td><span class="badge badge-amber" id="s2"><i class="ti ti-clock" style="font-size:10px;"></i>Departed</span></td><td><button class="btn btn-sm btn-primary" onclick="updateStatus('s2','delivered')">Mark delivered</button></td></tr>
+<tr><td>3</td><td class="td-name">U Hla Myint</td><td>5 Garden St</td><td>Diabetic-friendly</td><td>Hot meal</td><td><span class="badge badge-slate" id="s3">Prepared</span></td><td><button class="btn btn-sm btn-primary" onclick="updateStatus('s3','departed')">Mark departed</button></td></tr>
+<tr><td>4</td><td class="td-name">Ma Su Kyi</td><td>8 Market Lane</td><td>Gluten free</td><td>Hot meal</td><td><span class="badge badge-slate" id="s4">Prepared</span></td><td><button class="btn btn-sm btn-primary" onclick="updateStatus('s4','departed')">Mark departed</button></td></tr>
+</tbody></table></div>
+</main></div><footer class="footer-bar"><div class="footer-l">MerryMeal · The Study Syndicate</div><div class="footer-r">Higher Diploma in Software Engineering · 2026</div></footer>
+<script>
+function filterTable(q,id){const t=document.getElementById(id);t.querySelectorAll('tbody tr').forEach(r=>{r.style.display=r.textContent.toLowerCase().includes(q.toLowerCase())?'':'none'})}
+function updateStatus(id,status){const el=document.getElementById(id);if(status==='departed'){el.className='badge badge-amber';el.innerHTML='<i class="ti ti-clock" style="font-size:10px;"></i>Departed';showToast('Status updated: Departed — Caregiver notified','success');}else if(status==='delivered'){el.className='badge badge-green';el.innerHTML='<i class="ti ti-check" style="font-size:10px;"></i>Delivered';showToast('Delivery confirmed!','success');}}
+</script>
+<div id="toast-container" class="toast-container"></div>
+<script src="../../js/app.js"></script>
+</body></html>

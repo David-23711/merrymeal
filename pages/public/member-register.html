@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Registration — MerryMeal</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<nav class="public-topbar">
+  <a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a>
+  <div class="nav-links">
+    <a href="../../index.html">Home</a>
+    <a href="../../index.html#services">Services</a>
+    <a href="../../index.html#contact">Contact</a>
+    <a href="donate.html">Donate</a>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <a href="../auth/login.html" style="font-size:13px;color:#9FD4B8;">Sign in</a>
+    <a href="member-register.html" class="nav-cta"><i class="ti ti-user-plus"></i>Register</a>
+  </div>
+</nav>
+<div style="background:var(--green-mid);padding:2.4rem 2.4rem 3.8rem;">
+  <div style="font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#9FD4B8;margin-bottom:8px;">Member registration</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#F4F1EC;line-height:1.1;">Create your <em style="font-style:italic;color:#C8EDD8;">MerryMeal</em> account</div>
+  <div style="font-size:13px;color:#9FD4B8;margin-top:8px;line-height:1.6;max-width:480px;">Fill in your details to apply for our meal delivery service. We'll review your application within 2 business days.</div>
+</div>
+<div style="display:flex;justify-content:center;padding:0 1rem;">
+<div style="width:100%;max-width:500px;padding:2rem 0 3rem;">
+  <div style="display:flex;align-items:center;gap:0;margin-bottom:2rem;"><div class="steps-row"><div class="stp done"><div class="stp-n"><i class="ti ti-check" style="font-size:11px;"></i></div><span class="stp-l">Account</span></div><div class="stp-div"></div><div class="stp active"><div class="stp-n">2</div><span class="stp-l">Personal</span></div><div class="stp-div"></div><div class="stp todo"><div class="stp-n">3</div><span class="stp-l">Health</span></div><div class="stp-div"></div><div class="stp todo"><div class="stp-n">4</div><span class="stp-l">Caregiver</span></div><div class="stp-div"></div><div class="stp todo"><div class="stp-n">5</div><span class="stp-l">Review</span></div></div></div>
+  <div class="card">
+    <div class="card-head"><div class="card-icon green"><i class="ti ti-user"></i></div><div><div class="card-title">Personal information</div><div class="card-sub">US01 — Basic member identity</div></div></div>
+    <div class="field-row"><div><label class="lbl">First name <span class="req">*</span></label><input class="inp" id="fn" placeholder="First name" required></div><div><label class="lbl">Last name <span class="req">*</span></label><input class="inp" id="ln" placeholder="Last name" required></div></div>
+    <div class="field-row"><div><label class="lbl">Date of birth <span class="req">*</span></label><input class="inp" type="date" id="dob" required></div><div><label class="lbl">Gender</label><select class="sel"><option>Prefer not to say</option><option>Female</option><option>Male</option></select></div></div>
+    <div class="field"><label class="lbl">Phone number <span class="req">*</span></label><input class="inp" id="phone" placeholder="+95 9 XXX XXX XXX" required></div>
+    <div class="field"><label class="lbl">Email address</label><input class="inp" placeholder="Optional"></div>
+    <div class="divider"></div>
+    <div class="card-head" style="border:none;padding:0;margin-bottom:1rem;"><div class="card-icon green"><i class="ti ti-map-pin"></i></div><div><div class="card-title">Home address</div></div></div>
+    <div class="field"><label class="lbl">Street address <span class="req">*</span></label><input class="inp" id="addr" placeholder="House / unit number and street" required></div>
+    <div class="field-row"><div><label class="lbl">Township <span class="req">*</span></label><input class="inp" placeholder="e.g. Hlaing"></div><div><label class="lbl">City <span class="req">*</span></label><input class="inp" placeholder="e.g. Yangon"></div></div>
+    <div class="field"><label class="lbl">Delivery note</label><input class="inp" placeholder="e.g. Ring bell twice"></div>
+    <div class="divider"></div>
+    <div class="card-head" style="border:none;padding:0;margin-bottom:1rem;"><div class="card-icon amber"><i class="ti ti-heart-rate-monitor"></i></div><div><div class="card-title">Health & dietary needs</div><div class="card-sub">US02 — For safe meal preparation</div></div></div>
+    <div class="field"><label class="lbl">Primary health condition <span class="req">*</span></label><select class="sel" required><option value="">Select condition...</option><option>Diabetes (Type 2)</option><option>Cardiovascular condition</option><option>Mobility impairment</option><option>Dementia / Cognitive impairment</option><option>Other</option></select></div>
+    <div class="field"><label class="lbl">Dietary restrictions</label>
+      <div class="tag-wrap" id="diet-tags" style="margin-top:6px;">
+        <span class="tag">Low sugar <span class="tag-remove" onclick="this.parentElement.remove()"><i class="ti ti-x"></i></span></span>
+        <span class="tag-add" onclick="addTag()">+ Add</span>
+      </div>
+    </div>
+    <div class="field"><label class="lbl">Known allergies</label>
+      <div class="check-group">
+        <label class="check-item"><span class="chk"><i class="ti ti-check" style="display:none"></i></span>Nut allergy</label>
+        <label class="check-item"><span class="chk"><i class="ti ti-check" style="display:none"></i></span>Shellfish allergy</label>
+        <label class="check-item"><span class="chk"><i class="ti ti-check" style="display:none"></i></span>Lactose intolerant</label>
+        <label class="check-item"><span class="chk"><i class="ti ti-check" style="display:none"></i></span>Gluten intolerance</label>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="card-head" style="border:none;padding:0;margin-bottom:1rem;"><div class="card-icon slate"><i class="ti ti-lock"></i></div><div><div class="card-title">Password</div></div></div>
+    <div class="field"><label class="lbl">Password <span class="req">*</span></label><div style="position:relative;"><input class="inp" type="password" id="pw" placeholder="Min 8 characters" required><i class="ti ti-eye" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#B0ADA8;font-size:17px;cursor:pointer;" onclick="document.getElementById('pw').type=document.getElementById('pw').type==='password'?'text':'password'"></i></div></div>
+    <div class="field"><label class="lbl">Confirm password <span class="req">*</span></label><input class="inp" type="password" id="pw2" placeholder="Re-enter password" required></div>
+    <div class="consent-box" style="margin-top:1.2rem;">
+      <span class="chk on"><i class="ti ti-check"></i></span>
+      <div class="consent-text">I confirm my information is accurate and I agree to MerryMeal's <a href="#">privacy policy</a> and <a href="#">terms of service</a>.</div>
+    </div>
+    <button class="btn btn-primary btn-full" style="margin-top:1.2rem;padding:13px;font-size:14px;" onclick="submitReg()"><i class="ti ti-arrow-right"></i>Save & continue</button>
+    <button class="btn btn-ghost btn-full" style="margin-top:8px;" onclick="history.back()"><i class="ti ti-arrow-left"></i>Back</button>
+  </div>
+  <p style="text-align:center;font-size:13px;color:#9A9790;margin-top:1.2rem;">Already registered? <a href="../auth/login.html" style="color:var(--green-mid);font-weight:500;">Sign in</a></p>
+  <p style="text-align:center;font-size:12px;color:#B0ADA8;margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:5px;"><i class="ti ti-headset" style="color:#E07B00;"></i>Need help? Call <a href="#" style="color:var(--green-mid);">1800-MERRY-MEAL</a></p>
+</div>
+</div><footer class="footer-bar">
+  <div class="footer-l">MerryMeal · The Study Syndicate</div>
+  <div class="footer-r">Higher Diploma in Software Engineering · 2026</div>
+</footer>
+<script>
+function addTag(){const k=prompt('Add dietary restriction:');if(k){const wrap=document.getElementById('diet-tags');const add=wrap.querySelector('.tag-add');const t=document.createElement('span');t.className='tag';t.innerHTML=k+' <span class="tag-remove" onclick="this.parentElement.remove()"><i class="ti ti-x"></i></span>';wrap.insertBefore(t,add);}}
+function submitReg(){if(!document.getElementById('fn').value||!document.getElementById('phone').value||!document.getElementById('pw').value){showToast('Please fill all required fields','error');return;}if(document.getElementById('pw').value!==document.getElementById('pw2').value){showToast('Passwords do not match','error');return;}showToast('Registration submitted! Awaiting review.','success');setTimeout(()=>window.location.href='../auth/login.html',2000);}
+</script>
+<div id="toast-container" class="toast-container"></div>
+<script src="../../js/app.js"></script>
+</body>
+</html>

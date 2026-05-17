@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Safety — MerryMeal</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head><body>
+<nav class="topnav"><a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a><div class="nav-right"><span class="nav-label">Staff portal</span><div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">3</span></div><div class="nav-avatar">ST</div><span class="nav-label">Staff User</span><div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div><button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button></div></nav><script>
+function doLogout(){
+  if(confirm('Are you sure you want to log out?')){
+    showToast('Logging out...','info');
+    setTimeout(()=>{ window.location.href='../auth/login.html'; },1000);
+  }
+}
+</script><div class="app-layout"><aside class="sidebar"><span class="sb-label" style="display:block;margin-top:0">Main</span><a class="sb-item " href="member-list.html"><i class="ti ti-users"></i>Members</a><a class="sb-item " href="caregiver-list.html"><i class="ti ti-heart"></i>Caregivers</a><a class="sb-item " href="partner-list.html"><i class="ti ti-building-store"></i>Partners</a><a class="sb-item " href="volunteer-list.html"><i class="ti ti-run"></i>Volunteers</a><span class="sb-label" style="display:block;margin-top:.8rem">Operations</span><a class="sb-item " href="delivery-routes.html"><i class="ti ti-truck-delivery"></i>Delivery</a><a class="sb-item " href="menu-planning.html"><i class="ti ti-clipboard-list"></i>Menu plan</a><a class="sb-item active" href="food-safety.html"><i class="ti ti-leaf"></i>Food safety</a><a class="sb-item " href="reassessment.html"><i class="ti ti-refresh"></i>Reassessment</a><span class="sb-label" style="display:block;margin-top:.8rem">Admin</span><a class="sb-item " href="mis-reports.html"><i class="ti ti-chart-bar"></i>MIS reports</a><a class="sb-item " href="donations.html"><i class="ti ti-coin"></i>Donations</a><a class="sb-item " href="access-control.html"><i class="ti ti-lock"></i>Access control</a></aside>
+<main class="main-content">
+<div class="breadcrumb"><span>Operations</span><i class="ti ti-chevron-right"></i><span class="cur">Food safety</span></div>
+<div class="page-head"><div><div class="page-title">Food safety & compliance</div><div class="page-sub">Track ingredients, expiry dates, and cooking logs — US22, US24, US35</div></div>
+<button class="btn btn-primary" onclick="openModal('add-ingredient-modal')"><i class="ti ti-plus"></i>Add ingredient</button></div>
+<div class="kpi-grid">
+<div class="kpi dark"><div class="kpi-label">Ingredients tracked</div><div class="kpi-val">48</div></div>
+<div class="kpi dark"><div class="kpi-label">Expiring this week</div><div class="kpi-val">5</div><div class="kpi-sub warn"><i class="ti ti-alert-triangle"></i>Needs attention</div></div>
+<div class="kpi light"><div class="kpi-label">Expired items</div><div class="kpi-val">2</div><div class="kpi-sub" style="color:var(--red);"><i class="ti ti-alert-triangle"></i>Remove immediately</div></div>
+<div class="kpi light"><div class="kpi-label">Cooking logs today</div><div class="kpi-val">6</div><div class="kpi-sub"><i class="ti ti-check"></i>All recorded</div></div>
+</div>
+<div class="two-col-equal">
+<div>
+<div class="table-card">
+<div class="table-card-head"><div class="table-card-title">Ingredient inventory & expiry</div></div>
+<table class="data-table"><thead><tr><th>Ingredient</th><th>Quantity</th><th>Expiry date</th><th>Status</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td class="td-name">River fish</td><td>120 kg</td><td>21 May 2026</td><td><span class="badge badge-green">In stock</span></td><td><button class="btn btn-sm btn-secondary" onclick="showToast('Updated','success')">Update</button></td></tr>
+<tr><td class="td-name">Spinach</td><td>40 kg</td><td>20 May 2026</td><td><span class="badge badge-amber">Low stock</span></td><td><button class="btn btn-sm btn-secondary">Update</button></td></tr>
+<tr><td class="td-name">Eggs</td><td>800 units</td><td>25 May 2026</td><td><span class="badge badge-green">In stock</span></td><td><button class="btn btn-sm btn-secondary">Update</button></td></tr>
+<tr><td class="td-name">Chicken stock</td><td>30 L</td><td>13 May 2026</td><td><span class="badge badge-red"><i class="ti ti-alert-triangle" style="font-size:10px;"></i>Expired</span></td><td><button class="btn btn-sm btn-danger" onclick="showToast('Item removed','warning')">Remove</button></td></tr>
+<tr><td class="td-name">Tofu</td><td>60 kg</td><td>22 May 2026</td><td><span class="badge badge-green">In stock</span></td><td><button class="btn btn-sm btn-secondary">Update</button></td></tr>
+</tbody></table></div>
+</div>
+<div>
+<div class="card"><div class="card-head"><div class="card-icon green"><i class="ti ti-clock"></i></div><div><div class="card-title">Cooking time log</div><div class="card-sub">US24 — Record preparation times</div></div></div>
+<div class="field"><label class="lbl">Dish name <span class="req">*</span></label><input class="inp" placeholder="e.g. Steamed fish & rice"></div>
+<div class="field-row"><div><label class="lbl">Prep started</label><input class="inp" type="time" value="09:00"></div><div><label class="lbl">Cooking completed</label><input class="inp" type="time" value="11:30"></div></div>
+<div class="field"><label class="lbl">Safety notes</label><textarea class="textarea" placeholder="e.g. All utensils sanitised, temp checked at 75°C..."></textarea></div>
+<div class="field"><label class="lbl">Kitchen zone</label><select class="sel"><option>Zone A — Green Bowl Kitchen</option><option>Zone B — Golden Rice</option><option>Zone C — Northern Foods</option></select></div>
+<button class="btn btn-primary btn-full" style="margin-top:.5rem;" onclick="showToast('Cooking log recorded!','success')"><i class="ti ti-check"></i>Save cooking log</button>
+</div>
+<div class="card" style="margin-top:1.2rem;"><div class="card-head"><div class="card-icon red"><i class="ti ti-alert-triangle"></i></div><div><div class="card-title">Recent safety alerts</div><div class="card-sub">US35 — Admin compliance review</div></div></div>
+<div class="info-item" style="color:var(--red);"><i class="ti ti-alert-triangle" style="color:var(--red);"></i>Chicken stock expired Zone B kitchen — 13 May</div>
+<div class="info-item" style="color:#E07B00;"><i class="ti ti-clock" style="color:#E07B00;"></i>Cooking log overdue — Zone A · 14 May</div>
+<div class="info-item"><i class="ti ti-check"></i>Zone C — fully compliant · 15 May</div>
+</div></div></div>
+<div class="modal-overlay" id="add-ingredient-modal">
+<div class="modal"><div class="modal-head"><div class="modal-title">Add ingredient</div><span class="modal-close" onclick="closeModal('add-ingredient-modal')"><i class="ti ti-x"></i></span></div>
+<div class="field"><label class="lbl">Ingredient name <span class="req">*</span></label><input class="inp" placeholder="e.g. Spinach"></div>
+<div class="field-row"><div><label class="lbl">Quantity</label><input class="inp" placeholder="e.g. 50 kg"></div><div><label class="lbl">Expiry date <span class="req">*</span></label><input class="inp" type="date"></div></div>
+<div class="field"><label class="lbl">Kitchen zone</label><select class="sel"><option>Zone A</option><option>Zone B</option><option>Zone C</option></select></div>
+<div style="display:flex;gap:10px;justify-content:flex-end;margin-top:1rem;">
+<button class="btn btn-ghost" onclick="closeModal('add-ingredient-modal')">Cancel</button>
+<button class="btn btn-primary" onclick="closeModal('add-ingredient-modal');showToast('Ingredient added!','success')"><i class="ti ti-check"></i>Add ingredient</button>
+</div></div></div>
+</main></div><footer class="footer-bar"><div class="footer-l">MerryMeal · The Study Syndicate</div><div class="footer-r">Higher Diploma in Software Engineering · 2026</div></footer>
+<div id="toast-container" class="toast-container"></div>
+<script src="../../js/app.js"></script>
+</body></html>

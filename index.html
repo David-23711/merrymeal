@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MerryMeal — Nourishing Lives</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.hero{background:var(--green-mid);padding:5rem 3rem 6rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.hero-eyebrow{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#9FD4B8;margin-bottom:14px;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:#F4F1EC;line-height:1.05;letter-spacing:-.5px;margin-bottom:16px;}
+.hero-title em{font-style:italic;color:#C8EDD8;}
+.hero-desc{font-size:14px;color:#9FD4B8;line-height:1.8;margin-bottom:2rem;max-width:420px;}
+.hero-btns{display:flex;gap:12px;}
+.hero-img{background:#1A3A2E;border-radius:16px;padding:1.6rem;display:flex;flex-direction:column;gap:10px;}
+.hero-stat-card{background:rgba(255,255,255,.08);border-radius:10px;border:.5px solid rgba(255,255,255,.1);padding:1rem 1.2rem;}
+.hsc-label{font-size:10px;color:#7BAF96;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;}
+.hsc-val{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#F4F1EC;line-height:1;}
+.hsc-sub{font-size:11px;color:#5C9475;margin-top:3px;}
+.stat-cards-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.delivery-preview{background:rgba(255,255,255,.06);border-radius:10px;border:.5px solid rgba(255,255,255,.1);padding:1rem 1.2rem;}
+.dp-top{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.dp-icon{width:32px;height:32px;border-radius:8px;background:var(--green-mid);display:flex;align-items:center;justify-content:center;color:#9FD4B8;font-size:16px;}
+.dp-name{font-size:12px;font-weight:500;color:#F4F1EC;}
+.dp-addr{font-size:11px;color:#7BAF96;}
+.stats-band{background:#152E23;padding:2.4rem 3rem;display:grid;grid-template-columns:repeat(4,1fr);}
+.stat-item{text-align:center;padding:0 1.5rem;border-right:.5px solid rgba(255,255,255,.08);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:#F4F1EC;line-height:1;}
+.stat-label{font-size:12px;color:#7BAF96;margin-top:5px;}
+.section{padding:4rem 3rem;}
+.sec-eyebrow{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--green-sage);margin-bottom:10px;text-align:center;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:#152E23;text-align:center;line-height:1.1;margin-bottom:10px;}
+.sec-title em{font-style:italic;color:var(--green-mid);}
+.sec-sub{font-size:14px;color:var(--text-muted);text-align:center;line-height:1.7;max-width:480px;margin:0 auto 2.8rem;}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.feat-card{background:#fff;border-radius:12px;border:.5px solid var(--border);padding:1.6rem;}
+.feat-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1rem;}
+.feat-title{font-size:14px;font-weight:500;color:#152E23;margin-bottom:6px;}
+.feat-desc{font-size:13px;color:var(--text-muted);line-height:1.65;}
+.how-section{background:#fff;padding:4rem 3rem;}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.8rem;}
+.how-step{text-align:center;padding:0 .5rem;}
+.how-num{width:48px;height:48px;border-radius:50%;background:var(--green-mid);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:#F4F1EC;margin:0 auto 1rem;}
+.how-title{font-size:13px;font-weight:500;color:#152E23;margin-bottom:6px;}
+.how-desc{font-size:12px;color:var(--text-muted);line-height:1.6;}
+.who-section{padding:4rem 3rem;}
+.who-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.who-card{background:#fff;border-radius:12px;border:.5px solid var(--border);padding:1.4rem;text-align:center;}
+.who-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 1rem;}
+.who-title{font-size:13px;font-weight:500;color:#152E23;margin-bottom:5px;}
+.who-desc{font-size:12px;color:var(--text-muted);line-height:1.6;margin-bottom:1rem;}
+.who-link{font-size:12px;color:var(--green-mid);font-weight:500;display:inline-flex;align-items:center;gap:4px;}
+.cta-section{background:var(--green-mid);padding:4rem 3rem;text-align:center;}
+.cta-title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:#F4F1EC;line-height:1.1;margin-bottom:12px;}
+.cta-title em{font-style:italic;color:#C8EDD8;}
+.cta-sub{font-size:14px;color:#9FD4B8;margin-bottom:2rem;line-height:1.7;}
+.cta-btns{display:flex;gap:12px;justify-content:center;}
+.cta-btn-s{background:transparent;color:#F4F1EC;font-size:14px;font-weight:400;padding:12px 28px;border-radius:7px;border:1px solid #5C9475;display:inline-flex;align-items:center;gap:8px;}
+.lp-footer{background:#152E23;padding:2.4rem 3rem;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:#F4F1EC;margin-bottom:10px;}
+.footer-brand em{font-style:italic;color:#C8EDD8;}
+.footer-tagline{font-size:12px;color:#7BAF96;line-height:1.6;max-width:200px;}
+.footer-col-title{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#5C9475;margin-bottom:12px;}
+.footer-link{font-size:12px;color:#7BAF96;margin-bottom:7px;display:block;}
+.footer-bottom{background:#152E23;padding:1rem 3rem;border-top:.5px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:11px;color:#5C9475;}
+.footer-right{font-family:'Cormorant Garamond',serif;font-size:12px;color:#5C9475;font-style:italic;}
+nav.lp-nav{background:var(--green-mid);padding:0 3rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+</style>
+</head>
+<body>
+<nav class="lp-nav">
+  <a class="nav-logo" href="index.html">Merry<em>Meal</em></a>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#services">services</a>
+    <a href="#how">How it works</a>
+    <a href="#contact">Contact</a>
+    <a href="pages/public/donate.html">Donate</a>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <a href="pages/auth/login.html" style="font-size:13px;color:#9FD4B8;">Sign in</a>
+    <a href="pages/public/member-register.html" class="nav-cta"><i class="ti ti-user-plus"></i>Register now</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div>
+    <div class="hero-eyebrow">Charitable meal delivery service</div>
+    <div class="hero-title">Nourishing lives,<br><em>one meal</em><br>at a time.</div>
+    <div class="hero-desc">MerryMeal prepares and delivers hot, nutritious meals Monday to Friday — and frozen meals on weekends — to vulnerable adults who cannot prepare food for themselves.</div>
+    <div class="hero-btns">
+      <a href="pages/public/member-register.html" class="btn btn-amber" style="padding:12px 24px;font-size:14px;"><i class="ti ti-user-plus"></i>Register as member</a>
+      <a href="pages/public/donate.html" class="btn" style="background:transparent;color:#F4F1EC;border:1px solid #5C9475;padding:12px 24px;font-size:14px;"><i class="ti ti-heart"></i>Make a donation</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-stat-card"><div class="hsc-label">Meals delivered today</div><div class="hsc-val">1,248</div><div class="hsc-sub"><i class="ti ti-trending-up" style="font-size:11px;"></i> 12% more than last week</div></div>
+    <div class="stat-cards-row">
+      <div class="hero-stat-card"><div class="hsc-label">Active members</div><div class="hsc-val">342</div><div class="hsc-sub">Across 3 zones</div></div>
+      <div class="hero-stat-card"><div class="hsc-label">On-time rate</div><div class="hsc-val">97%</div><div class="hsc-sub">This month</div></div>
+    </div>
+    <div class="delivery-preview">
+      <div class="dp-top">
+        <div class="dp-icon"><i class="ti ti-truck-delivery"></i></div>
+        <div><div class="dp-name">Margaret Thompson</div><div class="dp-addr">14 Maple Lane, Zone A</div></div>
+      </div>
+      <span class="badge badge-green"><i class="ti ti-check" style="font-size:10px;"></i>Delivered · 12:34 PM</span>
+    </div>
+  </div>
+</section>
+
+<div class="stats-band">
+  <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">Years of service</div></div>
+  <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Members served</div></div>
+  <div class="stat-item"><div class="stat-num">12</div><div class="stat-label">Partner kitchens</div></div>
+  <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Satisfaction rate</div></div>
+</div>
+
+<section class="section" id="services">
+  <div class="sec-eyebrow">What we offer</div>
+  <div class="sec-title">Everything managed,<br><em>so you don't have to.</em></div>
+  <div class="sec-sub">Our platform handles every step — from registration and menu planning to food safety and real-time delivery tracking.</div>
+  <div class="features-grid">
+    <div class="feat-card"><div class="feat-icon card-icon green"><i class="ti ti-clipboard-list"></i></div><div class="feat-title">Weekly menu planning</div><div class="feat-desc">Staff design weekly menus tailored to members' dietary needs, approved by admin before preparation begins.</div></div>
+    <div class="feat-card"><div class="feat-icon card-icon amber"><i class="ti ti-truck-delivery"></i></div><div class="feat-title">Real-time delivery tracking</div><div class="feat-desc">Caregivers receive instant notifications when meals depart the kitchen and can track status in real time.</div></div>
+    <div class="feat-card"><div class="feat-icon card-icon green"><i class="ti ti-leaf"></i></div><div class="feat-title">Food safety compliance</div><div class="feat-desc">Every kitchen logs ingredient expiry dates and cooking times to ensure full food safety compliance.</div></div>
+    <div class="feat-card"><div class="feat-icon card-icon slate"><i class="ti ti-refresh"></i></div><div class="feat-title">Periodic reassessment</div><div class="feat-desc">Member health and eligibility is regularly reviewed and meal plans adjusted to match changing needs.</div></div>
+    <div class="feat-card"><div class="feat-icon card-icon amber"><i class="ti ti-coin"></i></div><div class="feat-title">Fundraising & donations</div><div class="feat-desc">Donors contribute one-time or recurring support, keeping MerryMeal's services running for those who need it most.</div></div>
+    <div class="feat-card"><div class="feat-icon card-icon red"><i class="ti ti-accessible"></i></div><div class="feat-title">Accessibility first</div><div class="feat-desc">One-click large font and high contrast toggles ensure the platform is usable by all members.</div></div>
+  </div>
+</section>
+
+<section class="how-section" id="how">
+  <div class="sec-eyebrow">How it works</div>
+  <div class="sec-title">Simple steps to <em>get started</em></div>
+  <div class="sec-sub">Getting enrolled with MerryMeal takes just a few minutes.</div>
+  <div class="how-grid">
+    <div class="how-step"><div class="how-num">1</div><div class="how-title">Register online</div><div class="how-desc">Fill in your personal details, health condition, and dietary needs on our secure portal.</div></div>
+    <div class="how-step"><div class="how-num">2</div><div class="how-title">Eligibility review</div><div class="how-desc">Our staff reviews your application within 2 business days.</div></div>
+    <div class="how-step"><div class="how-num">3</div><div class="how-title">Meal plan assigned</div><div class="how-desc">A weekly meal plan tailored to your dietary needs is prepared by our kitchen partners.</div></div>
+    <div class="how-step"><div class="how-num">4</div><div class="how-title">Meals delivered</div><div class="how-desc">Hot meals arrive Monday to Friday. Your caregiver is notified every step of the way.</div></div>
+  </div>
+</section>
+
+<section class="who-section">
+  <div class="sec-eyebrow">Who we serve</div>
+  <div class="sec-title">A portal for <em>everyone</em></div>
+  <div class="sec-sub">MerryMeal brings together members, caregivers, volunteers, and partners under one platform.</div>
+  <div class="who-grid">
+    <div class="who-card"><div class="who-icon card-icon green"><i class="ti ti-user"></i></div><div class="who-title">Members</div><div class="who-desc">Vulnerable adults who receive daily nutritious meals delivered to their home.</div><a href="pages/public/member-register.html" class="who-link">Register as member <i class="ti ti-arrow-right" style="font-size:12px;"></i></a></div>
+    <div class="who-card"><div class="who-icon card-icon amber"><i class="ti ti-heart"></i></div><div class="who-title">Caregivers</div><div class="who-desc">Family members who receive delivery notifications and track meal status.</div><a href="pages/public/caregiver-register.html" class="who-link">Register as caregiver <i class="ti ti-arrow-right" style="font-size:12px;"></i></a></div>
+    <div class="who-card"><div class="who-icon card-icon slate"><i class="ti ti-run"></i></div><div class="who-title">Volunteers</div><div class="who-desc">Community volunteers who assist with meal preparation or delivery.</div><a href="pages/public/volunteer-register.html" class="who-link">Join as volunteer <i class="ti ti-arrow-right" style="font-size:12px;"></i></a></div>
+    <div class="who-card"><div class="who-icon card-icon red"><i class="ti ti-coin"></i></div><div class="who-title">Donors</div><div class="who-desc">Generous supporters who fund MerryMeal's operations through contributions.</div><a href="pages/public/donate.html" class="who-link">Make a donation <i class="ti ti-arrow-right" style="font-size:12px;"></i></a></div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-title">Ready to make a <em>difference?</em></div>
+  <div class="cta-sub">Whether you need meals, want to volunteer, or wish to support our cause —<br>MerryMeal welcomes you.</div>
+  <div class="cta-btns">
+    <a href="pages/public/member-register.html" class="btn btn-amber" style="padding:12px 28px;font-size:14px;"><i class="ti ti-user-plus"></i>Register now</a>
+    <a href="pages/auth/login.html" class="cta-btn-s"><i class="ti ti-phone"></i>Sign in</a>
+  </div>
+</section>
+
+<footer class="lp-footer">
+  <div><div class="footer-brand">Merry<em>Meal</em></div><div class="footer-tagline">Nourishing vulnerable adults through community-driven meal delivery services.</div></div>
+  <div><div class="footer-col-title">Quick links</div><a class="footer-link" href="#services">About us</a><a class="footer-link" href="#services">Our services</a><a class="footer-link" href="#how">How it works</a><a class="footer-link" href="#contact">Contact</a></div>
+  <div><div class="footer-col-title">Get involved</div><a class="footer-link" href="pages/public/member-register.html">Register as member</a><a class="footer-link" href="pages/public/volunteer-register.html">Join as volunteer</a><a class="footer-link" href="pages/public/donate.html">Donate</a></div>
+  <div><div class="footer-col-title">Contact</div><span class="footer-link"><i class="ti ti-phone" style="font-size:12px;margin-right:5px;"></i>1800-MERRY-MEAL</span><span class="footer-link"><i class="ti ti-mail" style="font-size:12px;margin-right:5px;"></i>hello@merrymeal.org</span></div>
+</footer>
+<div class="footer-bottom">
+  <div class="footer-copy">© 2026 MerryMeal · The Study Syndicate · Higher Diploma in Software Engineering</div>
+  <div class="footer-right">Agile Project Management · 2026</div>
+</div>
+<div id="toast-container" class="toast-container"></div>
+<script src="js/app.js"></script>
+</body>
+</html>
