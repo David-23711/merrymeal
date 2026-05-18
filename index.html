@@ -73,19 +73,23 @@ nav.lp-nav{background:var(--green-mid);padding:0 3rem;height:60px;display:flex;a
 <nav class="lp-nav">
   <a class="nav-logo" href="index.html">Merry<em>Meal</em></a>
   <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#services">services</a>
+    <a href="#services">About us</a>
+    <a href="#services">Our services</a>
     <a href="#how">How it works</a>
-    <a href="#contact">Contact</a>
     <a href="pages/public/donate.html">Donate</a>
+    <a href="#contact">Contact</a>
   </div>
   <div style="display:flex;gap:10px;align-items:center;">
     <a href="pages/auth/login.html" style="font-size:13px;color:#9FD4B8;">Sign in</a>
+    <div class="access-btns">
+      <button class="access-btn" data-access="font" title="Toggle large font"><i class="ti ti-letter-case" style="font-size:13px;"></i>Large font</button>
+      <button class="access-btn" data-access="contrast" title="Toggle high contrast"><i class="ti ti-contrast" style="font-size:13px;"></i>High contrast</button>
+    </div>
     <a href="pages/public/member-register.html" class="nav-cta"><i class="ti ti-user-plus"></i>Register now</a>
   </div>
 </nav>
 
-<section class="hero" id="home">
+<section class="hero">
   <div>
     <div class="hero-eyebrow">Charitable meal delivery service</div>
     <div class="hero-title">Nourishing lives,<br><em>one meal</em><br>at a time.</div>

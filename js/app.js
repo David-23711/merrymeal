@@ -212,3 +212,38 @@ document.addEventListener('DOMContentLoaded', () => {
   initFilterBtns();
   setActiveSidebar();
 });
+
+// ── ACCESSIBILITY TOGGLES ──
+function initAccessibilityToggles() {
+  // Restore saved state
+  if (localStorage.getItem('mm-large-font') === 'on') {
+    document.body.classList.add('large-font');
+    document.querySelectorAll('.access-btn[data-access="font"]').forEach(b => b.classList.add('on'));
+  }
+  if (localStorage.getItem('mm-high-contrast') === 'on') {
+    document.body.classList.add('high-contrast');
+    document.querySelectorAll('.access-btn[data-access="contrast"]').forEach(b => b.classList.add('on'));
+  }
+
+  document.querySelectorAll('.access-btn[data-access="font"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('large-font');
+      const on = document.body.classList.contains('large-font');
+      localStorage.setItem('mm-large-font', on ? 'on' : 'off');
+      document.querySelectorAll('.access-btn[data-access="font"]').forEach(b => b.classList.toggle('on', on));
+      showToast(on ? 'Large font mode on' : 'Large font mode off', 'info');
+    });
+  });
+
+  document.querySelectorAll('.access-btn[data-access="contrast"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('high-contrast');
+      const on = document.body.classList.contains('high-contrast');
+      localStorage.setItem('mm-high-contrast', on ? 'on' : 'off');
+      document.querySelectorAll('.access-btn[data-access="contrast"]').forEach(b => b.classList.toggle('on', on));
+      showToast(on ? 'High contrast mode on' : 'High contrast mode off', 'info');
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initAccessibilityToggles);
