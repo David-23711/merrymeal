@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caregiver Dashboard — MerryMeal</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head><body>
+<nav class="topnav">
+  <a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a>
+  <div class="nav-right">
+    <span class="nav-label">Caregiver portal</span>
+    <div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">1</span></div>
+    <div class="nav-avatar">ST</div>
+    <span class="nav-label">Sarah Thompson</span>
+    <div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div>
+    <div class="access-btns"><button class="access-btn" data-access="font" title="Toggle large font"><i class="ti ti-letter-case" style="font-size:13px;"></i>Large font</button><button class="access-btn" data-access="contrast" title="Toggle high contrast"><i class="ti ti-contrast" style="font-size:13px;"></i>High contrast</button></div>
+    <button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button>
+  </div>
+</nav>
+<div class="app-layout">
+<aside class="sidebar">
+    <span class="sb-label" style="display:block;margin-top:0">Caregiver portal</span>
+    <a class="sb-item active" href="caregiver-dashboard.html"><i class="ti ti-layout-dashboard"></i>My dashboard</a>
+  </aside>
+<main class="main-content">
+  <div class="breadcrumb"><span>Caregiver portal</span><i class="ti ti-chevron-right"></i><span class="cur">My dashboard</span></div>
+  <div class="page-head">
+    <div><div class="page-title">Welcome, <em>Sarah</em></div><div class="page-sub">Supporting Margaret Thompson — US09, US10, US11</div></div>
+  </div>
+
+  <!-- SMART-ROUTE ALERT BANNER — US10 -->
+  <div style="background:linear-gradient(135deg,#152E23,#2E6B4F);border-radius:10px;padding:1rem 1.3rem;margin-bottom:1.4rem;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:18px;color:#C8EDD8;flex-shrink:0;"><i class="ti ti-mail-forward"></i></div>
+      <div>
+        <div style="font-size:13px;font-weight:500;color:#F4F1EC;font-family:'Outfit',sans-serif;"><i class="ti ti-sparkles" style="font-size:12px;margin-right:4px;"></i>Smart-Route Notification received — US10 ★</div>
+        <div style="font-size:11px;color:#9FD4B8;font-family:'Outfit',sans-serif;margin-top:2px;">Margaret's meal has departed the kitchen at <strong style="color:#F4F1EC;">11:30 AM</strong> — expected within 30 minutes</div>
+      </div>
+    </div>
+    <span style="background:#F5A623;color:#5A3200;font-size:10px;font-weight:500;padding:3px 10px;border-radius:20px;font-family:'Outfit',sans-serif;flex-shrink:0;">Just now</span>
+  </div>
+
+  <div class="two-col">
+  <div>
+    <!-- DELIVERY TRACKING — US11 -->
+    <div class="card">
+      <div class="card-head"><div class="card-icon green"><i class="ti ti-truck-delivery"></i></div><div><div class="card-title">Live delivery tracking</div><div class="card-sub">US11 — Margaret Thompson's meal today</div></div></div>
+      <div style="display:flex;align-items:center;gap:0;margin-bottom:1.4rem;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--green-mid);display:flex;align-items:center;justify-content:center;"><i class="ti ti-check" style="font-size:13px;color:#fff;"></i></div>
+          <div style="font-size:10px;color:var(--green-mid);font-weight:500;font-family:'Outfit',sans-serif;">Prepared</div>
+        </div>
+        <div style="flex:1;height:2px;background:var(--green-mid);margin:0 4px;margin-bottom:16px;"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="width:28px;height:28px;border-radius:50%;background:#F5A623;display:flex;align-items:center;justify-content:center;"><i class="ti ti-truck-delivery" style="font-size:13px;color:#5A3200;"></i></div>
+          <div style="font-size:10px;color:#E07B00;font-weight:500;font-family:'Outfit',sans-serif;">Departed</div>
+        </div>
+        <div style="flex:1;height:2px;background:#E0DDD6;margin:0 4px;margin-bottom:16px;"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="width:28px;height:28px;border-radius:50%;background:#E0DDD6;display:flex;align-items:center;justify-content:center;"><i class="ti ti-home" style="font-size:13px;color:#B0ADA8;"></i></div>
+          <div style="font-size:10px;color:#B0ADA8;font-weight:500;font-family:'Outfit',sans-serif;">Delivered</div>
+        </div>
+      </div>
+      <div class="summary-item"><span class="summary-label">Today's meal</span><span class="summary-val">Steamed fish &amp; rice</span></div>
+      <div class="summary-item"><span class="summary-label">Rider</span><span class="summary-val">Kyaw Zin Tun</span></div>
+      <div class="summary-item"><span class="summary-label">Departed at</span><span class="summary-val">11:30 AM</span></div>
+      <div class="summary-item"><span class="summary-label">Expected arrival</span><span class="summary-val">~12:00 PM</span></div>
+    </div>
+
+    <!-- NOTIFICATION HISTORY -->
+    <div class="card" style="margin-top:1.2rem;">
+      <div class="card-head"><div class="card-icon amber"><i class="ti ti-bell"></i></div><div><div class="card-title">Notification history</div><div class="card-sub">Smart-Route alerts received</div></div></div>
+      <table class="data-table">
+        <thead><tr><th>Date</th><th>Message</th><th>Time</th></tr></thead>
+        <tbody>
+          <tr><td>19 May</td><td>Meal departed — Steamed fish &amp; rice</td><td>11:30 AM</td></tr>
+          <tr><td>16 May</td><td>Meal departed — Egg &amp; spinach rice</td><td>11:45 AM</td></tr>
+          <tr><td>15 May</td><td>Meal departed — Pork &amp; pumpkin soup</td><td>11:20 AM</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <!-- MEMBER PROFILE UPDATE — US09 -->
+    <div class="sc">
+      <div class="sc-title"><i class="ti ti-user-edit"></i>Update member profile — US09</div>
+      <div class="summary-item"><span class="summary-label">Member name</span><span class="summary-val">Margaret Thompson</span></div>
+      <div class="summary-item"><span class="summary-label">Member ID</span><span class="summary-val">MM-2026-0042</span></div>
+      <div class="summary-item"><span class="summary-label">Zone</span><span class="summary-val">Zone A</span></div>
+      <div class="summary-item"><span class="summary-label">Dietary tags</span><span class="summary-val">Low sodium, Soft</span></div>
+      <button class="btn btn-secondary btn-full" style="margin-top:1rem;" onclick="openModal('edit-member-modal')"><i class="ti ti-edit"></i>Update member details</button>
+    </div>
+
+    <!-- LINKED MEMBER INFO -->
+    <div class="sc" style="margin-top:1.2rem;">
+      <div class="sc-title"><i class="ti ti-link"></i>My linked member</div>
+      <div style="display:flex;align-items:center;gap:10px;padding:.5rem 0;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--green-mid);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:#F4F1EC;">MT</div>
+        <div><div style="font-size:13px;font-weight:500;color:var(--green-dark);font-family:'Outfit',sans-serif;">Margaret Thompson</div><div style="font-size:11px;color:var(--text-pale);font-family:'Outfit',sans-serif;">Zone A · Diabetes (Type 2)</div></div>
+      </div>
+    </div>
+  </div>
+  </div>
+</main>
+</div>
+<footer class="footer-bar">
+  <div class="footer-l">MerryMeal · The Study Syndicate</div>
+  <div class="footer-r">Higher Diploma in Software Engineering · 2026</div>
+</footer><script>
+function doLogout(){if(confirm('Are you sure you want to log out?')){showToast('Logging out...','info');setTimeout(()=>{window.location.href='../auth/login.html';},1000);}}
+</script>
+<div class="modal-overlay" id="edit-member-modal">
+  <div class="modal">
+    <div class="modal-head"><div class="modal-title">Update member profile</div><span class="modal-close" onclick="closeModal('edit-member-modal')"><i class="ti ti-x"></i></span></div>
+    <div class="field"><label class="lbl">Phone number</label><input class="inp" value="+95 9 123 456 789"></div>
+    <div class="field"><label class="lbl">Delivery note</label><input class="inp" value="Ring bell twice"></div>
+    <div class="field" style="margin-bottom:0;"><label class="lbl">Dietary notes update</label><textarea class="textarea" placeholder="Any new dietary restrictions or allergies..."></textarea></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:1.2rem;">
+      <button class="btn btn-ghost" onclick="closeModal('edit-member-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="closeModal('edit-member-modal');showToast('Member profile updated!','success')"><i class="ti ti-check"></i>Save changes</button>
+    </div>
+  </div>
+</div>
+<div id="toast-container" class="toast-container"></div>
+<script src="../../js/app.js"></script>
+</body></html>

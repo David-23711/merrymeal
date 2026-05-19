@@ -32,18 +32,17 @@
 <div style="display:flex;justify-content:center;padding:0 2rem;">
 <div style="width:100%;max-width:820px;margin-top:-1.8rem;padding-bottom:3rem;">
 
-  <div style="background:#fff;border-radius:12px;border:.5px solid var(--border);padding:5px;display:flex;gap:4px;margin-bottom:1.4rem;" id="pledge-tabs">
-    <div class="ptab act" onclick="switchTab(this,'tab-one')"><i class="ti ti-coin" style="font-size:15px;"></i>One-time donation</div>
-    <div class="ptab" onclick="switchTab(this,'tab-pledge')"><i class="ti ti-repeat" style="font-size:15px;"></i>Recurring pledge</div>
-    <div class="ptab" onclick="switchTab(this,'tab-history')"><i class="ti ti-history" style="font-size:15px;"></i>My giving history</div>
+  <div style="background:#E4F2EB;border-radius:8px;padding:10px 16px;margin-bottom:1.4rem;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#0D3D22;"><i class="ti ti-coin" style="font-size:15px;color:#2E6B4F;"></i>One-time donation submission</div>
+    <a href="../auth/login.html" style="font-size:12px;color:#2E6B4F;font-weight:500;display:flex;align-items:center;gap:5px;"><i class="ti ti-history" style="font-size:13px;"></i>View giving history? Sign in</a>
   </div>
   <style>
-  .ptab{flex:1;text-align:center;font-size:13px;font-family:"Outfit",sans-serif;padding:9px;border-radius:8px;cursor:pointer;color:#9A9790;display:flex;align-items:center;justify-content:center;gap:7px;}
-  .ptab.act{background:var(--green-mid);color:#F4F1EC;font-weight:500;}
-  .tab-pane{display:none;}.tab-pane.active{display:block;}
+  
+  
+  
   </style>
 
-  <div id="tab-one" class="tab-pane active">
+  
   <div style="display:grid;grid-template-columns:1fr 270px;gap:1.4rem;">
   <div>
     <div class="card"><div class="card-head"><div class="card-icon green"><i class="ti ti-user"></i></div><div><div class="card-title">Donor information</div><div class="card-sub">US27 — Your details for receipt generation</div></div></div>
@@ -98,10 +97,9 @@
     <div class="info-item"><i class="ti ti-check"></i>Submit your transaction reference and proof</div>
     <div class="info-item"><i class="ti ti-eye"></i>Admin verifies against bank records — US36</div>
     <div class="info-item"><i class="ti ti-receipt"></i>Formal receipt emailed once verified — US29</div>
-    <div class="info-item" style="margin-bottom:0;"><i class="ti ti-history"></i>View giving history anytime — US30</div></div>
+    <div class="info-item" style="margin-bottom:0;"><i class="ti ti-history"></i>View giving history &amp; manage pledge — <a href="../auth/login.html" style="color:var(--green-mid);font-weight:500;">sign in</a></div></div>
 
-    <div class="sc"><div class="sc-title"><i class="ti ti-history"></i>Recent giving history</div>
-    <div class="summary-item"><div><div style="font-size:13px;font-weight:500;">$50.00</div><div style="font-size:11px;color:var(--text-pale);">15 April 2026</div></div><span class="badge badge-green"><i class="ti ti-check" style="font-size:10px;"></i>Verified</span></div>
+    <span class="badge badge-green"><i class="ti ti-check" style="font-size:10px;"></i>Verified</span></div>
     <div class="summary-item"><div><div style="font-size:13px;font-weight:500;">$25.00</div><div style="font-size:11px;color:var(--text-pale);">12 March 2026</div></div><span class="badge badge-green"><i class="ti ti-check" style="font-size:10px;"></i>Verified</span></div>
     <div class="summary-item" style="border-bottom:none;padding-bottom:0;"><div><div style="font-size:13px;font-weight:500;">$100.00</div><div style="font-size:11px;color:var(--text-pale);">01 Feb 2026</div></div><span class="badge badge-amber"><i class="ti ti-clock" style="font-size:10px;"></i>Pending</span></div></div>
 
@@ -111,34 +109,15 @@
   </div>
   </div>
 
-  <div id="tab-pledge" class="tab-pane">
-  <div class="card"><div class="card-head"><div class="card-icon amber"><i class="ti ti-repeat"></i></div><div><div class="card-title">Set up recurring pledge</div><div class="card-sub">US31 — Monthly donation commitment</div></div></div>
-  <div class="field-row"><div><label class="lbl">Your name <span class="req">*</span></label><input class="inp" placeholder="Full name"></div><div><label class="lbl">Email <span class="req">*</span></label><input class="inp" placeholder="your@email.com"></div></div>
-  <div class="field-row"><div><label class="lbl">Monthly pledge amount</label><input class="inp" value="$50" placeholder="e.g. $50"></div><div><label class="lbl">Preferred reminder day</label><select class="sel"><option>1st of month</option><option>15th of month</option><option>End of month</option></select></div></div>
-  <div class="alert alert-green"><i class="ti ti-info-circle"></i>You will receive a monthly reminder email with bank transfer details. Each transfer must be submitted manually via this form.</div>
-  <button class="btn btn-amber btn-full" style="margin-top:.5rem;" onclick="showToast('Recurring pledge set up! You'll receive monthly reminders.','success')"><i class="ti ti-repeat"></i>Set up recurring pledge</button></div>
-  </div>
+  
 
-  <div id="tab-history" class="tab-pane">
-  <div class="table-card"><div class="table-card-head"><div class="table-card-title">My giving history — US30</div></div>
-  <table class="data-table"><thead><tr><th>Date</th><th>Amount</th><th>Transaction ref</th><th>Type</th><th>Status</th><th>Receipt</th></tr></thead>
-  <tbody>
-  <tr><td>15 Apr 2026</td><td class="td-name">$50.00</td><td>TXN20260415011</td><td>One-time</td><td><span class="badge badge-green"><i class="ti ti-check" style="font-size:10px;"></i>Verified</span></td><td><button class="btn btn-sm btn-secondary" onclick="showToast('Receipt downloaded — US29','info')"><i class="ti ti-download"></i>Receipt</button></td></tr>
-  <tr><td>12 Mar 2026</td><td class="td-name">$25.00</td><td>TXN20260312066</td><td>One-time</td><td><span class="badge badge-green"><i class="ti ti-check" style="font-size:10px;"></i>Verified</span></td><td><button class="btn btn-sm btn-secondary" onclick="showToast('Receipt downloaded — US29','info')"><i class="ti ti-download"></i>Receipt</button></td></tr>
-  <tr><td>01 Feb 2026</td><td class="td-name">$100.00</td><td>TXN20260201033</td><td>Recurring</td><td><span class="badge badge-amber"><i class="ti ti-clock" style="font-size:10px;"></i>Pending</span></td><td><span style="font-size:12px;color:var(--text-pale);">Awaiting verification</span></td></tr>
-  </tbody></table></div>
-  </div>
+  
 
 </div>
 </div>
 <footer class="footer-bar"><div class="footer-l">MerryMeal · The Study Syndicate</div><div class="footer-r">Higher Diploma in Software Engineering · 2026</div></footer>
 <script>
-function switchTab(el,target){
-  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('act'));
-  el.classList.add('act');
-  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
-  document.getElementById(target).classList.add('active');
-}
+
 function selectAmt(el,amt){
   document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');

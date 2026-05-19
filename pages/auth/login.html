@@ -42,6 +42,7 @@
       <div class="role-card"><div class="rc-icon" style="background:var(--green-mid);color:#9FD4B8;"><i class="ti ti-users"></i></div><div><div class="rc-name">Members & Caregivers</div><div class="rc-desc">View meal schedule, delivery status & profile</div></div></div>
       <div class="role-card"><div class="rc-icon" style="background:rgba(245,166,35,.2);color:#F5A623;"><i class="ti ti-run"></i></div><div><div class="rc-name">Volunteers & Riders</div><div class="rc-desc">Access daily worklist and update delivery status</div></div></div>
       <div class="role-card"><div class="rc-icon" style="background:rgba(255,255,255,.1);color:#C8EDD8;"><i class="ti ti-shield-check"></i></div><div><div class="rc-name">Staff & Admin</div><div class="rc-desc">Manage operations, reports and access control</div></div></div>
+      <div class="role-card"><div class="rc-icon" style="background:rgba(245,166,35,.2);color:#F5A623;"><i class="ti ti-coin"></i></div><div><div class="rc-name">Donor</div><div class="rc-desc">View giving history and manage recurring pledge</div></div></div>
     </div>
     <div class="ll-stats">
       <div><div class="ll-stat-num">342</div><div class="ll-stat-label">Active members</div></div>
@@ -61,6 +62,7 @@
         <div class="rs-btn" onclick="selectRole(this)"><i class="ti ti-building-store"></i><span>Partner</span></div>
         <div class="rs-btn" onclick="selectRole(this)"><i class="ti ti-tool"></i><span>Staff</span></div>
         <div class="rs-btn" onclick="selectRole(this)"><i class="ti ti-shield"></i><span>Admin</span></div>
+        <div class="rs-btn" onclick="selectRole(this)"><i class="ti ti-coin"></i><span>Donor</span></div>
       </div>
       <div class="field"><label class="lbl">Email or phone number</label><input class="inp" type="text" placeholder="Enter your email or phone" id="login-email"></div>
       <div class="field"><label class="lbl">Password</label><div style="position:relative;"><input class="inp" type="password" id="login-pw" placeholder="Enter your password"><i class="ti ti-eye" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#B0ADA8;font-size:17px;cursor:pointer;" onclick="togglePw()"></i></div></div>
@@ -87,6 +89,16 @@ function doLogin(){
   const p=document.getElementById('login-pw').value;
   if(!e||!p){showToast('Please enter your credentials','error');return;}
   showToast('Signing in...','info');
-  setTimeout(()=>{ window.location.href='../staff/member-list.html'; },1000);
+  const role = document.querySelector('.rs-btn.active span')?.textContent;
+  const redirects = {
+    'Member':    '../staff/member-dashboard.html',
+    'Caregiver': '../staff/caregiver-dashboard.html',
+    'Volunteer': '../staff/volunteer-dashboard.html',
+    'Partner':   '../staff/partner-dashboard.html',
+    'Staff':     '../staff/member-list.html',
+    'Admin':     '../staff/mis-reports.html',
+    'Donor':     '../staff/donor-dashboard.html',
+  };
+  setTimeout(()=>{ window.location.href = redirects[role] || '../staff/member-list.html'; },1000);
 }
 </script>

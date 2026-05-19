@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register Volunteer — MerryMeal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap');
+
+:root {
+  --green-dark: #152E23; --green-mid: #2E6B4F; --green-sage: #5C9475; --green-mint: #E4F2EB; --green-mint-dark: #C0DDCA;
+  --amber: #F5A623; --amber-light: #FDF0D5; --amber-dark: #E07B00; --off-white: #F4F1EC; --white: #ffffff;
+  --border: #E0DDD6; --border-light: #EDE9E2; --text-primary: #1C1C1A; --text-secondary: #5A5855;
+  --text-muted: #9A9790; --text-pale: #B0ADA8; --red: #B83028; --red-light: #FDECEA;
+  --slate: #2D4A6B; --slate-light: #EEF1F5; --bg: #F4F1EC; --sidebar-w: 210px; --nav-h: 54px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text-primary); font-size: 14px; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: 'Outfit', sans-serif; }
+input, select, textarea { font-family: 'Outfit', sans-serif; }
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; color: var(--green-dark); }
+
+.topnav { background: var(--green-mid); height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 1.8rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 0 rgba(0,0,0,0.1); }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: #F4F1EC; letter-spacing: -0.3px; }
+.nav-logo em { font-style: italic; color: #C8EDD8; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-notif { position: relative; display: inline-flex; }
+.nav-notif-badge { position: absolute; top: -4px; right: -4px; background: var(--amber); color: #5A3200; font-size: 9px; font-weight: 500; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.nav-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--green-sage); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: #F4F1EC; }
+.nav-label { font-size: 12px; color: #9FD4B8; }
+
+.app-layout { display: grid; grid-template-columns: var(--sidebar-w) 1fr; min-height: calc(100vh - var(--nav-h)); }
+.sidebar { background: var(--white); border-right: 0.5px solid var(--border); padding: 1.4rem 0; }
+.sb-label { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-pale); padding: 0 1.1rem; margin-bottom: 5px; display: block; }
+.sb-item { display: flex; align-items: center; gap: 9px; padding: 8px 1.1rem; font-size: 13px; color: var(--text-secondary); cursor: pointer; transition: all .15s; text-decoration: none; }
+.sb-item:hover { background: var(--bg); color: var(--text-primary); }
+.sb-item.active { background: var(--green-mint); color: var(--green-dark); border-right: 2px solid var(--green-mid); font-weight: 500; }
+
+.main-content { padding: 1.8rem 2rem; }
+.breadcrumb { font-size: 12px; color: var(--text-pale); margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+.breadcrumb .cur { color: var(--green-dark); font-weight: 500; }
+.page-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--green-dark); line-height: 1; }
+.page-sub { font-size: 12px; color: var(--text-pale); margin-top: 4px; }
+.page-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.6rem; }
+
+.card { background: var(--white); border-radius: 12px; border: 0.5px solid var(--border); padding: 1.4rem; margin-bottom: 1.2rem; }
+.card:last-child { margin-bottom: 0; }
+.card-head { display: flex; align-items: center; gap: 9px; margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 0.5px solid var(--border-light); }
+.card-icon { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.card-icon.green { background: var(--green-mint); color: var(--green-mid); }
+.card-icon.amber { background: var(--amber-light); color: var(--amber-dark); }
+.card-icon.slate { background: var(--slate-light); color: var(--slate); }
+.card-title { font-size: 13px; font-weight: 500; color: var(--green-dark); }
+.card-sub { font-size: 11px; color: var(--text-pale); margin-top: 1px; }
+
+.field { margin-bottom: 1rem; }
+.field:last-child { margin-bottom: 0; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+.lbl { font-size: 11px; font-weight: 500; color: var(--text-secondary); margin-bottom: 4px; display: flex; gap: 3px; align-items: center; }
+.req { color: var(--red); font-size: 11px; }
+.inp { font-size: 13px; padding: 9px 12px; border: 1px solid #D0CCC4; border-radius: 6px; color: var(--text-primary); background: #FAFAF8; width: 100%; transition: border-color .2s; }
+.inp:focus { outline: none; border-color: var(--green-mid); }
+.sel { font-size: 13px; padding: 9px 12px; border: 1px solid #D0CCC4; border-radius: 6px; color: var(--text-primary); background: #FAFAF8; width: 100%; appearance: none; cursor: pointer; }
+.sel:focus { outline: none; border-color: var(--green-mid); }
+.textarea { font-size: 13px; padding: 9px 12px; border: 1px solid #D0CCC4; border-radius: 6px; color: var(--text-primary); background: #FAFAF8; width: 100%; resize: vertical; min-height: 70px; }
+.textarea:focus { outline: none; border-color: var(--green-mid); }
+
+.btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; padding: 9px 18px; border-radius: 6px; border: none; transition: all .2s; cursor: pointer; }
+.btn-primary { background: var(--green-mid); color: #F4F1EC; }
+.btn-primary:hover { background: var(--green-dark); }
+.btn-ghost { background: transparent; color: var(--text-secondary); border: 0.5px solid #D0CCC4; }
+.btn-ghost:hover { background: var(--bg); }
+.btn-sm { padding: 5px 12px; font-size: 12px; }
+
+.badge { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 4px; }
+.badge-green { background: var(--green-mint); color: #0D3D22; }
+
+.sc { background: var(--white); border-radius: 12px; border: 0.5px solid var(--border); padding: 1.3rem; margin-bottom: 1.2rem; }
+.sc:last-child { margin-bottom: 0; }
+.sc-title { font-size: 12px; font-weight: 500; color: var(--green-dark); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.sc.green { background: var(--green-mint); border-color: var(--green-mint-dark); }
+
+.prog-lbl { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-pale); margin-bottom: 5px; }
+.prog-lbl span:last-child { color: var(--green-mid); font-weight: 500; }
+.prog-bg { background: #E8E4DE; border-radius: 4px; height: 5px; }
+.prog-fill { background: var(--green-mid); border-radius: 4px; height: 5px; }
+.req-list { display: flex; flex-direction:column; gap: 6px; margin-top: 10px; }
+.req-item { display: flex; align-items: center; gap: 7px; font-size: 12px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.dot.done { background: var(--green-mid); }
+.dot.todo { background: #D0CCC4; }
+.r-done { color: var(--green-mid); }
+.r-todo { color: var(--text-pale); }
+
+.chk { width: 16px; height: 16px; border: 1.5px solid #D0CCC4; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; background: #fff; flex-shrink: 0; cursor: pointer; transition: all .2s; }
+.chk.on { background: var(--green-mid); border-color: var(--green-mid); }
+.check-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); cursor: pointer; }
+.check-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+.tag-wrap { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { background: var(--green-mint); color: #0D3D22; font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 4px; }
+.tag-remove { cursor: pointer; opacity: 0.7; }
+.tag-remove:hover { opacity: 1; }
+.tag-add { background: var(--bg); color: var(--text-muted); font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 0.5px dashed #C8C4BE; cursor: pointer; }
+
+.status-row { display: flex; gap: 8px; }
+.status-opt { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 6px; border: 1.5px solid transparent; cursor: pointer; transition: all .2s; }
+.status-opt.active { background: var(--green-mint); color: #0D3D22; border-color: var(--green-mid); }
+.status-opt.inactive { background: var(--bg); color: var(--text-muted); border-color: var(--border); }
+.status-opt:hover { border-color: var(--green-mid); }
+
+.info-item { display: flex; align-items: flex-start; gap: 7px; font-size: 12px; color: var(--text-secondary); margin-bottom: 7px; line-height: 1.5; }
+.info-item:last-child { margin-bottom: 0; }
+
+.avail-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 6px; }
+.day-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.day-label { font-size: 10px; color: var(--text-muted); font-weight: 500; }
+.day-box { width: 32px; height: 32px; border-radius: 6px; border: 1px solid #D0CCC4; display: flex; align-items: center; justify-content: center; background: var(--white); cursor: pointer; transition: all .2s; }
+.day-box.on { background: var(--green-mint); border-color: var(--green-mid); color: var(--green-mid); }
+
+.footer-bar { background: var(--green-mid); padding: 1rem 1.8rem; display: flex; justify-content: space-between; align-items: center; }
+.footer-l { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #C8EDD8; font-style: italic; }
+.footer-r { font-size: 11px; color: #9FD4B8; }
+
+.toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 300; display: flex; flex-direction: column; gap: 8px; }
+.toast { background: var(--green-dark); color: #F4F1EC; padding: 12px 18px; border-radius: 8px; font-size: 13px; display: flex; align-items: center; gap: 8px; animation: toastIn .3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.toast.success { background: var(--green-mid); }
+.toast.error { background: var(--red); }
+.toast.warning { background: var(--amber-dark); }
+@keyframes toastIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+.two-col { display: grid; grid-template-columns: 1fr 260px; gap: 1.4rem; }
+
+body.large-font { font-size: 17px !important; }
+body.large-font .sb-item, body.large-font .lbl, body.large-font .inp, body.large-font .sel, body.large-font .textarea, body.large-font .badge, body.large-font .btn, body.large-font .card-title, body.large-font .page-sub { font-size: 15px !important; }
+body.large-font .page-title { font-size: 34px !important; }
+
+body.high-contrast { background: #000 !important; color: #fff !important; }
+body.high-contrast .topnav { background: #000 !important; border-bottom: 2px solid #fff !important; }
+body.high-contrast .nav-logo { color: #fff !important; }
+body.high-contrast .sidebar, body.high-contrast .card, body.high-contrast .sc { background: #111 !important; border-color: #555 !important; }
+body.high-contrast .sb-item, body.high-contrast .card-title, body.high-contrast .page-title { color: #fff !important; }
+body.high-contrast .sb-item.active { background: #333 !important; border-right-color: #fff !important; }
+body.high-contrast .inp, body.high-contrast .sel, body.high-contrast .textarea { background: #222 !important; color: #fff !important; border-color: #888 !important; }
+body.high-contrast .btn-primary { background: #fff !important; color: #000 !important; }
+body.high-contrast .footer-bar { background: #000 !important; border-top: 2px solid #555 !important; }
+body.high-contrast .nav-label, body.high-contrast .page-sub, body.high-contrast .breadcrumb { color: #aaa !important; }
+
+.access-btns { display: flex; gap: 6px; align-items: center; }
+.access-btn { background: rgba(255,255,255,0.12); color: #C8EDD8; border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 500; padding: 4px 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: all .2s; white-space: nowrap; }
+.access-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+.access-btn.on { background: #F5A623; color: #5A3200; border-color: #F5A623; }
+.access-btn.on:hover { background: #E07B00; color: #fff; }
+</style>
+</head><body>
+<nav class="topnav"><a class="nav-logo" href="#">Merry<em>Meal</em></a><div class="nav-right"><span class="nav-label">Staff portal</span><div class="nav-notif"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9FD4B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"/><path d="M9 17v1a3 3 0 0 0 6 0v-1"/></svg><span class="nav-notif-badge">3</span></div><div class="nav-avatar">ST</div><span class="nav-label">Staff User</span><div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div><div class="access-btns"><button class="access-btn" data-access="font" title="Toggle large font"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 15.5m-3.5 0a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0"/><path d="M17.5 12v3.5"/><path d="M7 19v-10.5"/><path d="M3 13l3.5 -3.5l3.5 3.5"/><path d="M3 19h7"/></svg>Large font</button><button class="access-btn" data-access="contrast" title="Toggle high contrast"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M12 17a5 5 0 0 0 0 -10v10"/></svg>High contrast</button></div><button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"/><path d="M9 12h12l-3 -3"/><path d="M18 15l3 -3"/></svg>Logout</button></div></nav>
+<script>
+function doLogout(){
+  if(confirm('Are you sure you want to log out?')){
+    showToast('Logging out...','info');
+    setTimeout(()=>{ window.location.href='#'; },1000);
+  }
+}
+</script>
+<div class="app-layout"><aside class="sidebar"><span class="sb-label" style="display:block;margin-top:0">Main</span><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg>Members</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"/></svg>Caregivers</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M3 21l18 0"/><path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4"/><path d="M5 21l0 -10.15"/><path d="M19 21l0 -10.15"/><path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"/></svg>Partners</a><a class="sb-item active" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M13 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M4 17l5 1l.75 -1.5"/><path d="M15 21l0 -4l-4 -3l1 -6"/><path d="M7 12l0 -3l5 -1l3 3l3 1"/></svg>Volunteers</a><span class="sb-label" style="display:block;margin-top:.8rem">Operations</span><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5"/><path d="M3 9l4 0"/></svg>Delivery</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path d="M9 12l.01 0"/><path d="M13 12l2 0"/><path d="M9 16l.01 0"/><path d="M13 16l2 0"/></svg>Menu plan</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 21c.5 -4.5 2.5 -8 7 -10"/><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"/></svg>Food safety</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"/><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"/></svg>Reassessment</a><span class="sb-label" style="display:block;margin-top:.8rem">Admin</span><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M3 12m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 8m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20l14 0"/></svg>MIS reports</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1 -1.8 -1"/><path d="M12 6v2m0 8v2"/></svg>Donations</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 11m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"/><path d="M12 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M8 11v-4a4 4 0 1 1 8 0v4"/></svg>Access control</a></aside>
+<main class="main-content">
+<div class="breadcrumb"><span>Volunteers</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M9 6l6 6l-6 6"/></svg><span class="cur">Register new volunteer</span></div>
+<div class="page-head"><div><div class="page-title">Register new volunteer</div><div class="page-sub">US14, US15, US16</div></div></div>
+<div class="two-col"><div>
+<div class="card"><div class="card-head"><div class="card-icon green"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/></svg></div><div><div class="card-title">Personal information</div><div class="card-sub">US14 — Volunteer contact details</div></div></div>
+<div class="field-row"><div><label class="lbl">First name <span class="req">*</span></label><input class="inp" placeholder="First name" required></div><div><label class="lbl">Last name <span class="req">*</span></label><input class="inp" placeholder="Last name" required></div></div>
+<div class="field-row"><div><label class="lbl">Phone number <span class="req">*</span></label><input class="inp" placeholder="+95 9 XXX XXX XXX"></div><div><label class="lbl">Email address</label><input class="inp" placeholder="Optional"></div></div>
+<div class="field-row"><div><label class="lbl">Date of birth</label><input class="inp" type="date"></div><div><label class="lbl">Gender</label><select class="sel"><option>Male</option><option>Female</option><option>Prefer not to say</option></select></div></div></div>
+<div class="card"><div class="card-head"><div class="card-icon amber"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 4m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"/><path d="M10 4l0 4"/><path d="M14 4l0 4"/><path d="M12 8m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M9 12l6 0"/><path d="M9 16l6 0"/></svg></div><div><div class="card-title">Role &amp; service type</div><div class="card-sub">US15 — Preferred duties and skills</div></div></div>
+<div class="field"><label class="lbl">Volunteer role <span class="req">*</span></label><select class="sel"><option>Rider — meal delivery only</option><option>Kitchen helper — meal preparation only</option><option>Both — delivery &amp; preparation</option></select></div>
+<div class="field"><label class="lbl">Service types</label><div class="check-group"><label class="check-item"><span class="chk on"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5l10 -10"/></svg></span>Hot meal delivery</label><label class="check-item"><span class="chk on"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5l10 -10"/></svg></span>Meal preparation</label><label class="check-item"><span class="chk"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="display:none"><path d="M5 12l5 5l10 -10"/></svg></span>Frozen meal delivery</label><label class="check-item"><span class="chk"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="display:none"><path d="M5 12l5 5l10 -10"/></svg></span>Ingredient handling</label></div></div>
+<div class="field"><label class="lbl">Additional skills</label><div class="tag-wrap" style="margin-top:6px;"><span class="tag">Motorbike rider <span class="tag-remove" onclick="this.parentElement.remove()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></svg></span></span><span class="tag">First aid certified <span class="tag-remove" onclick="this.parentElement.remove()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></svg></span></span><span class="tag-add" onclick="addTag(this)">+ Add skill</span></div></div></div>
+<div class="card"><div class="card-head"><div class="card-icon slate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"/><path d="M16 3v4"/><path d="M8 3v4"/><path d="M4 11h16"/><path d="M11 15h1"/><path d="M12 15v3"/></svg></div><div><div class="card-title">Availability schedule</div><div class="card-sub">US14, US16 — When is this volunteer available</div></div></div>
+<div class="field"><label class="lbl">Available days <span class="req">*</span></label>
+<div class="avail-grid" style="margin-top:6px;">
+<div class="day-item"><div class="day-label">Mon</div><div class="day-box on"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5l10 -10"/></svg></div></div>
+<div class="day-item"><div class="day-label">Tue</div><div class="day-box on"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5l10 -10"/></svg></div></div>
+<div class="day-item"><div class="day-label">Wed</div><div class="day-box on"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5l10 -10"/></svg></div></div>
+<div class="day-item"><div class="day-label">Thu</div><div class="day-box"></div></div>
+<div class="day-item"><div class="day-label">Fri</div><div class="day-box on"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5l10 -10"/></svg></div></div>
+<div class="day-item"><div class="day-label">Sat</div><div class="day-box"></div></div>
+<div class="day-item"><div class="day-label">Sun</div><div class="day-box"></div></div>
+</div></div>
+<div class="field-row"><div><label class="lbl">Available from</label><input class="inp" placeholder="e.g. 09:00 AM"></div><div><label class="lbl">Available until</label><input class="inp" placeholder="e.g. 02:00 PM"></div></div></div>
+<div class="card"><div class="card-head"><div class="card-icon green"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"/></svg></div><div><div class="card-title">Zone assignment</div></div></div>
+<div class="field-row" style="margin-bottom:0;"><div><label class="lbl">Preferred zone <span class="req">*</span></label><select class="sel"><option>Zone A — Riverside</option><option>Zone B — Central Hub</option><option>Zone C — Northern</option></select></div>
+<div><label class="lbl">Account status <span class="req">*</span></label><div class="status-row" style="margin-top:4px;"><span class="status-opt active" style="font-size:11px;padding:5px 12px;">Active</span><span class="status-opt inactive" style="font-size:11px;padding:5px 12px;">Pending</span></div></div></div></div>
+<div style="display:flex;gap:10px;justify-content:flex-end;margin-top:1.4rem;">
+<button class="btn btn-ghost" onclick="history.back()">Cancel</button>
+<button class="btn btn-ghost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"/><path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M14 4l0 4l-6 0l0 -4"/></svg>Save draft</button>
+<button class="btn btn-primary" onclick="showToast('Volunteer registered!','success');setTimeout(()=>location.href='#',1500)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l14 0"/><path d="M13 18l6 -6l-6 -6"/></svg>Continue to review</button>
+</div></div><div>
+<div class="sc"><div class="sc-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 5.5l1.5 1.5l2.5 -2.5"/><path d="M3.5 11.5l1.5 1.5l2.5 -2.5"/><path d="M3.5 17.5l1.5 1.5l2.5 -2.5"/><path d="M11 6l9 0"/><path d="M11 12l9 0"/><path d="M11 18l9 0"/></svg>Form progress</div>
+<div class="prog-lbl"><span>Step 2 of 3</span><span>65%</span></div><div class="prog-bg"><div class="prog-fill" style="width:65%"></div></div>
+<div class="req-list"><div class="req-item r-done"><span class="dot done"></span>Personal details</div><div class="req-item r-done"><span class="dot done"></span>Role selected</div><div class="req-item r-done"><span class="dot done"></span>Availability set</div><div class="req-item r-todo"><span class="dot todo"></span>Zone assigned</div><div class="req-item r-todo"><span class="dot todo"></span>Staff sign-off</div></div></div>
+<div class="sc"><div class="sc-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M12 9h.01"/><path d="M11 12h1v4h1"/></svg>Volunteer responsibilities</div>
+<div class="info-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5"/><path d="M3 9l4 0"/></svg>Pick up and deliver meals to members on time</div>
+<div class="info-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M12 9h.01"/><path d="M11 12h1v4h1"/></svg>Update delivery status via the rider worklist</div>
+<div class="info-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"/><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"/></svg>Keep availability status updated</div></div>
+<div class="sc"><div class="sc-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 3m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"/><path d="M9 7l6 0"/><path d="M9 11l6 0"/><path d="M9 15l4 0"/></svg>Staff notes</div><textarea class="textarea" placeholder="Internal notes..."></textarea></div>
+<div class="sc green"><div class="sc-title" style="color:#0D3D22;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="color:var(--green-mid);"><path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"/><path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3"/><path d="M9.7 17l4.6 0"/></svg>Tip</div><div style="font-size:12px;color:var(--green-mid);line-height:1.6;">Volunteers can update their own availability at any time after login.</div></div></div></div></main></div>
+<footer class="footer-bar"><div class="footer-l">MerryMeal · The Study Syndicate</div><div class="footer-r">Higher Diploma in Software Engineering · 2026</div></footer>
+<div id="toast-container" class="toast-container"></div>
+<script>
+function navigateTo(path) { window.location.href = path; }
+function showToast(msg, type = 'success') { const container = document.getElementById('toast-container') || createToastContainer(); const toast = document.createElement('div'); toast.className = `toast ${type}`; toast.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">${getIconPath(type)}</svg>${msg}`; container.appendChild(toast); setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateX(100%)'; toast.style.transition = 'all .3s'; setTimeout(() => toast.remove(), 300); }, 3000); }
+function getIconPath(type) { const paths = { success: '<path d="M5 12l5 5l10 -10"></path>', error: '<path d="M18 6l-12 12"></path><path d="M6 6l12 12"></path>', warning: '<path d="M12 9v4"></path><path d="M12 17h.01"></path><path d="M12 3l8.5 14.5a2.1 2.1 0 0 1 -1.8 3.1h-16.7a2.1 2.1 0 0 1 -1.8 -3.1l8.5 -14.5z"></path>', info: '<path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path><path d="M12 9h.01"></path><path d="M11 12h1v4h1"></path>' }; return paths[type] || paths.success; }
+function createToastContainer() { const el = document.createElement('div'); el.id = 'toast-container'; el.className = 'toast-container'; document.body.appendChild(el); return el; }
+function openModal(id) { document.getElementById(id)?.classList.add('open'); }
+function closeModal(id) { document.getElementById(id)?.classList.remove('open'); }
+function addTag(btn) { const tag = prompt('Enter tag:'); if(tag){ const span = document.createElement('span'); span.className = 'tag'; span.innerHTML = tag + ' <span class="tag-remove" onclick="this.parentElement.remove()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></svg></span>'; btn.parentElement.insertBefore(span, btn); } }
+function initToggles() { document.querySelectorAll('.toggle').forEach(t => { t.addEventListener('click', () => { t.classList.toggle('on'); t.classList.toggle('off'); }); }); }
+function initCheckboxes() { document.querySelectorAll('.chk').forEach(chk => { chk.addEventListener('click', () => { chk.classList.toggle('on'); if (chk.classList.contains('on')) { chk.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5l10 -10"></path></svg>'; } else { chk.innerHTML = ''; } }); }); }
+function initDayBoxes() { document.querySelectorAll('.day-box').forEach(box => { box.addEventListener('click', () => { box.classList.toggle('on'); box.innerHTML = box.classList.contains('on') ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5l10 -10"></path></svg>' : ''; }); }); }
+function initStatusOpts() { document.querySelectorAll('.status-row').forEach(row => { row.querySelectorAll('.status-opt').forEach(opt => { opt.addEventListener('click', () => { row.querySelectorAll('.status-opt').forEach(o => { o.classList.remove('active'); o.classList.add('inactive'); }); opt.classList.add('active'); opt.classList.remove('inactive'); }); }); }); }
+function initTagRemove() { document.querySelectorAll('.tag-remove').forEach(btn => { btn.addEventListener('click', () => btn.parentElement.remove()); }); }
+function initModalClose() { document.querySelectorAll('.modal-overlay').forEach(overlay => { overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); }); }); }
+function initFilterBtns() { document.querySelectorAll('.filter-group').forEach(group => { group.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', () => { group.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('act'); b.classList.add('un'); }); btn.classList.add('act'); btn.classList.remove('un'); }); }); }); }
+document.addEventListener('DOMContentLoaded', () => { initToggles(); initCheckboxes(); initDayBoxes(); initStatusOpts(); initTagRemove(); initModalClose(); initFilterBtns(); });
+function initAccessibilityToggles() {
+  if (localStorage.getItem('mm-large-font') === 'on') { document.body.classList.add('large-font'); document.querySelectorAll('.access-btn[data-access="font"]').forEach(b => b.classList.add('on')); }
+  if (localStorage.getItem('mm-high-contrast') === 'on') { document.body.classList.add('high-contrast'); document.querySelectorAll('.access-btn[data-access="contrast"]').forEach(b => b.classList.add('on')); }
+  document.querySelectorAll('.access-btn[data-access="font"]').forEach(btn => { btn.addEventListener('click', () => { document.body.classList.toggle('large-font'); const on = document.body.classList.contains('large-font'); localStorage.setItem('mm-large-font', on ? 'on' : 'off'); document.querySelectorAll('.access-btn[data-access="font"]').forEach(b => b.classList.toggle('on', on)); showToast(on ? 'Large font mode on' : 'Large font mode off', 'info'); }); });
+  document.querySelectorAll('.access-btn[data-access="contrast"]').forEach(btn => { btn.addEventListener('click', () => { document.body.classList.toggle('high-contrast'); const on = document.body.classList.contains('high-contrast'); localStorage.setItem('mm-high-contrast', on ? 'on' : 'off'); document.querySelectorAll('.access-btn[data-access="contrast"]').forEach(b => b.classList.toggle('on', on)); showToast(on ? 'High contrast mode on' : 'High contrast mode off', 'info'); }); });
+}
+document.addEventListener('DOMContentLoaded', initAccessibilityToggles);
+</script>
+</body></html>

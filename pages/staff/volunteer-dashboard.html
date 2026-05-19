@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rider Dashboard — MerryMeal</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head><body>
+<nav class="topnav">
+  <a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a>
+  <div class="nav-right">
+    <span class="nav-label">Rider portal</span>
+    <div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">1</span></div>
+    <div class="nav-avatar">KZ</div>
+    <span class="nav-label">Kyaw Zin Tun</span>
+    <div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div>
+    <div class="access-btns"><button class="access-btn" data-access="font" title="Toggle large font"><i class="ti ti-letter-case" style="font-size:13px;"></i>Large font</button><button class="access-btn" data-access="contrast" title="Toggle high contrast"><i class="ti ti-contrast" style="font-size:13px;"></i>High contrast</button></div>
+    <button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button>
+  </div>
+</nav>
+<div class="app-layout">
+<aside class="sidebar">
+    <span class="sb-label" style="display:block;margin-top:0">Rider portal</span>
+    <a class="sb-item active" href="volunteer-dashboard.html"><i class="ti ti-layout-dashboard"></i>My dashboard</a>
+  </aside>
+<main class="main-content">
+  <div class="breadcrumb"><span>Rider portal</span><i class="ti ti-chevron-right"></i><span class="cur">My dashboard</span></div>
+  <div class="page-head">
+    <div><div class="page-title">Welcome, <em>Kyaw Zin Tun</em></div><div class="page-sub">Zone A rider — US16, US17, US18</div></div>
+    <a href="rider-worklist.html" class="btn btn-primary"><i class="ti ti-list-check"></i>View today's worklist</a>
+  </div>
+
+  <!-- TODAY SUMMARY -->
+  <div class="kpi-grid">
+    <div class="kpi dark"><div class="kpi-label">Deliveries today</div><div class="kpi-val">42</div></div>
+    <div class="kpi dark"><div class="kpi-label">Completed</div><div class="kpi-val">28</div><div class="kpi-sub"><i class="ti ti-check"></i>67%</div></div>
+    <div class="kpi light"><div class="kpi-label">Remaining</div><div class="kpi-val">14</div><div class="kpi-sub warn"><i class="ti ti-clock"></i>In progress</div></div>
+    <div class="kpi light"><div class="kpi-label">Notifications sent</div><div class="kpi-val">28</div><div class="kpi-sub"><i class="ti ti-mail"></i>Auto-sent</div></div>
+  </div>
+
+  <div class="two-col">
+  <div>
+    <!-- QUICK WORKLIST PREVIEW -->
+    <div class="card">
+      <div class="card-head"><div class="card-icon green"><i class="ti ti-list-check"></i></div><div><div class="card-title">Today's deliveries — Route A-1</div><div class="card-sub">US17 — Tap to open full worklist</div></div></div>
+      <table class="data-table">
+        <thead><tr><th>#</th><th>Member</th><th>Address</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="td-name">Margaret Thompson</td><td>14 Maple Lane</td><td><span class="badge badge-green"><i class="ti ti-check" style="font-size:10px;"></i>Delivered</span></td></tr>
+          <tr><td>2</td><td class="td-name">Daw Khin May</td><td>22 River Road</td><td><span class="badge badge-amber"><i class="ti ti-clock" style="font-size:10px;"></i>Departed</span></td></tr>
+          <tr><td>3</td><td class="td-name">U Hla Myint</td><td>5 Garden St</td><td><span class="badge badge-slate">Prepared</span></td></tr>
+        </tbody>
+      </table>
+      <a href="rider-worklist.html" class="btn btn-secondary btn-full" style="margin-top:1rem;"><i class="ti ti-external-link"></i>Open full worklist</a>
+    </div>
+  </div>
+
+  <div>
+    <!-- AVAILABILITY — US16 -->
+    <div class="sc">
+      <div class="sc-title"><i class="ti ti-calendar"></i>My availability — US16</div>
+      <div class="lbl" style="margin-bottom:8px;">Available days this week</div>
+      <div class="avail-grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;">
+        <div class="day-item"><div class="day-label">Mon</div><div class="day-box on" style="width:26px;height:26px;"><i class="ti ti-check" style="font-size:11px;"></i></div></div>
+        <div class="day-item"><div class="day-label">Tue</div><div class="day-box on" style="width:26px;height:26px;"><i class="ti ti-check" style="font-size:11px;"></i></div></div>
+        <div class="day-item"><div class="day-label">Wed</div><div class="day-box on" style="width:26px;height:26px;"><i class="ti ti-check" style="font-size:11px;"></i></div></div>
+        <div class="day-item"><div class="day-label">Thu</div><div class="day-box" style="width:26px;height:26px;"></div></div>
+        <div class="day-item"><div class="day-label">Fri</div><div class="day-box on" style="width:26px;height:26px;"><i class="ti ti-check" style="font-size:11px;"></i></div></div>
+        <div class="day-item"><div class="day-label">Sat</div><div class="day-box" style="width:26px;height:26px;"></div></div>
+        <div class="day-item"><div class="day-label">Sun</div><div class="day-box" style="width:26px;height:26px;"></div></div>
+      </div>
+      <button class="btn btn-secondary btn-full" style="margin-top:1rem;" onclick="showToast('Availability updated!','success')"><i class="ti ti-device-floppy"></i>Save availability</button>
+    </div>
+
+    <!-- ROLE INFO -->
+    <div class="sc" style="margin-top:1.2rem;">
+      <div class="sc-title"><i class="ti ti-id-badge"></i>My role</div>
+      <div class="summary-item"><span class="summary-label">Role</span><span class="summary-val">Rider — delivery only</span></div>
+      <div class="summary-item"><span class="summary-label">Zone</span><span class="summary-val">Zone A</span></div>
+      <div class="summary-item"><span class="summary-label">Status</span><span><span class="badge badge-green">Active</span></span></div>
+    </div>
+  </div>
+  </div>
+</main>
+</div>
+<footer class="footer-bar">
+  <div class="footer-l">MerryMeal · The Study Syndicate</div>
+  <div class="footer-r">Higher Diploma in Software Engineering · 2026</div>
+</footer><script>
+function doLogout(){if(confirm('Are you sure you want to log out?')){showToast('Logging out...','info');setTimeout(()=>{window.location.href='../auth/login.html';},1000);}}
+</script>
+<div id="toast-container" class="toast-container"></div>
+<script src="../../js/app.js"></script>
+</body></html>

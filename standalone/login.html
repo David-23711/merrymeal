@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — MerryMeal (Standalone Figma-Ready)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap');
+
+:root {
+  --green-dark: #152E23;
+  --green-mid: #2E6B4F;
+  --green-sage: #5C9475;
+  --green-mint: #E4F2EB;
+  --green-mint-dark: #C0DDCA;
+  --amber: #F5A623;
+  --amber-light: #FDF0D5;
+  --amber-dark: #E07B00;
+  --off-white: #F4F1EC;
+  --white: #ffffff;
+  --border: #E0DDD6;
+  --border-light: #EDE9E2;
+  --text-primary: #1C1C1A;
+  --text-secondary: #5A5855;
+  --text-muted: #9A9790;
+  --text-pale: #B0ADA8;
+  --red: #B83028;
+  --red-light: #FDECEA;
+  --slate: #2D4A6B;
+  --slate-light: #EEF1F5;
+  --bg: #F4F1EC;
+  --sidebar-w: 210px;
+  --nav-h: 54px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text-primary); font-size: 14px; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: 'Outfit', sans-serif; }
+input, select, textarea { font-family: 'Outfit', sans-serif; }
+
+/* SVG Icon Helper - Keeping CSS for browser but adding explicit attributes for Figma */
+svg.ti {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/* ── TYPOGRAPHY ── */
+.font-display { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+.font-display em { font-style: italic; }
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; color: var(--green-dark); }
+
+/* ── BUTTONS ── */
+.btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; padding: 9px 18px; border-radius: 6px; border: none; transition: all .2s; cursor: pointer; }
+.btn-primary { background: var(--green-mid); color: #F4F1EC; }
+.btn-primary:hover { background: var(--green-dark); }
+.btn-amber { background: var(--amber); color: #5A3200; }
+.btn-amber:hover { background: var(--amber-dark); color: #fff; }
+.btn-full { width: 100%; justify-content: center; }
+
+/* ── FORM ELEMENTS ── */
+.field { margin-bottom: 1rem; }
+.lbl { font-size: 11px; font-weight: 500; color: var(--text-secondary); margin-bottom: 4px; display: flex; gap: 3px; align-items: center; }
+.inp { font-size: 13px; padding: 9px 12px; border: 1px solid #D0CCC4; border-radius: 6px; color: var(--text-primary); background: #FAFAF8; width: 100%; transition: border-color .2s; }
+.inp:focus { outline: none; border-color: var(--green-mid); }
+
+/* ── LOGIN SPECIFIC ── */
+.login-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;}
+.login-left{background:var(--green-mid);padding:3.5rem;display:flex;flex-direction:column;justify-content:space-between;}
+.ll-title{font-family:'Cormorant Garamond', serif;font-size:40px;font-weight:300;color:#F4F1EC;line-height:1.05;margin-bottom:16px;}
+.ll-title em{font-style:italic;color:#C8EDD8;}
+.ll-desc{font-size:13px;color:#9FD4B8;line-height:1.8;}
+.role-card{background:rgba(255,255,255,.07);border-radius:10px;border:.5px solid rgba(255,255,255,.1);padding:.9rem 1.1rem;display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.rc-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.rc-name{font-size:13px;font-weight:500;color:#F4F1EC;}
+.rc-desc{font-size:11px;color:#7BAF96;}
+.ll-stats{display:flex;gap:2rem;}
+.ll-stat-num{font-family:'Cormorant Garamond', serif;font-size:28px;font-weight:300;color:#F4F1EC;line-height:1;}
+.ll-stat-label{font-size:11px;color:#7BAF96;margin-top:3px;}
+.login-right{display:flex;align-items:center;justify-content:center;padding:3rem 2rem;background:var(--bg);}
+.login-form{width:100%;max-width:380px;}
+.role-selector{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:1.6rem;}
+.rs-btn{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 6px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;transition:all .2s;}
+.rs-btn.active{background:var(--green-mint);border-color:var(--green-mid);}
+.rs-btn svg{width:20px; height:20px; color:#9A9790;}
+.rs-btn.active svg{color:var(--green-mid);}
+.rs-btn span{font-size:11px;color:#9A9790;}
+.rs-btn.active span{color:#152E23;font-weight:500;}
+
+/* Checkbox Helper */
+.check-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); cursor: pointer; }
+.chk { width: 16px; height: 16px; border: 1.5px solid #D0CCC4; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; background: #fff; flex-shrink: 0; }
+.chk.on { background: var(--green-mid); border-color: var(--green-mid); }
+
+/* Accessibility Toggles */
+.access-btns { display: flex; gap: 6px; align-items: center; }
+.access-btn {
+  background: rgba(255,255,255,0.12);
+  color: #C8EDD8;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 5px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.access-btn.on { background: #F5A623; color: #5A3200; border-color: #F5A623; }
+
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: #F4F1EC; letter-spacing: -0.3px; }
+.nav-logo em { font-style: italic; color: #C8EDD8; }
+
+/* Toast */
+.toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 300; display: flex; flex-direction: column; gap: 8px; }
+.toast { background: var(--green-dark); color: #F4F1EC; padding: 12px 18px; border-radius: 8px; font-size: 13px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.toast.success { background: var(--green-mid); }
+</style>
+</head>
+<body>
+<div class="login-wrap">
+  <div class="login-left">
+    <div>
+      <div style="margin-bottom:1.5rem;"><a class="nav-logo" href="#" style="font-size:24px;">Merry<em>Meal</em></a></div>
+      <div class="ll-title">Sign in to<br><em>MerryMeal</em></div>
+      <div class="ll-desc" style="margin-bottom:2rem;">Your central platform for managing meal delivery, member care, food safety, and organisational reporting.</div>
+      
+      <div class="role-card">
+        <div class="rc-icon" style="background:var(--green-mid);color:#9FD4B8;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti"><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+        </div>
+        <div><div class="rc-name">Members & Caregivers</div><div class="rc-desc">View meal schedule, delivery status & profile</div></div>
+      </div>
+      
+      <div class="role-card">
+        <div class="rc-icon" style="background:rgba(245,166,35,.2);color:#F5A623;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti"><path d="M13 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 17l5 1l.75 -1.5" /><path d="M15 21l0 -4l-4 -3l1 -6" /><path d="M7 12l0 -3l5 -1l3 3l3 1" /></svg>
+        </div>
+        <div><div class="rc-name">Volunteers & Riders</div><div class="rc-desc">Access daily worklist and update delivery status</div></div>
+      </div>
+      
+      <div class="role-card">
+        <div class="rc-icon" style="background:rgba(255,255,255,.1);color:#C8EDD8;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" /><path d="M9 12l2 2l4 -4" /></svg>
+        </div>
+        <div><div class="rc-name">Staff & Admin</div><div class="rc-desc">Manage operations, reports and access control</div></div>
+      </div>
+    </div>
+    
+    <div class="ll-stats">
+      <div><div class="ll-stat-num">342</div><div class="ll-stat-label">Active members</div></div>
+      <div><div class="ll-stat-num">1,248</div><div class="ll-stat-label">Meals this week</div></div>
+      <div><div class="ll-stat-num">97%</div><div class="ll-stat-label">On-time delivery</div></div>
+    </div>
+  </div>
+  
+  <div class="login-right">
+    <div class="login-form">
+      <div style="font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#9A9790;margin-bottom:8px;">Member portal</div>
+      <h1 style="font-size:28px;margin-bottom:4px;">Sign in to your<br><em>account</em></h1>
+      <p style="font-size:13px;color:#9A9790;margin-bottom:1.6rem;">Select your role then enter your credentials.</p>
+      
+      <div class="role-selector">
+        <div class="rs-btn active" onclick="selectRole(this)"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg><span>Member</span></div>
+        <div class="rs-btn" onclick="selectRole(this)"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti"><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg><span>Caregiver</span></div>
+        <div class="rs-btn" onclick="selectRole(this)"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti"><path d="M13 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M4 17l5 1l.75 -1.5" /><path d="M15 21l0 -4l-4 -3l1 -6" /><path d="M7 12l0 -3l5 -1l3 3l3 1" /></svg><span>Volunteer</span></div>
+        <div class="rs-btn" onclick="selectRole(this)"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti"><path d="M3 21l18 0" /><path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4" /><path d="M5 21l0 -10.15" /><path d="M19 21l0 -10.15" /><path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" /></svg><span>Partner</span></div>
+        <div class="rs-btn" onclick="selectRole(this)"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti"><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l3.5 3.5v3h-3l-3.5 -3.5a6 6 0 0 1 -8 -8l3.5 3.5" /></svg><span>Staff</span></div>
+        <div class="rs-btn" onclick="selectRole(this)"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" /></svg><span>Admin</span></div>
+      </div>
+      
+      <div class="field">
+        <label class="lbl">Email or phone number</label>
+        <input class="inp" type="text" placeholder="Enter your email or phone" id="login-email">
+      </div>
+      
+      <div class="field">
+        <label class="lbl">Password</label>
+        <div style="position:relative;">
+          <input class="inp" type="password" id="login-pw" placeholder="Enter your password">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B0ADA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;" onclick="togglePw()"><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+        </div>
+      </div>
+      
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:.8rem;margin-bottom:1.2rem;">
+        <label class="check-item"><span class="chk on" style="display:flex;align-items:center;justify-content:center;background:var(--green-mid);border-color:var(--green-mid);"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="ti"><path d="M5 12l5 5l10 -10" /></svg></span>Remember me</label>
+        <a href="#" style="font-size:12px;color:var(--green-mid);font-weight:500;">Forgot password?</a>
+      </div>
+      
+      <button class="btn btn-primary btn-full" style="padding:13px;font-size:14px;" onclick="doLogin()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti" style="margin-right:8px;"><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M20 12h-13l3 -3m0 6l-3 -3" /></svg>
+        Sign in
+      </button>
+      
+      <p style="text-align:center;font-size:13px;color:#9A9790;margin-top:1.2rem;">Don't have an account? <a href="#" style="color:var(--green-mid);font-weight:500;">Register here</a></p>
+      <p style="text-align:center;font-size:11px;color:#B0ADA8;margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:5px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5C9475" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti"><path d="M5 11m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z" /><path d="M12 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M8 11v-4a4 4 0 1 1 8 0v4" /></svg>
+        Secured with role-based access control
+      </p>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container" class="toast-container"></div>
+
+<div class="access-btns" style="position:fixed;bottom:20px;right:20px;z-index:99;">
+  <button class="access-btn" data-access="font" style="background:#2E6B4F;border-color:#2E6B4F;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti" style="margin-right:5px;"><path d="M17.5 15.5m-3.5 0a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0" /><path d="M17 19v-2" /><path d="M12 19v-10h3" /><path d="M9 13l6 0" /><path d="M6 19l0 -10l6 0" /></svg>
+    Large font
+  </button>
+  <button class="access-btn" data-access="contrast" style="background:#2E6B4F;border-color:#2E6B4F;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ti" style="margin-right:5px;"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M12 17a5 5 0 0 0 0 -10v10" /></svg>
+    High contrast
+  </button>
+</div>
+
+<script>
+function selectRole(el){document.querySelectorAll('.rs-btn').forEach(b=>{b.classList.remove('active')});el.classList.add('active');}
+function togglePw(){const pw=document.getElementById('login-pw');pw.type=pw.type==='password'?'text':'password';}
+function doLogin(){
+  const e=document.getElementById('login-email').value;
+  const p=document.getElementById('login-pw').value;
+  if(!e||!p){showToast('Please enter your credentials','error');return;}
+  showToast('Signing in...','info');
+  setTimeout(()=>{ showToast('Login successful! (Simulated)','success'); },1000);
+}
+function showToast(msg, type = 'success') {
+  const container = document.getElementById('toast-container') || createToastContainer();
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = msg;
+  container.appendChild(toast);
+  setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'all .3s'; setTimeout(() => toast.remove(), 300); }, 3000);
+}
+function createToastContainer() {
+  const el = document.createElement('div');
+  el.id = 'toast-container'; el.className = 'toast-container';
+  document.body.appendChild(el); return el;
+}
+</script>
+</body>
+</html>

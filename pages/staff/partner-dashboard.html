@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partner Dashboard — MerryMeal</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head><body>
+<nav class="topnav">
+  <a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a>
+  <div class="nav-right">
+    <span class="nav-label">Partner portal</span>
+    <div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">1</span></div>
+    <div class="nav-avatar">GB</div>
+    <span class="nav-label">Green Bowl Kitchen</span>
+    <div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div>
+    <div class="access-btns"><button class="access-btn" data-access="font" title="Toggle large font"><i class="ti ti-letter-case" style="font-size:13px;"></i>Large font</button><button class="access-btn" data-access="contrast" title="Toggle high contrast"><i class="ti ti-contrast" style="font-size:13px;"></i>High contrast</button></div>
+    <button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button>
+  </div>
+</nav>
+<div class="app-layout">
+<aside class="sidebar">
+    <span class="sb-label" style="display:block;margin-top:0">Partner portal</span>
+    <a class="sb-item active" href="partner-dashboard.html"><i class="ti ti-layout-dashboard"></i>My dashboard</a>
+  </aside>
+<main class="main-content">
+  <div class="breadcrumb"><span>Partner portal</span><i class="ti ti-chevron-right"></i><span class="cur">My dashboard</span></div>
+  <div class="page-head">
+    <div><div class="page-title">Green Bowl Kitchen</div><div class="page-sub">Approved partner — Zone A &amp; Zone B</div></div>
+    <span class="badge badge-green" style="font-size:12px;padding:6px 14px;"><i class="ti ti-shield-check" style="font-size:12px;"></i>Approved partner</span>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi dark"><div class="kpi-label">Meals to prepare today</div><div class="kpi-val">376</div><div class="kpi-sub"><i class="ti ti-clock"></i>By 11:00 AM</div></div>
+    <div class="kpi dark"><div class="kpi-label">Zones covered</div><div class="kpi-val">2</div><div class="kpi-sub"><i class="ti ti-map-pin"></i>Zone A &amp; B</div></div>
+    <div class="kpi light"><div class="kpi-label">Daily capacity</div><div class="kpi-val">120</div><div class="kpi-sub"><i class="ti ti-check"></i>Within limit</div></div>
+    <div class="kpi light"><div class="kpi-label">Food safety status</div><div class="kpi-val">OK</div><div class="kpi-sub"><i class="ti ti-shield-check"></i>Compliant</div></div>
+  </div>
+
+  <div class="two-col">
+  <div>
+    <!-- THIS WEEK MEAL SCHEDULE -->
+    <div class="card">
+      <div class="card-head"><div class="card-icon green"><i class="ti ti-clipboard-list"></i></div><div><div class="card-title">This week's preparation schedule</div><div class="card-sub">Approved menu for week of 19–23 May 2026</div></div></div>
+      <table class="data-table">
+        <thead><tr><th>Day</th><th>Meal</th><th>Portions</th><th>Dietary tags</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="td-name">Mon 19</td><td>Steamed fish &amp; rice</td><td>376</td><td><span class="badge badge-green">Low sodium</span></td><td><span class="badge badge-green">Approved</span></td></tr>
+          <tr><td class="td-name">Tue 20</td><td>Tofu &amp; veg stir fry</td><td>376</td><td><span class="badge badge-green">Vegan</span></td><td><span class="badge badge-green">Approved</span></td></tr>
+          <tr><td class="td-name">Wed 21</td><td>Pork &amp; pumpkin soup</td><td>376</td><td><span class="badge badge-green">High protein</span></td><td><span class="badge badge-green">Approved</span></td></tr>
+          <tr><td class="td-name">Thu 22</td><td>Egg &amp; spinach rice</td><td>376</td><td><span class="badge badge-slate">Gluten free</span></td><td><span class="badge badge-green">Approved</span></td></tr>
+          <tr><td class="td-name">Fri 23</td><td>TBA</td><td>—</td><td>—</td><td><span class="badge badge-amber">Pending</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <!-- PARTNER INFO -->
+    <div class="sc">
+      <div class="sc-title"><i class="ti ti-building-store"></i>Organisation details</div>
+      <div class="summary-item"><span class="summary-label">Organisation</span><span class="summary-val">Green Bowl Kitchen Co.</span></div>
+      <div class="summary-item"><span class="summary-label">Partner ID</span><span class="summary-val">PT-2026-0008</span></div>
+      <div class="summary-item"><span class="summary-label">Service type</span><span class="summary-val">Meal prep &amp; delivery</span></div>
+      <div class="summary-item"><span class="summary-label">Zones</span><span class="summary-val">Zone A, Zone B</span></div>
+      <div class="summary-item"><span class="summary-label">Approval</span><span><span class="badge badge-green">Approved</span></span></div>
+    </div>
+
+    <!-- FOOD SAFETY SHORTCUT -->
+    <div class="sc" style="margin-top:1.2rem;background:var(--green-mint);border-color:var(--green-mint-dark);">
+      <div class="sc-title" style="color:#0D3D22;"><i class="ti ti-leaf" style="color:var(--green-mid);"></i>Food safety reminder</div>
+      <div style="font-size:12px;color:var(--green-mid);line-height:1.6;">Remember to log cooking times and ingredient expiry dates daily. Non-compliance may affect your partner status.</div>
+      <a href="food-safety.html" class="btn btn-secondary btn-full" style="margin-top:1rem;"><i class="ti ti-leaf"></i>Go to food safety logs</a>
+    </div>
+  </div>
+  </div>
+</main>
+</div>
+<footer class="footer-bar">
+  <div class="footer-l">MerryMeal · The Study Syndicate</div>
+  <div class="footer-r">Higher Diploma in Software Engineering · 2026</div>
+</footer><script>
+function doLogout(){if(confirm('Are you sure you want to log out?')){showToast('Logging out...','info');setTimeout(()=>{window.location.href='../auth/login.html';},1000);}}
+</script>
+<div id="toast-container" class="toast-container"></div>
+<script src="../../js/app.js"></script>
+</body></html>

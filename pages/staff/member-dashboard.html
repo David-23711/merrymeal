@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Dashboard — MerryMeal</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head><body>
+<nav class="topnav">
+  <a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a>
+  <div class="nav-right">
+    <span class="nav-label">Member portal</span>
+    <div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">1</span></div>
+    <div class="nav-avatar">MT</div>
+    <span class="nav-label">Margaret Thompson</span>
+    <div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div>
+    <div class="access-btns"><button class="access-btn" data-access="font" title="Toggle large font"><i class="ti ti-letter-case" style="font-size:13px;"></i>Large font</button><button class="access-btn" data-access="contrast" title="Toggle high contrast"><i class="ti ti-contrast" style="font-size:13px;"></i>High contrast</button></div>
+    <button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button>
+  </div>
+</nav>
+<div class="app-layout">
+<aside class="sidebar">
+    <span class="sb-label" style="display:block;margin-top:0">Member portal</span>
+    <a class="sb-item active" href="member-dashboard.html"><i class="ti ti-layout-dashboard"></i>My dashboard</a>
+  </aside>
+<main class="main-content">
+  <div class="breadcrumb"><span>Member portal</span><i class="ti ti-chevron-right"></i><span class="cur">My dashboard</span></div>
+  <div class="page-head">
+    <div><div class="page-title">Welcome, <em>Margaret</em></div><div class="page-sub">Your meal schedule and delivery status — US04</div></div>
+    <span class="badge badge-green" style="font-size:12px;padding:6px 14px;"><i class="ti ti-check" style="font-size:12px;"></i>Account active</span>
+  </div>
+
+  <!-- TODAY'S MEAL STATUS -->
+  <div class="card" style="margin-bottom:1.2rem;background:linear-gradient(135deg,#152E23,#2E6B4F);">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#7BAF96;margin-bottom:6px;">Today's meal — Tuesday 19 May 2026</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:#F4F1EC;">Steamed fish &amp; rice</div>
+        <div style="font-size:12px;color:#9FD4B8;margin-top:4px;">Low sodium · Soft texture · Hot meal</div>
+        <div style="margin-top:10px;"><span class="badge" style="background:rgba(245,166,35,.25);color:#F5A623;font-size:12px;padding:5px 12px;"><i class="ti ti-clock" style="font-size:11px;"></i>Departed — on the way</span></div>
+      </div>
+      <div style="width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:32px;color:#9FD4B8;flex-shrink:0;">
+        <i class="ti ti-truck-delivery"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+  <div>
+    <!-- WEEKLY MEAL SCHEDULE — US04 -->
+    <div class="card">
+      <div class="card-head"><div class="card-icon green"><i class="ti ti-calendar"></i></div><div><div class="card-title">This week's meal schedule</div><div class="card-sub">US04 — Week of 19–23 May 2026</div></div></div>
+      <table class="data-table">
+        <thead><tr><th>Day</th><th>Meal</th><th>Dietary tags</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="td-name">Monday 19</td><td>Steamed fish &amp; rice</td><td><span class="badge badge-green">Low sodium</span></td><td><span class="badge badge-amber"><i class="ti ti-truck-delivery" style="font-size:10px;"></i>On the way</span></td></tr>
+          <tr><td class="td-name">Tuesday 20</td><td>Tofu &amp; veg stir fry</td><td><span class="badge badge-green">Vegan</span></td><td><span class="badge badge-slate">Scheduled</span></td></tr>
+          <tr><td class="td-name">Wednesday 21</td><td>Pork &amp; pumpkin soup</td><td><span class="badge badge-green">High protein</span></td><td><span class="badge badge-slate">Scheduled</span></td></tr>
+          <tr><td class="td-name">Thursday 22</td><td>Egg &amp; spinach rice</td><td><span class="badge badge-green">Gluten free</span></td><td><span class="badge badge-slate">Scheduled</span></td></tr>
+          <tr><td class="td-name">Friday 23</td><td>TBA</td><td>—</td><td><span class="badge badge-slate">Pending</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FEEDBACK — US05 -->
+    <div class="card" style="margin-top:1.2rem;">
+      <div class="card-head"><div class="card-icon amber"><i class="ti ti-message-circle"></i></div><div><div class="card-title">Submit meal feedback</div><div class="card-sub">US05 — Share your experience</div></div></div>
+      <div class="field"><label class="lbl">Which meal are you rating?</label>
+        <select class="sel"><option>Monday 19 May — Steamed fish &amp; rice</option><option>Friday 16 May — Egg &amp; spinach rice</option></select>
+      </div>
+      <div class="field"><label class="lbl">Overall rating</label>
+        <div style="display:flex;gap:8px;" id="rating-row">
+          <button class="btn btn-sm btn-ghost" onclick="setRating(1)"><i class="ti ti-star"></i> 1</button>
+          <button class="btn btn-sm btn-ghost" onclick="setRating(2)"><i class="ti ti-star"></i> 2</button>
+          <button class="btn btn-sm btn-ghost" onclick="setRating(3)"><i class="ti ti-star"></i> 3</button>
+          <button class="btn btn-sm btn-ghost" onclick="setRating(4)"><i class="ti ti-star"></i> 4</button>
+          <button class="btn btn-sm btn-ghost" onclick="setRating(5)"><i class="ti ti-star"></i> 5</button>
+        </div>
+      </div>
+      <div class="field"><label class="lbl">Comments</label><textarea class="textarea" placeholder="How was the meal? Any concerns about portion size, temperature, or dietary needs?"></textarea></div>
+      <button class="btn btn-primary" onclick="showToast('Feedback submitted — thank you!','success')"><i class="ti ti-send"></i>Submit feedback</button>
+    </div>
+  </div>
+
+  <div>
+    <!-- PROFILE SUMMARY — US03 -->
+    <div class="sc">
+      <div class="sc-title"><i class="ti ti-user"></i>My profile</div>
+      <div class="summary-item"><span class="summary-label">Name</span><span class="summary-val">Margaret Thompson</span></div>
+      <div class="summary-item"><span class="summary-label">Zone</span><span class="summary-val">Zone A</span></div>
+      <div class="summary-item"><span class="summary-label">Meal type</span><span class="summary-val">Hot meal</span></div>
+      <div class="summary-item"><span class="summary-label">Condition</span><span class="summary-val">Diabetes (Type 2)</span></div>
+      <div class="summary-item"><span class="summary-label">Dietary tags</span><span class="summary-val">Low sodium, Soft</span></div>
+      <button class="btn btn-secondary btn-full" style="margin-top:1rem;" onclick="showToast('Profile edit — US03','info')"><i class="ti ti-edit"></i>Edit my profile</button>
+    </div>
+
+    <!-- DELIVERY INFO -->
+    <div class="sc" style="margin-top:1.2rem;">
+      <div class="sc-title"><i class="ti ti-map-pin"></i>Delivery address</div>
+      <div style="font-size:13px;color:var(--text-primary);font-family:'Outfit',sans-serif;line-height:1.6;">14 Maple Lane<br>Hlaing Township, Yangon<br><span style="font-size:11px;color:var(--text-pale);">Ring bell twice</span></div>
+    </div>
+  </div>
+  </div>
+</main>
+</div>
+<footer class="footer-bar">
+  <div class="footer-l">MerryMeal · The Study Syndicate</div>
+  <div class="footer-r">Higher Diploma in Software Engineering · 2026</div>
+</footer><script>
+function doLogout(){if(confirm('Are you sure you want to log out?')){showToast('Logging out...','info');setTimeout(()=>{window.location.href='../auth/login.html';},1000);}}
+</script>
+<script>
+function setRating(n){document.querySelectorAll('#rating-row .btn').forEach((b,i)=>{b.className=i<n?'btn btn-sm btn-primary':'btn btn-sm btn-ghost';});}
+</script>
+<div id="toast-container" class="toast-container"></div>
+<script src="../../js/app.js"></script>
+</body></html>

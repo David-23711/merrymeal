@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register Partner — MerryMeal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap');
+
+:root {
+  --green-dark: #152E23;
+  --green-mid: #2E6B4F;
+  --green-sage: #5C9475;
+  --green-mint: #E4F2EB;
+  --green-mint-dark: #C0DDCA;
+  --amber: #F5A623;
+  --amber-light: #FDF0D5;
+  --amber-dark: #E07B00;
+  --off-white: #F4F1EC;
+  --white: #ffffff;
+  --border: #E0DDD6;
+  --border-light: #EDE9E2;
+  --text-primary: #1C1C1A;
+  --text-secondary: #5A5855;
+  --text-muted: #9A9790;
+  --text-pale: #B0ADA8;
+  --red: #B83028;
+  --red-light: #FDECEA;
+  --slate: #2D4A6B;
+  --slate-light: #EEF1F5;
+  --bg: #F4F1EC;
+  --sidebar-w: 210px;
+  --nav-h: 54px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text-primary); font-size: 14px; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: 'Outfit', sans-serif; }
+input, select, textarea { font-family: 'Outfit', sans-serif; }
+
+.font-display { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+.font-display em { font-style: italic; }
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; color: var(--green-dark); }
+
+.topnav { background: var(--green-mid); height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 1.8rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 0 rgba(0,0,0,0.1); }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: #F4F1EC; letter-spacing: -0.3px; }
+.nav-logo em { font-style: italic; color: #C8EDD8; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-notif { position: relative; display: inline-flex; }
+.nav-notif-badge { position: absolute; top: -4px; right: -4px; background: var(--amber); color: #5A3200; font-size: 9px; font-weight: 500; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.nav-avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--green-sage); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: #F4F1EC; }
+.nav-label { font-size: 12px; color: #9FD4B8; }
+
+.app-layout { display: grid; grid-template-columns: var(--sidebar-w) 1fr; min-height: calc(100vh - var(--nav-h)); }
+.sidebar { background: var(--white); border-right: 0.5px solid var(--border); padding: 1.4rem 0; }
+.sb-label { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-pale); padding: 0 1.1rem; margin-bottom: 5px; display: block; }
+.sb-item { display: flex; align-items: center; gap: 9px; padding: 8px 1.1rem; font-size: 13px; color: var(--text-secondary); cursor: pointer; transition: all .15s; text-decoration: none; }
+.sb-item:hover { background: var(--bg); color: var(--text-primary); }
+.sb-item.active { background: var(--green-mint); color: var(--green-dark); border-right: 2px solid var(--green-mid); font-weight: 500; }
+
+.main-content { padding: 1.8rem 2rem; }
+.breadcrumb { font-size: 12px; color: var(--text-pale); margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+.breadcrumb .cur { color: var(--green-dark); font-weight: 500; }
+.page-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--green-dark); line-height: 1; }
+.page-sub { font-size: 12px; color: var(--text-pale); margin-top: 4px; }
+.page-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.6rem; }
+
+.card { background: var(--white); border-radius: 12px; border: 0.5px solid var(--border); padding: 1.4rem; margin-bottom: 1.2rem; }
+.card:last-child { margin-bottom: 0; }
+.card-head { display: flex; align-items: center; gap: 9px; margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 0.5px solid var(--border-light); }
+.card-icon { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.card-icon.green { background: var(--green-mint); color: var(--green-mid); }
+.card-icon.amber { background: var(--amber-light); color: var(--amber-dark); }
+.card-icon.slate { background: var(--slate-light); color: var(--slate); }
+.card-icon.red { background: var(--red-light); color: var(--red); }
+.card-title { font-size: 13px; font-weight: 500; color: var(--green-dark); }
+.card-sub { font-size: 11px; color: var(--text-pale); margin-top: 1px; }
+
+.field { margin-bottom: 1rem; }
+.field:last-child { margin-bottom: 0; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+.lbl { font-size: 11px; font-weight: 500; color: var(--text-secondary); margin-bottom: 4px; display: flex; gap: 3px; align-items: center; }
+.req { color: var(--red); font-size: 11px; }
+.inp { font-size: 13px; padding: 9px 12px; border: 1px solid #D0CCC4; border-radius: 6px; color: var(--text-primary); background: #FAFAF8; width: 100%; transition: border-color .2s; }
+.inp:focus { outline: none; border-color: var(--green-mid); }
+.sel { font-size: 13px; padding: 9px 12px; border: 1px solid #D0CCC4; border-radius: 6px; color: var(--text-primary); background: #FAFAF8; width: 100%; appearance: none; cursor: pointer; }
+.sel:focus { outline: none; border-color: var(--green-mid); }
+.textarea { font-size: 13px; padding: 9px 12px; border: 1px solid #D0CCC4; border-radius: 6px; color: var(--text-primary); background: #FAFAF8; width: 100%; resize: vertical; min-height: 70px; }
+.textarea:focus { outline: none; border-color: var(--green-mid); }
+.inp-hint { font-size: 11px; color: var(--text-pale); margin-top: 4px; }
+
+.btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 500; padding: 9px 18px; border-radius: 6px; border: none; transition: all .2s; cursor: pointer; }
+.btn-primary { background: var(--green-mid); color: #F4F1EC; }
+.btn-primary:hover { background: var(--green-dark); }
+.btn-secondary { background: transparent; color: var(--green-mid); border: 1px solid var(--green-mid); }
+.btn-secondary:hover { background: var(--green-mint); }
+.btn-amber { background: var(--amber); color: #5A3200; }
+.btn-amber:hover { background: var(--amber-dark); color: #fff; }
+.btn-ghost { background: transparent; color: var(--text-secondary); border: 0.5px solid #D0CCC4; }
+.btn-ghost:hover { background: var(--bg); }
+.btn-danger { background: var(--red-light); color: var(--red); border: 1px solid #F5B4B0; }
+.btn-danger:hover { background: var(--red); color: #fff; }
+.btn-sm { padding: 5px 12px; font-size: 12px; }
+.btn-full { width: 100%; justify-content: center; }
+
+.badge { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 4px; }
+.badge-green { background: var(--green-mint); color: #0D3D22; }
+.badge-amber { background: var(--amber-light); color: #7A4E00; }
+.badge-red { background: var(--red-light); color: #7A1A14; }
+.badge-slate { background: var(--slate-light); color: #2D3E50; }
+
+.sc { background: var(--white); border-radius: 12px; border: 0.5px solid var(--border); padding: 1.3rem; margin-bottom: 1.2rem; }
+.sc:last-child { margin-bottom: 0; }
+.sc-title { font-size: 12px; font-weight: 500; color: var(--green-dark); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.sc.green { background: var(--green-mint); border-color: var(--green-mint-dark); }
+
+.prog-lbl { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-pale); margin-bottom: 5px; }
+.prog-lbl span:last-child { color: var(--green-mid); font-weight: 500; }
+.prog-bg { background: #E8E4DE; border-radius: 4px; height: 5px; }
+.prog-fill { background: var(--green-mid); border-radius: 4px; height: 5px; }
+.req-list { display: flex; flex-direction:column; gap: 6px; margin-top: 10px; }
+.req-item { display: flex; align-items: center; gap: 7px; font-size: 12px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.dot.done { background: var(--green-mid); }
+.dot.todo { background: #D0CCC4; }
+.r-done { color: var(--green-mid); }
+.r-todo { color: var(--text-pale); }
+
+.chk { width: 16px; height: 16px; border: 1.5px solid #D0CCC4; border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; background: #fff; flex-shrink: 0; cursor: pointer; transition: all .2s; }
+.chk.on { background: var(--green-mid); border-color: var(--green-mid); }
+.check-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); cursor: pointer; }
+.check-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+.tag-wrap { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { background: var(--green-mint); color: #0D3D22; font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 4px; }
+.tag-remove { cursor: pointer; opacity: 0.7; }
+.tag-remove:hover { opacity: 1; }
+.tag-add { background: var(--bg); color: var(--text-muted); font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 0.5px dashed #C8C4BE; cursor: pointer; }
+
+.status-row { display: flex; gap: 8px; }
+.status-opt { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 6px; border: 1.5px solid transparent; cursor: pointer; transition: all .2s; }
+.status-opt.active { background: var(--green-mint); color: #0D3D22; border-color: var(--green-mid); }
+.status-opt.inactive { background: var(--bg); color: var(--text-muted); border-color: var(--border); }
+.status-opt:hover { border-color: var(--green-mid); }
+
+.info-item { display: flex; align-items: flex-start; gap: 7px; font-size: 12px; color: var(--text-secondary); margin-bottom: 7px; line-height: 1.5; }
+.info-item:last-child { margin-bottom: 0; }
+
+.upload-box { background: var(--bg); border: 0.5px dashed #C8C4BE; border-radius: 8px; padding: 1.4rem; text-align: center; cursor: pointer; transition: border-color .2s; }
+.upload-box:hover { border-color: var(--green-mid); }
+.upload-text { font-size: 13px; color: var(--text-muted); }
+.upload-text span { color: var(--green-mid); font-weight: 500; }
+.upload-hint { font-size: 11px; color: var(--text-pale); margin-top: 4px; }
+
+.alert { border-radius: 8px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; font-size: 12px; margin-bottom: 1rem; }
+.alert-amber { background: var(--amber-light); color: #7A4E00; border: 0.5px solid #F5D190; }
+
+.footer-bar { background: var(--green-mid); padding: 1rem 1.8rem; display: flex; justify-content: space-between; align-items: center; }
+.footer-l { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: #C8EDD8; font-style: italic; }
+.footer-r { font-size: 11px; color: #9FD4B8; }
+
+.toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 300; display: flex; flex-direction: column; gap: 8px; }
+.toast { background: var(--green-dark); color: #F4F1EC; padding: 12px 18px; border-radius: 8px; font-size: 13px; display: flex; align-items: center; gap: 8px; animation: toastIn .3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.toast.success { background: var(--green-mid); }
+.toast.error { background: var(--red); }
+.toast.warning { background: var(--amber-dark); }
+@keyframes toastIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+.two-col { display: grid; grid-template-columns: 1fr 260px; gap: 1.4rem; }
+
+body.large-font { font-size: 17px !important; }
+body.large-font .sb-item, body.large-font .lbl, body.large-font .inp, body.large-font .sel, body.large-font .textarea, body.large-font .badge, body.large-font .btn, body.large-font .card-title, body.large-font .page-sub, body.large-font td, body.large-font th { font-size: 15px !important; }
+body.large-font .page-title { font-size: 34px !important; }
+
+body.high-contrast { background: #000 !important; color: #fff !important; }
+body.high-contrast .topnav { background: #000 !important; border-bottom: 2px solid #fff !important; }
+body.high-contrast .nav-logo { color: #fff !important; }
+body.high-contrast .sidebar, body.high-contrast .card, body.high-contrast .sc { background: #111 !important; border-color: #555 !important; }
+body.high-contrast .sb-item, body.high-contrast .card-title, body.high-contrast .page-title { color: #fff !important; }
+body.high-contrast .sb-item.active { background: #333 !important; border-right-color: #fff !important; }
+body.high-contrast .inp, body.high-contrast .sel, body.high-contrast .textarea { background: #222 !important; color: #fff !important; border-color: #888 !important; }
+body.high-contrast .btn-primary { background: #fff !important; color: #000 !important; }
+body.high-contrast .footer-bar { background: #000 !important; border-top: 2px solid #555 !important; }
+body.high-contrast .badge-green { background: #003300 !important; color: #00ff00 !important; }
+body.high-contrast .badge-amber { background: #332200 !important; color: #ffcc00 !important; }
+body.high-contrast .kpi-label, body.high-contrast .kpi-sub, body.high-contrast .page-sub, body.high-contrast .breadcrumb, body.high-contrast .inp-hint, body.high-contrast .nav-label { color: #aaa !important; }
+
+.access-btns { display: flex; gap: 6px; align-items: center; }
+.access-btn { background: rgba(255,255,255,0.12); color: #C8EDD8; border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 500; padding: 4px 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: all .2s; white-space: nowrap; }
+.access-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+.access-btn.on { background: #F5A623; color: #5A3200; border-color: #F5A623; }
+.access-btn.on:hover { background: #E07B00; color: #fff; }
+</style>
+</head><body>
+<nav class="topnav"><a class="nav-logo" href="#">Merry<em>Meal</em></a><div class="nav-right"><span class="nav-label">Staff portal</span><div class="nav-notif"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9FD4B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"/><path d="M9 17v1a3 3 0 0 0 6 0v-1"/></svg><span class="nav-notif-badge">3</span></div><div class="nav-avatar">ST</div><span class="nav-label">Staff User</span><div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div><div class="access-btns"><button class="access-btn" data-access="font" title="Toggle large font"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 15.5m-3.5 0a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0"/><path d="M17.5 12v3.5"/><path d="M7 19v-10.5"/><path d="M3 13l3.5 -3.5l3.5 3.5"/><path d="M3 19h7"/></svg>Large font</button><button class="access-btn" data-access="contrast" title="Toggle high contrast"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M12 17a5 5 0 0 0 0 -10v10"/></svg>High contrast</button></div><button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"/><path d="M9 12h12l-3 -3"/><path d="M18 15l3 -3"/></svg>Logout</button></div></nav>
+<script>
+function doLogout(){
+  if(confirm('Are you sure you want to log out?')){
+    showToast('Logging out...','info');
+    setTimeout(()=>{ window.location.href='#'; },1000);
+  }
+}
+</script>
+<div class="app-layout"><aside class="sidebar"><span class="sb-label" style="display:block;margin-top:0">Main</span><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg>Members</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"/></svg>Caregivers</a><a class="sb-item active" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M3 21l18 0"/><path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4"/><path d="M5 21l0 -10.15"/><path d="M19 21l0 -10.15"/><path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"/></svg>Partners</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M13 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M4 17l5 1l.75 -1.5"/><path d="M15 21l0 -4l-4 -3l1 -6"/><path d="M7 12l0 -3l5 -1l3 3l3 1"/></svg>Volunteers</a><span class="sb-label" style="display:block;margin-top:.8rem">Operations</span><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5"/><path d="M3 9l4 0"/></svg>Delivery</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path d="M9 12l.01 0"/><path d="M13 12l2 0"/><path d="M9 16l.01 0"/><path d="M13 16l2 0"/></svg>Menu plan</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 21c.5 -4.5 2.5 -8 7 -10"/><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"/></svg>Food safety</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"/><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"/></svg>Reassessment</a><span class="sb-label" style="display:block;margin-top:.8rem">Admin</span><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M3 12m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M9 8m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M15 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"/><path d="M4 20l14 0"/></svg>MIS reports</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1 -1.8 -1"/><path d="M12 6v2m0 8v2"/></svg>Donations</a><a class="sb-item " href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 11m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"/><path d="M12 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M8 11v-4a4 4 0 1 1 8 0v4"/></svg>Access control</a></aside>
+<main class="main-content">
+<div class="breadcrumb"><span>Partners</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M9 6l6 6l-6 6"/></svg><span class="cur">Register new partner</span></div>
+<div class="page-head"><div><div class="page-title">Register new partner</div><div class="page-sub">US12, US13, US32</div></div></div>
+<div class="two-col"><div>
+<div class="card"><div class="card-head"><div class="card-icon green"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M3 21l18 0"/><path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4"/><path d="M5 21l0 -10.15"/><path d="M19 21l0 -10.15"/><path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"/></svg></div><div><div class="card-title">Organisation details</div><div class="card-sub">US12 — Partner organisation identity</div></div></div>
+<div class="field"><label class="lbl">Organisation name <span class="req">*</span></label><input class="inp" placeholder="e.g. Green Bowl Kitchen Co." required></div>
+<div class="field-row"><div><label class="lbl">Organisation type <span class="req">*</span></label><select class="sel"><option>Food service provider</option><option>Logistics &amp; delivery</option><option>Both</option></select></div><div><label class="lbl">Registration number</label><input class="inp" placeholder="e.g. 12345-ABC"></div></div>
+<div class="field"><label class="lbl">Operating address <span class="req">*</span></label><input class="inp" placeholder="Street address" style="margin-bottom:6px;"><div class="field-row" style="margin-bottom:0;"><input class="inp" placeholder="Township"><input class="inp" placeholder="City"></div></div>
+<div class="field-row"><div><label class="lbl">Distance from nearest zone</label><input class="inp" placeholder="e.g. 4.5 km"><div class="inp-hint">Determines hot vs frozen eligibility.</div></div><div><label class="lbl">Operating hours</label><input class="inp" placeholder="e.g. 7:00 AM – 3:00 PM"></div></div></div>
+<div class="card"><div class="card-head"><div class="card-icon slate"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"/></svg></div><div><div class="card-title">Primary contact person</div></div></div>
+<div class="field-row"><div><label class="lbl">Contact name <span class="req">*</span></label><input class="inp" placeholder="Contact name"></div><div><label class="lbl">Job title</label><input class="inp" placeholder="e.g. Kitchen Manager"></div></div>
+<div class="field-row"><div><label class="lbl">Phone number <span class="req">*</span></label><input class="inp" placeholder="+95 9 XXX XXX XXX"></div><div><label class="lbl">Email address <span class="req">*</span></label><input class="inp" placeholder="contact@organisation.com"></div></div></div>
+<div class="card"><div class="card-head"><div class="card-icon amber"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"/><path d="M9 12l.01 0"/><path d="M13 12l2 0"/><path d="M9 16l.01 0"/><path d="M13 16l2 0"/></svg></div><div><div class="card-title">Service capabilities</div><div class="card-sub">US13 — What services this partner provides</div></div></div>
+<div class="field"><label class="lbl">Service types offered <span class="req">*</span></label>
+<div class="check-group"><label class="check-item"><span class="chk on"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5l10 -10"/></svg></span>Meal preparation</label><label class="check-item"><span class="chk on"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5l10 -10"/></svg></span>Hot meal delivery</label><label class="check-item"><span class="chk"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="display:none"><path d="M5 12l5 5l10 -10"/></svg></span>Frozen meal supply</label><label class="check-item"><span class="chk"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="display:none"><path d="M5 12l5 5l10 -10"/></svg></span>Ingredient supply</label></div></div>
+<div class="field"><label class="lbl">Daily meal capacity <span class="req">*</span></label><input class="inp" placeholder="e.g. 120 meals per day"></div>
+<div class="field"><label class="lbl">Zones covered <span class="req">*</span></label><div class="tag-wrap" style="margin-top:6px;"><span class="tag">Zone A — Riverside <span class="tag-remove" onclick="this.parentElement.remove()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></svg></span></span><span class="tag-add">+ Add zone</span></div></div></div>
+<div class="card"><div class="card-head"><div class="card-icon red"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"/><path d="M9 12l2 2l4 -4"/></svg></div><div><div class="card-title">Approval status</div><div class="card-sub">US32 — Admin must approve before work assignment</div></div></div>
+<div class="lbl" style="margin-bottom:8px;">Current status</div>
+<div class="status-row"><span class="status-opt active">Pending approval</span><span class="status-opt inactive">Approved</span><span class="status-opt inactive">Rejected</span></div>
+<div class="alert alert-amber" style="margin-top:1rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="color:var(--amber-dark);flex-shrink:0;"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M12 3l8.5 14.5a2.1 2.1 0 0 1 -1.8 3.1h-16.7a2.1 2.1 0 0 1 -1.8 -3.1l8.5 -14.5z"/></svg>Partner registration will be submitted to admin for review.</div></div>
+<div class="card"><div class="card-head"><div class="card-icon green"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><path d="M9 9l1 0"/><path d="M9 13l6 0"/><path d="M9 17l6 0"/></svg></div><div><div class="card-title">Supporting documents</div></div></div>
+<div class="upload-box" onclick="showToast('File upload ready','info')"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="color:#B0ADA8;display:block;margin:0 auto 8px;"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"/><path d="M7 9l5 -5l5 5"/><path d="M12 4l0 12"/></svg><div class="upload-text">Drag &amp; drop or <span>browse</span></div><div class="upload-hint">Food safety certificates, business licence, insurance documents</div></div></div>
+<div style="display:flex;gap:10px;justify-content:flex-end;margin-top:1.4rem;">
+<button class="btn btn-ghost" onclick="history.back()">Cancel</button>
+<button class="btn btn-ghost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"/><path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M14 4l0 4l-6 0l0 -4"/></svg>Save draft</button>
+<button class="btn btn-amber" onclick="showToast('Submitted for admin approval!','success');setTimeout(()=>location.href='#',1500)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M10 14l11 -11"/><path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"/></svg>Submit for approval</button>
+</div></div><div>
+<div class="sc"><div class="sc-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 5.5l1.5 1.5l2.5 -2.5"/><path d="M3.5 11.5l1.5 1.5l2.5 -2.5"/><path d="M3.5 17.5l1.5 1.5l2.5 -2.5"/><path d="M11 6l9 0"/><path d="M11 12l9 0"/><path d="M11 18l9 0"/></svg>Form progress</div>
+<div class="prog-lbl"><span>Step 2 of 3</span><span>60%</span></div><div class="prog-bg"><div class="prog-fill" style="width:60%"></div></div>
+<div class="req-list"><div class="req-item r-done"><span class="dot done"></span>Organisation name</div><div class="req-item r-done"><span class="dot done"></span>Operating address</div><div class="req-item r-done"><span class="dot done"></span>Primary contact</div><div class="req-item r-todo"><span class="dot todo"></span>Service types</div><div class="req-item r-todo"><span class="dot todo"></span>Documents uploaded</div><div class="req-item r-todo"><span class="dot todo"></span>Admin approval</div></div></div>
+<div class="sc"><div class="sc-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M12 9h.01"/><path d="M11 12h1v4h1"/></svg>Approval process</div>
+<div class="info-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M10 14l11 -11"/><path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"/></svg>Staff submits registration for admin review</div>
+<div class="info-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M12 9h.01"/><path d="M11 12h1v4h1"/></svg>Admin reviews organisation &amp; documents</div>
+<div class="info-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5l10 -10"/></svg>Once approved, partner assigned to routes</div>
+<div class="info-item" style="color:var(--red);"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="color:var(--red);"><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></svg>Rejected partners cannot be assigned work</div></div>
+<div class="sc"><div class="sc-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 3m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"/><path d="M9 7l6 0"/><path d="M9 11l6 0"/><path d="M9 15l4 0"/></svg>Staff notes</div><textarea class="textarea" placeholder="Internal notes..."></textarea></div>
+<div class="sc green"><div class="sc-title" style="color:#0D3D22;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" style="color:var(--green-mid);"><path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"/><path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3"/><path d="M9.7 17l4.6 0"/></svg>Tip</div><div style="font-size:12px;color:var(--green-mid);line-height:1.6;">Partners beyond 10km from a member zone should be assigned frozen meal supply only.</div></div></div></div></main></div>
+<footer class="footer-bar"><div class="footer-l">MerryMeal · The Study Syndicate</div><div class="footer-r">Higher Diploma in Software Engineering · 2026</div></footer>
+<div id="toast-container" class="toast-container"></div>
+<script>
+function navigateTo(path) { window.location.href = path; }
+
+function showToast(msg, type = 'success') {
+  const container = document.getElementById('toast-container') || createToastContainer();
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">${getIconPath(type)}</svg>${msg}`;
+  container.appendChild(toast);
+  setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateX(100%)'; toast.style.transition = 'all .3s'; setTimeout(() => toast.remove(), 300); }, 3000);
+}
+function getIconPath(type) {
+  const paths = { success: '<path d="M5 12l5 5l10 -10"></path>', error: '<path d="M18 6l-12 12"></path><path d="M6 6l12 12"></path>', warning: '<path d="M12 9v4"></path><path d="M12 17h.01"></path><path d="M12 3l8.5 14.5a2.1 2.1 0 0 1 -1.8 3.1h-16.7a2.1 2.1 0 0 1 -1.8 -3.1l8.5 -14.5z"></path>', info: '<path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path><path d="M12 9h.01"></path><path d="M11 12h1v4h1"></path>' };
+  return paths[type] || paths.success;
+}
+function createToastContainer() { const el = document.createElement('div'); el.id = 'toast-container'; el.className = 'toast-container'; document.body.appendChild(el); return el; }
+function openModal(id) { document.getElementById(id)?.classList.add('open'); }
+function closeModal(id) { document.getElementById(id)?.classList.remove('open'); }
+function initToggles() { document.querySelectorAll('.toggle').forEach(t => { t.addEventListener('click', () => { t.classList.toggle('on'); t.classList.toggle('off'); }); }); }
+function initCheckboxes() { document.querySelectorAll('.chk').forEach(chk => { chk.addEventListener('click', () => { chk.classList.toggle('on'); if (chk.classList.contains('on')) { chk.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5l10 -10"></path></svg>'; } else { chk.innerHTML = ''; } }); }); }
+function initDayBoxes() { document.querySelectorAll('.day-box').forEach(box => { box.addEventListener('click', () => { box.classList.toggle('on'); box.innerHTML = box.classList.contains('on') ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M5 12l5 5l10 -10"></path></svg>' : ''; }); }); }
+function initStatusOpts() { document.querySelectorAll('.status-row').forEach(row => { row.querySelectorAll('.status-opt').forEach(opt => { opt.addEventListener('click', () => { row.querySelectorAll('.status-opt').forEach(o => { o.classList.remove('active'); o.classList.add('inactive'); }); opt.classList.add('active'); opt.classList.remove('inactive'); }); }); }); }
+function initAmountBtns() { document.querySelectorAll('.amount-grid').forEach(grid => { grid.querySelectorAll('.amt-btn').forEach(btn => { btn.addEventListener('click', () => { grid.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }); }); }); }
+function initTabs() { document.querySelectorAll('.tab-group').forEach(group => { const tabs = group.querySelectorAll('.tab-btn'); tabs.forEach(tab => { tab.addEventListener('click', () => { const target = tab.dataset.tab; tabs.forEach(t => { t.classList.remove('active'); }); tab.classList.add('active'); group.querySelectorAll('.tab-pane').forEach(p => { p.classList.remove('active'); }); document.getElementById(target)?.classList.add('active'); }); }); }); }
+function initPledgeTabs() { document.querySelectorAll('.ptab').forEach((tab, i, tabs) => { tab.addEventListener('click', () => { tabs.forEach(t => t.classList.remove('act')); tab.classList.add('act'); }); }); }
+function validateForm(formId) { const form = document.getElementById(formId); if (!form) return true; let valid = true; form.querySelectorAll('[required]').forEach(field => { const error = field.parentElement.querySelector('.inp-error'); if (!field.value.trim()) { field.classList.add('error'); if (error) error.classList.add('show'); valid = false; } else { field.classList.remove('error'); if (error) error.classList.remove('show'); } }); return valid; }
+function initCopyBtns() { document.querySelectorAll('.copy-btn').forEach(btn => { btn.addEventListener('click', () => { const text = btn.previousSibling?.textContent?.trim() || btn.dataset.copy; if (text) { navigator.clipboard.writeText(text).then(() => showToast('Copied to clipboard')); } }); }); }
+function initSearch(inputId, tableId) { const input = document.getElementById(inputId); const table = document.getElementById(tableId); if (!input || !table) return; input.addEventListener('input', () => { const q = input.value.toLowerCase(); table.querySelectorAll('tbody tr').forEach(row => { row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none'; }); }); }
+function initTagRemove() { document.querySelectorAll('.tag-remove').forEach(btn => { btn.addEventListener('click', () => btn.parentElement.remove()); }); }
+function initModalClose() { document.querySelectorAll('.modal-overlay').forEach(overlay => { overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); }); }); }
+function initFilterBtns() { document.querySelectorAll('.filter-group').forEach(group => { group.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', () => { group.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('act'); b.classList.add('un'); }); btn.classList.add('act'); btn.classList.remove('un'); }); }); }); }
+function setActiveSidebar() { const path = window.location.pathname; document.querySelectorAll('.sb-item').forEach(item => { const href = item.getAttribute('href'); if (href && path.endsWith(href.split('/').pop())) { item.classList.add('active'); } }); }
+document.addEventListener('DOMContentLoaded', () => { initToggles(); initCheckboxes(); initDayBoxes(); initStatusOpts(); initAmountBtns(); initTabs(); initPledgeTabs(); initCopyBtns(); initTagRemove(); initModalClose(); initFilterBtns(); setActiveSidebar(); });
+function initAccessibilityToggles() {
+  if (localStorage.getItem('mm-large-font') === 'on') { document.body.classList.add('large-font'); document.querySelectorAll('.access-btn[data-access="font"]').forEach(b => b.classList.add('on')); }
+  if (localStorage.getItem('mm-high-contrast') === 'on') { document.body.classList.add('high-contrast'); document.querySelectorAll('.access-btn[data-access="contrast"]').forEach(b => b.classList.add('on')); }
+  document.querySelectorAll('.access-btn[data-access="font"]').forEach(btn => { btn.addEventListener('click', () => { document.body.classList.toggle('large-font'); const on = document.body.classList.contains('large-font'); localStorage.setItem('mm-large-font', on ? 'on' : 'off'); document.querySelectorAll('.access-btn[data-access="font"]').forEach(b => b.classList.toggle('on', on)); showToast(on ? 'Large font mode on' : 'Large font mode off', 'info'); }); });
+  document.querySelectorAll('.access-btn[data-access="contrast"]').forEach(btn => { btn.addEventListener('click', () => { document.body.classList.toggle('high-contrast'); const on = document.body.classList.contains('high-contrast'); localStorage.setItem('mm-high-contrast', on ? 'on' : 'off'); document.querySelectorAll('.access-btn[data-access="contrast"]').forEach(b => b.classList.toggle('on', on)); showToast(on ? 'High contrast mode on' : 'High contrast mode off', 'info'); }); });
+}
+document.addEventListener('DOMContentLoaded', initAccessibilityToggles);
+</script>
+</body></html>
