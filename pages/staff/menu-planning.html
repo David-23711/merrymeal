@@ -9,13 +9,13 @@
 <style>
 .cal-wrap{background:#fff;border-radius:12px;border:.5px solid var(--border);overflow:hidden;margin-bottom:1.2rem;}
 .cal-header{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:.5px solid var(--border-light);}
-.cal-day-head{padding:10px;text-align:center;border-right:.5px solid #F4F1EC;}
+.cal-day-head{padding:10px;text-align:center;border-right:.5px solid #F2F8F8;}
 .cal-day-head:last-child{border-right:none;}
 .day-name{font-size:10px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;}
 .day-date{font-family:"Cormorant Garamond",serif;font-size:18px;font-weight:300;color:var(--green-dark);margin-top:2px;}
 .cal-day-head.today .day-name,.cal-day-head.today .day-date{color:var(--green-mid);}
 .cal-body{display:grid;grid-template-columns:repeat(5,1fr);}
-.cal-cell{padding:9px;border-right:.5px solid #F4F1EC;border-top:.5px solid #F4F1EC;min-height:170px;display:flex;flex-direction:column;gap:7px;}
+.cal-cell{padding:9px;border-right:.5px solid #F2F8F8;border-top:.5px solid #F2F8F8;min-height:170px;display:flex;flex-direction:column;gap:7px;}
 .cal-cell:last-child{border-right:none;}
 .cal-cell.today{background:#F9FCF9;}
 .slot-lbl{font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-pale);margin-bottom:3px;}
@@ -25,14 +25,14 @@
 .meal-chip.frozen .meal-chip-name{color:var(--slate);}
 .meal-chip-detail{font-size:10px;color:var(--green-sage);}
 .meal-chip.frozen .meal-chip-detail{color:var(--slate);}
-.qty-badge{display:inline-flex;align-items:center;gap:3px;background:var(--green-dark);color:#F4F1EC;font-size:9px;font-weight:500;padding:2px 7px;border-radius:10px;margin-top:4px;}
+.qty-badge{display:inline-flex;align-items:center;gap:3px;background:var(--green-dark);color:#F2F8F8;font-size:9px;font-weight:500;padding:2px 7px;border-radius:10px;margin-top:4px;}
 .qty-badge.fz{background:var(--slate);}
 .meal-actions{display:flex;gap:6px;margin-top:5px;}
 .meal-act{font-size:10px;color:var(--green-mid);cursor:pointer;display:inline-flex;align-items:center;gap:2px;}
 .meal-act.rm{color:var(--red);}
 .add-chip{border:.5px dashed #C8C4BE;border-radius:7px;padding:8px;text-align:center;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px;font-size:11px;color:var(--text-pale);transition:all .2s;}
 .add-chip:hover{border-color:var(--green-mid);color:var(--green-mid);}
-</style><nav class="topnav"><a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a><div class="nav-right"><span class="nav-label">Staff portal</span><div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">3</span></div><div class="nav-avatar">ST</div><span class="nav-label">Staff User</span><div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div><div class="access-btns"><button class="access-btn" data-access="font" title="Toggle large font"><i class="ti ti-letter-case" style="font-size:13px;"></i>Large font</button><button class="access-btn" data-access="contrast" title="Toggle high contrast"><i class="ti ti-contrast" style="font-size:13px;"></i>High contrast</button></div><button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button></div></nav><script>
+</style><nav class="topnav"><a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a><div class="nav-right"><span class="nav-label">Staff portal</span><div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">3</span></div><div class="nav-avatar">ST</div><span class="nav-label">Staff User</span><div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div><div class="access-btns"><button class="access-btn" data-access="font" title="Toggle large font"><i class="ti ti-letter-case" style="font-size:13px;"></i>Large font</button><button class="access-btn" data-access="contrast" title="Toggle high contrast"><i class="ti ti-contrast" style="font-size:13px;"></i>High contrast</button></div><button class="btn" style="background:rgba(255,255,255,0.1);color:#F2F8F8;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button></div></nav><script>
 function doLogout(){
   if(confirm('Are you sure you want to log out?')){
     showToast('Logging out...','info');
@@ -152,7 +152,7 @@ function doLogout(){
 <button class="btn btn-primary btn-full" style="margin-top:1rem;" onclick="addDish()"><i class="ti ti-plus"></i>Add to menu</button>
 </div>
 
-<div class="sc green"><div class="sc-title" style="color:#0D3D22;"><i class="ti ti-info-circle" style="color:var(--green-mid);"></i>Approval reminder</div>
+<div class="sc green"><div class="sc-title" style="color:#0A5A5A;"><i class="ti ti-info-circle" style="color:var(--green-mid);"></i>Approval reminder</div>
 <div class="info-item" style="color:var(--green-mid);"><i class="ti ti-check"></i>Complete all 5 days before submitting</div>
 <div class="info-item" style="color:var(--green-mid);"><i class="ti ti-check"></i>Admin must approve before kitchen prepares</div>
 <div class="info-item" style="color:var(--green-mid);margin-bottom:0;"><i class="ti ti-check"></i>Check ingredient availability first</div>

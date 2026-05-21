@@ -13,25 +13,25 @@
 <style>
 .login-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;}
 .login-left{background:var(--green-mid);padding:3.5rem;display:flex;flex-direction:column;justify-content:space-between;}
-.ll-title{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:#F4F1EC;line-height:1.05;margin-bottom:16px;}
-.ll-title em{font-style:italic;color:#C8EDD8;}
-.ll-desc{font-size:13px;color:#9FD4B8;line-height:1.8;}
+.ll-title{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:#F2F8F8;line-height:1.05;margin-bottom:16px;}
+.ll-title em{font-style:italic;color:#C8ECEC;}
+.ll-desc{font-size:13px;color:#A8DCDC;line-height:1.8;}
 .role-card{background:rgba(255,255,255,.07);border-radius:10px;border:.5px solid rgba(255,255,255,.1);padding:.9rem 1.1rem;display:flex;align-items:center;gap:12px;margin-bottom:10px;}
 .rc-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;}
-.rc-name{font-size:13px;font-weight:500;color:#F4F1EC;}
-.rc-desc{font-size:11px;color:#7BAF96;}
+.rc-name{font-size:13px;font-weight:500;color:#F2F8F8;}
+.rc-desc{font-size:11px;color:#6BBFBF;}
 .ll-stats{display:flex;gap:2rem;}
-.ll-stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#F4F1EC;line-height:1;}
-.ll-stat-label{font-size:11px;color:#7BAF96;margin-top:3px;}
+.ll-stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#F2F8F8;line-height:1;}
+.ll-stat-label{font-size:11px;color:#6BBFBF;margin-top:3px;}
 .login-right{display:flex;align-items:center;justify-content:center;padding:3rem 2rem;background:var(--bg);}
 .login-form{width:100%;max-width:380px;}
 .role-selector{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:1.6rem;}
 .rs-btn{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 6px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;transition:all .2s;}
 .rs-btn.active{background:var(--green-mint);border-color:var(--green-mid);}
-.rs-btn i{font-size:18px;color:#9A9790;}
+.rs-btn i{font-size:18px;color:#8A9A9A;}
 .rs-btn.active i{color:var(--green-mid);}
-.rs-btn span{font-size:11px;color:#9A9790;}
-.rs-btn.active span{color:#152E23;font-weight:500;}
+.rs-btn span{font-size:11px;color:#8A9A9A;}
+.rs-btn.active span{color:#083D3D;font-weight:500;}
 </style>
 <div class="login-wrap">
   <div class="login-left">
@@ -39,9 +39,9 @@
       <div style="margin-bottom:1.5rem;"><a class="nav-logo" href="../../index.html" style="font-size:24px;">Merry<em>Meal</em></a></div>
       <div class="ll-title">Sign in to<br><em>MerryMeal</em></div>
       <div class="ll-desc" style="margin-bottom:2rem;">Your central platform for managing meal delivery, member care, food safety, and organisational reporting.</div>
-      <div class="role-card"><div class="rc-icon" style="background:var(--green-mid);color:#9FD4B8;"><i class="ti ti-users"></i></div><div><div class="rc-name">Members & Caregivers</div><div class="rc-desc">View meal schedule, delivery status & profile</div></div></div>
+      <div class="role-card"><div class="rc-icon" style="background:var(--green-mid);color:#A8DCDC;"><i class="ti ti-users"></i></div><div><div class="rc-name">Members & Caregivers</div><div class="rc-desc">View meal schedule, delivery status & profile</div></div></div>
       <div class="role-card"><div class="rc-icon" style="background:rgba(245,166,35,.2);color:#F5A623;"><i class="ti ti-run"></i></div><div><div class="rc-name">Volunteers & Riders</div><div class="rc-desc">Access daily worklist and update delivery status</div></div></div>
-      <div class="role-card"><div class="rc-icon" style="background:rgba(255,255,255,.1);color:#C8EDD8;"><i class="ti ti-shield-check"></i></div><div><div class="rc-name">Staff & Admin</div><div class="rc-desc">Manage operations, reports and access control</div></div></div>
+      <div class="role-card"><div class="rc-icon" style="background:rgba(255,255,255,.1);color:#C8ECEC;"><i class="ti ti-shield-check"></i></div><div><div class="rc-name">Staff & Admin</div><div class="rc-desc">Manage operations, reports and access control</div></div></div>
       <div class="role-card"><div class="rc-icon" style="background:rgba(245,166,35,.2);color:#F5A623;"><i class="ti ti-coin"></i></div><div><div class="rc-name">Donor</div><div class="rc-desc">View giving history and manage recurring pledge</div></div></div>
     </div>
     <div class="ll-stats">
@@ -52,9 +52,9 @@
   </div>
   <div class="login-right">
     <div class="login-form">
-      <div style="font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#9A9790;margin-bottom:8px;">Member portal</div>
+      <div style="font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#8A9A9A;margin-bottom:8px;">Member portal</div>
       <h1 style="font-size:28px;margin-bottom:4px;">Sign in to your<br><em>account</em></h1>
-      <p style="font-size:13px;color:#9A9790;margin-bottom:1.6rem;">Select your role then enter your credentials.</p>
+      <p style="font-size:13px;color:#8A9A9A;margin-bottom:1.6rem;">Select your role then enter your credentials.</p>
       <div class="role-selector">
         <div class="rs-btn active" onclick="selectRole(this)"><i class="ti ti-user"></i><span>Member</span></div>
         <div class="rs-btn" onclick="selectRole(this)"><i class="ti ti-heart"></i><span>Caregiver</span></div>
@@ -65,20 +65,20 @@
         <div class="rs-btn" onclick="selectRole(this)"><i class="ti ti-coin"></i><span>Donor</span></div>
       </div>
       <div class="field"><label class="lbl">Email or phone number</label><input class="inp" type="text" placeholder="Enter your email or phone" id="login-email"></div>
-      <div class="field"><label class="lbl">Password</label><div style="position:relative;"><input class="inp" type="password" id="login-pw" placeholder="Enter your password"><i class="ti ti-eye" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#B0ADA8;font-size:17px;cursor:pointer;" onclick="togglePw()"></i></div></div>
+      <div class="field"><label class="lbl">Password</label><div style="position:relative;"><input class="inp" type="password" id="login-pw" placeholder="Enter your password"><i class="ti ti-eye" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#A8BCBC;font-size:17px;cursor:pointer;" onclick="togglePw()"></i></div></div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:.8rem;margin-bottom:1.2rem;">
         <label class="check-item"><span class="chk on"><i class="ti ti-check"></i></span>Remember me</label>
         <a href="#" style="font-size:12px;color:var(--green-mid);font-weight:500;">Forgot password?</a>
       </div>
       <button class="btn btn-primary btn-full" style="padding:13px;font-size:14px;" onclick="doLogin()"><i class="ti ti-login"></i>Sign in</button>
-      <p style="text-align:center;font-size:13px;color:#9A9790;margin-top:1.2rem;">Don't have an account? <a href="../public/member-register.html" style="color:var(--green-mid);font-weight:500;">Register here</a></p>
-      <p style="text-align:center;font-size:11px;color:#B0ADA8;margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:5px;"><i class="ti ti-lock" style="color:#5C9475;"></i>Secured with role-based access control</p>
+      <p style="text-align:center;font-size:13px;color:#8A9A9A;margin-top:1.2rem;">Don't have an account? <a href="../public/member-register.html" style="color:var(--green-mid);font-weight:500;">Register here</a></p>
+      <p style="text-align:center;font-size:11px;color:#A8BCBC;margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:5px;"><i class="ti ti-lock" style="color:#3D9E9E;"></i>Secured with role-based access control</p>
     </div>
   </div>
 </div>
 <div id="toast-container" class="toast-container"></div>
 <script src="../../js/app.js"></script>
-<div class="access-btns" style="position:fixed;bottom:20px;right:20px;z-index:99;"><button class="access-btn" data-access="font" style="background:#2E6B4F;border-color:#2E6B4F;"><i class="ti ti-letter-case" style="font-size:13px;"></i>Large font</button><button class="access-btn" data-access="contrast" style="background:#2E6B4F;border-color:#2E6B4F;"><i class="ti ti-contrast" style="font-size:13px;"></i>High contrast</button></div>
+<div class="access-btns" style="position:fixed;bottom:20px;right:20px;z-index:99;"><button class="access-btn" data-access="font" style="background:#0A7B7B;border-color:#0A7B7B;"><i class="ti ti-letter-case" style="font-size:13px;"></i>Large font</button><button class="access-btn" data-access="contrast" style="background:#0A7B7B;border-color:#0A7B7B;"><i class="ti ti-contrast" style="font-size:13px;"></i>High contrast</button></div>
 </body>
 </html>
 <script>

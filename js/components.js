@@ -73,7 +73,7 @@ function publicTopbar(activePage = '') {
       <a href="../../index.html#contact">Contact</a>
     </div>
     <div style="display:flex;gap:10px;align-items:center;">
-      <a href="../../pages/auth/login.html" style="font-size:13px;color:#9FD4B8;">Sign in</a>
+      <a href="../../pages/auth/login.html" style="font-size:13px;color:#A8DCDC;">Sign in</a>
       <a href="../../pages/public/member-register.html" class="nav-cta"><i class="ti ti-user-plus"></i>Register now</a>
     </div>
   </nav>`;
@@ -84,8 +84,8 @@ function donorTopbar() {
   <nav class="public-topbar">
     <a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a>
     <div style="display:flex;align-items:center;gap:16px;">
-      <a href="../../index.html" style="font-size:13px;color:#9FD4B8;">About us</a>
-      <a href="../../index.html" style="font-size:13px;color:#9FD4B8;">Our services</a>
+      <a href="../../index.html" style="font-size:13px;color:#A8DCDC;">About us</a>
+      <a href="../../index.html" style="font-size:13px;color:#A8DCDC;">Our services</a>
       <a href="../../pages/auth/login.html" class="nav-signin">Sign in</a>
     </div>
   </nav>`;

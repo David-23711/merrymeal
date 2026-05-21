@@ -7,17 +7,17 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
 <link rel="stylesheet" href="../../css/style.css">
 <style>
-.receipt-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:.5px solid #F4F1EC;}
+.receipt-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:.5px solid #F2F8F8;}
 .receipt-item:last-child{border-bottom:none;padding-bottom:0;}
 .ri-left{display:flex;align-items:center;gap:10px;}
 .ri-icon{width:34px;height:34px;border-radius:8px;background:var(--green-mint);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--green-mid);flex-shrink:0;}
 .ri-amount{font-size:14px;font-weight:500;color:var(--green-dark);font-family:'Outfit',sans-serif;}
 .ri-date{font-size:11px;color:var(--text-pale);font-family:'Outfit',sans-serif;margin-top:2px;}
 .ri-ref{font-size:11px;color:var(--text-muted);font-family:'Outfit',sans-serif;margin-top:1px;}
-.pledge-card{background:linear-gradient(135deg,#152E23,#2E6B4F);border-radius:12px;padding:1.4rem;margin-bottom:1.2rem;}
-.pc-label{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#7BAF96;margin-bottom:6px;font-family:'Outfit',sans-serif;}
-.pc-amount{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:#F4F1EC;line-height:1;}
-.pc-sub{font-size:12px;color:#9FD4B8;margin-top:4px;font-family:'Outfit',sans-serif;}
+.pledge-card{background:linear-gradient(135deg,#083D3D,#0A7B7B);border-radius:12px;padding:1.4rem;margin-bottom:1.2rem;}
+.pc-label{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#6BBFBF;margin-bottom:6px;font-family:'Outfit',sans-serif;}
+.pc-amount{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:#F2F8F8;line-height:1;}
+.pc-sub{font-size:12px;color:#A8DCDC;margin-top:4px;font-family:'Outfit',sans-serif;}
 .impact-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.4rem;}
 .impact-box{background:#fff;border-radius:10px;border:.5px solid var(--border);padding:1rem;text-align:center;}
 .ib-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--green-dark);line-height:1;}
@@ -36,7 +36,7 @@
     <span class="nav-label">Ko Aung Kyaw</span>
     <div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div>
     <div class="access-btns"><button class="access-btn" data-access="font" title="Toggle large font"><i class="ti ti-letter-case" style="font-size:13px;"></i>Large font</button><button class="access-btn" data-access="contrast" title="Toggle high contrast"><i class="ti ti-contrast" style="font-size:13px;"></i>High contrast</button></div>
-    <button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button>
+    <button class="btn" style="background:rgba(255,255,255,0.1);color:#F2F8F8;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button>
   </div>
 </nav>
 
@@ -70,10 +70,10 @@
     <!-- RECURRING PLEDGE CARD — US31 -->
     <div class="pledge-card">
       <div class="pc-label">Recurring pledge — US31</div>
-      <div class="pc-amount">$50<span style="font-size:18px;color:#9FD4B8;font-family:'Outfit',sans-serif;font-weight:300;">/month</span></div>
+      <div class="pc-amount">$50<span style="font-size:18px;color:#A8DCDC;font-family:'Outfit',sans-serif;font-weight:300;">/month</span></div>
       <div class="pc-sub">Active · Next reminder: 1 June 2026 · aungkyaw@email.com</div>
       <div style="display:flex;gap:8px;margin-top:1rem;">
-        <button class="btn btn-sm" style="background:rgba(255,255,255,.15);color:#F4F1EC;border:none;" onclick="openModal('edit-pledge-modal')"><i class="ti ti-edit" style="font-size:13px;"></i>Edit pledge</button>
+        <button class="btn btn-sm" style="background:rgba(255,255,255,.15);color:#F2F8F8;border:none;" onclick="openModal('edit-pledge-modal')"><i class="ti ti-edit" style="font-size:13px;"></i>Edit pledge</button>
         <button class="btn btn-sm" style="background:rgba(184,48,40,.3);color:#F5B4B0;border:none;" onclick="cancelPledge()"><i class="ti ti-x" style="font-size:13px;"></i>Cancel pledge</button>
       </div>
     </div>

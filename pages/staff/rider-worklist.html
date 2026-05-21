@@ -7,30 +7,30 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500&display=swap">
 <link rel="stylesheet" href="../../css/style.css">
 <style>
-.innovation-banner{background:linear-gradient(135deg,#152E23,#2E6B4F);border-radius:10px;padding:1rem 1.3rem;margin-bottom:1.4rem;display:flex;align-items:center;justify-content:space-between;}
+.innovation-banner{background:linear-gradient(135deg,#083D3D,#0A7B7B);border-radius:10px;padding:1rem 1.3rem;margin-bottom:1.4rem;display:flex;align-items:center;justify-content:space-between;}
 .ib-left{display:flex;align-items:center;gap:12px;}
-.ib-icon{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-size:18px;color:#C8EDD8;flex-shrink:0;}
-.ib-title{font-size:13px;font-weight:500;color:#F4F1EC;font-family:'Outfit',sans-serif;}
-.ib-sub{font-size:11px;color:#9FD4B8;font-family:'Outfit',sans-serif;margin-top:2px;}
+.ib-icon{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-size:18px;color:#C8ECEC;flex-shrink:0;}
+.ib-title{font-size:13px;font-weight:500;color:#F2F8F8;font-family:'Outfit',sans-serif;}
+.ib-sub{font-size:11px;color:#A8DCDC;font-family:'Outfit',sans-serif;margin-top:2px;}
 .ib-badge{background:#F5A623;color:#5A3200;font-size:10px;font-weight:500;padding:3px 10px;border-radius:20px;font-family:'Outfit',sans-serif;display:inline-flex;align-items:center;gap:4px;flex-shrink:0;}
 
-.notif-panel{background:#E4F2EB;border:.5px solid #C0DDCA;border-radius:10px;padding:1rem 1.2rem;margin-top:.8rem;animation:slideDown .3s ease;}
+.notif-panel{background:#E0F4F4;border:.5px solid #A8D8D8;border-radius:10px;padding:1rem 1.2rem;margin-top:.8rem;animation:slideDown .3s ease;}
 @keyframes slideDown{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
-.notif-panel-title{font-size:13px;font-weight:500;color:#0D3D22;font-family:'Outfit',sans-serif;margin-bottom:10px;display:flex;align-items:center;gap:7px;}
-.notif-panel-title i{font-size:16px;color:#2E6B4F;}
-.notif-recipient{display:flex;align-items:center;justify-content:space-between;background:#fff;border-radius:7px;padding:9px 12px;margin-bottom:7px;border:.5px solid #C0DDCA;}
+.notif-panel-title{font-size:13px;font-weight:500;color:#0A5A5A;font-family:'Outfit',sans-serif;margin-bottom:10px;display:flex;align-items:center;gap:7px;}
+.notif-panel-title i{font-size:16px;color:#0A7B7B;}
+.notif-recipient{display:flex;align-items:center;justify-content:space-between;background:#fff;border-radius:7px;padding:9px 12px;margin-bottom:7px;border:.5px solid #A8D8D8;}
 .notif-recipient:last-child{margin-bottom:0;}
 .nr-left{display:flex;align-items:center;gap:10px;}
-.nr-icon{font-size:16px;color:#2E6B4F;}
-.nr-name{font-size:13px;font-weight:500;color:#152E23;font-family:'Outfit',sans-serif;}
-.nr-email{font-size:11px;color:#9A9790;font-family:'Outfit',sans-serif;margin-top:1px;}
-.nr-sent{font-size:11px;font-weight:500;color:#2E6B4F;font-family:'Outfit',sans-serif;display:flex;align-items:center;gap:4px;}
-.notif-footer{font-size:11px;color:#5C9475;font-family:'Outfit',sans-serif;margin-top:8px;display:flex;align-items:center;gap:5px;}
-.row-notif-wrap{padding:0 1.3rem 1rem;border-bottom:.5px solid #F4F1EC;}
+.nr-icon{font-size:16px;color:#0A7B7B;}
+.nr-name{font-size:13px;font-weight:500;color:#083D3D;font-family:'Outfit',sans-serif;}
+.nr-email{font-size:11px;color:#8A9A9A;font-family:'Outfit',sans-serif;margin-top:1px;}
+.nr-sent{font-size:11px;font-weight:500;color:#0A7B7B;font-family:'Outfit',sans-serif;display:flex;align-items:center;gap:4px;}
+.notif-footer{font-size:11px;color:#3D9E9E;font-family:'Outfit',sans-serif;margin-top:8px;display:flex;align-items:center;gap:5px;}
+.row-notif-wrap{padding:0 1.3rem 1rem;border-bottom:.5px solid #F2F8F8;}
 </style>
 </head>
 <body>
-<nav class="topnav"><a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a><div class="nav-right"><span class="nav-label">Staff portal</span><div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">3</span></div><div class="nav-avatar">ST</div><span class="nav-label">Staff User</span><div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div><div class="access-btns"><button class="access-btn" data-access="font" title="Toggle large font"><i class="ti ti-letter-case" style="font-size:13px;"></i>Large font</button><button class="access-btn" data-access="contrast" title="Toggle high contrast"><i class="ti ti-contrast" style="font-size:13px;"></i>High contrast</button></div><button class="btn" style="background:rgba(255,255,255,0.1);color:#F4F1EC;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button></div></nav>
+<nav class="topnav"><a class="nav-logo" href="../../index.html">Merry<em>Meal</em></a><div class="nav-right"><span class="nav-label">Staff portal</span><div class="nav-notif"><i class="ti ti-bell nav-bell"></i><span class="nav-notif-badge">3</span></div><div class="nav-avatar">ST</div><span class="nav-label">Staff User</span><div style="width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 4px;"></div><div class="access-btns"><button class="access-btn" data-access="font" title="Toggle large font"><i class="ti ti-letter-case" style="font-size:13px;"></i>Large font</button><button class="access-btn" data-access="contrast" title="Toggle high contrast"><i class="ti ti-contrast" style="font-size:13px;"></i>High contrast</button></div><button class="btn" style="background:rgba(255,255,255,0.1);color:#F2F8F8;border:none;padding:5px 12px;font-size:12px;font-weight:400;display:inline-flex;align-items:center;gap:5px;border-radius:5px;" onclick="doLogout()"><i class="ti ti-logout" style="font-size:14px;"></i>Logout</button></div></nav>
 
 <div class="app-layout">
 <aside class="sidebar">
@@ -66,7 +66,7 @@
       <div class="ib-icon"><i class="ti ti-mail-forward"></i></div>
       <div>
         <div class="ib-title"><i class="ti ti-sparkles" style="font-size:13px;margin-right:4px;"></i>Smart-Route Notifications — Innovation feature</div>
-        <div class="ib-sub">When you mark a delivery as <strong style="color:#F4F1EC;">Departed</strong>, the system instantly emails the member and their linked caregiver. No manual coordination needed.</div>
+        <div class="ib-sub">When you mark a delivery as <strong style="color:#F2F8F8;">Departed</strong>, the system instantly emails the member and their linked caregiver. No manual coordination needed.</div>
       </div>
     </div>
     <span class="ib-badge"><i class="ti ti-check" style="font-size:10px;"></i>Auto-enabled</span>
@@ -166,27 +166,27 @@ function showNotifPanel(rowId, memberName, memberEmail, caregiverName, caregiver
   const panel = document.createElement('tr');
   panel.id = 'notif-' + rowId;
   panel.innerHTML = `<td colspan="7" style="padding:0;">
-    <div class="notif-panel" style="margin:0;border-radius:0;border-left:3px solid #2E6B4F;">
+    <div class="notif-panel" style="margin:0;border-radius:0;border-left:3px solid #0A7B7B;">
       <div class="notif-panel-title">
         <i class="ti ti-mail-forward"></i>
         Smart-Route Notification sent — ${time}
-        <span style="background:#E4F2EB;color:#0D3D22;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;margin-left:4px;display:inline-flex;align-items:center;gap:4px;"><i class="ti ti-sparkles" style="font-size:10px;"></i>Innovation feature</span>
+        <span style="background:#E0F4F4;color:#0A5A5A;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;margin-left:4px;display:inline-flex;align-items:center;gap:4px;"><i class="ti ti-sparkles" style="font-size:10px;"></i>Innovation feature</span>
       </div>
       <div class="notif-recipient">
         <div class="nr-left">
           <i class="ti ti-user nr-icon"></i>
-          <div><div class="nr-name">${memberName} <span style="font-size:10px;font-weight:400;color:#9A9790;">(Member)</span></div><div class="nr-email">${memberEmail}</div></div>
+          <div><div class="nr-name">${memberName} <span style="font-size:10px;font-weight:400;color:#8A9A9A;">(Member)</span></div><div class="nr-email">${memberEmail}</div></div>
         </div>
         <div class="nr-sent"><i class="ti ti-check" style="font-size:12px;"></i>Email sent</div>
       </div>
       <div class="notif-recipient">
         <div class="nr-left">
           <i class="ti ti-heart nr-icon"></i>
-          <div><div class="nr-name">${caregiverName} <span style="font-size:10px;font-weight:400;color:#9A9790;">(Caregiver)</span></div><div class="nr-email">${caregiverEmail}</div></div>
+          <div><div class="nr-name">${caregiverName} <span style="font-size:10px;font-weight:400;color:#8A9A9A;">(Caregiver)</span></div><div class="nr-email">${caregiverEmail}</div></div>
         </div>
         <div class="nr-sent"><i class="ti ti-check" style="font-size:12px;"></i>Email sent</div>
       </div>
-      <div style="font-size:11px;color:#5C9475;font-family:'Outfit',sans-serif;margin-top:8px;display:flex;align-items:center;gap:5px;">
+      <div style="font-size:11px;color:#3D9E9E;font-family:'Outfit',sans-serif;margin-top:8px;display:flex;align-items:center;gap:5px;">
         <i class="ti ti-info-circle" style="font-size:13px;"></i>
         Email subject: "Your MerryMeal is on the way — expected delivery within 30 minutes"
       </div>
